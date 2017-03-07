@@ -1,0 +1,8 @@
+{
+  "presets": [
+    ["env", {
+      "loose": true,
+      "modules": "umd"
+      }]
+  ]
+}

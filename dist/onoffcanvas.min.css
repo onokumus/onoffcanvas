@@ -1,0 +1,7 @@
+/**
+ * onoffcanvas - A jQuery offcanvas plugin
+ * @version v1.0.0
+ * @link https://github.com/onokumus/onoffcanvas#readme
+ * @license MIT
+ */
+.onoffcanvas-container{position:relative;overflow:hidden}.onoffcanvas{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;-webkit-transform:translate(-100%);transform:translate(-100%);-webkit-transition:-webkit-transform .3s ease-out;transition:-webkit-transform .3s ease-out;transition:transform .3s ease-out;transition:transform .3s ease-out,-webkit-transform .3s ease-out}.onoffcanvas.is-fixed{-webkit-backface-visibility:hidden;backface-visibility:hidden;position:fixed}.onoffcanvas.is-center{bottom:auto;-webkit-transform:translateY(-100%);transform:translateY(-100%)}.onoffcanvas.is-center.is-open{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.onoffcanvas.is-top{bottom:auto;-webkit-transform:translateY(-100%);transform:translateY(-100%)}.onoffcanvas.is-bottom{top:auto;-webkit-transform:translateY(100%);transform:translateY(100%)}.onoffcanvas.is-right{left:auto;-webkit-transform:translate(100%);transform:translate(100%)}.onoffcanvas.is-left{right:auto;-webkit-transform:translate(-100%);transform:translate(-100%)}.onoffcanvas-container:hover .onoffcanvas.is-hoverable,.onoffcanvas.is-open{-webkit-transform:translate(0);transform:translate(0)}.onoffcanvas-container:hover .onoffcanvas.is-center.is-hoverable{top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}

@@ -1,0 +1,37 @@
+{
+  "name": "onoffcanvas",
+  "version": "1.0.0",
+  "description": "A jQuery offcanvas plugin",
+  "main": "index.js",
+  "scripts": {
+    "js": "gulp js",
+    "css": "gulp css",
+    "build": "npm run js && npm run css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onokumus/onoffcanvas.git"
+  },
+  "keywords": [
+    "offcanvas",
+    "plugin",
+    "jquery"
+  ],
+  "author": "onokumus <onokumus@gmail.com> (https://github.com/onokumus)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onokumus/onoffcanvas/issues"
+  },
+  "homepage": "https://github.com/onokumus/onoffcanvas#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.1.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.1"
+  }
+}

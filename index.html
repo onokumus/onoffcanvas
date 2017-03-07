@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OnoffCanvas test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="dist/onoffcanvas.css">
+</head>
+
+<body>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">OnoffCanvas</h1>
+      <p class="lead">A jQuery off-canvas Plugin</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Page Canvas</h4>
+            <p class="card-text">position: fixed</p>
+          </div>
+          <nav class="nav flex-column">
+            <a class="nav-link" href="#cft" data-toggle="onoffcanvas">Top</a>
+            <a class="nav-link" href="#cfr" data-toggle="onoffcanvas">Right</a>
+            <a class="nav-link" href="#cfb" data-toggle="onoffcanvas">Bottom</a>
+            <a class="nav-link" href="#cfl" data-toggle="onoffcanvas">Left</a>
+            <a class="nav-link" href="#cff" data-toggle="onoffcanvas">Full</a>
+          </nav>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-xs-12">
+            <pre>
+<code>&lt;div class=&quot;canvas is-fixed is-top&quot; id=&quot;cft&quot;&gt;
+  &lt;h1&gt;Top Canvas&lt;/h1&gt;
+  &lt;button class=&quot;btn btn-danger&quot; name=&quot;button&quot; data-toggle=&quot;canvas&quot; data-target=&quot;#cft&quot;&gt;CLOSE&lt;/button&gt;
+&lt;/div&gt;</code>
+            </pre>
+            <pre>
+<code>&lt;div class=&quot;canvas is-fixed is-right&quot; id=&quot;cfr&quot;&gt;
+  &lt;h1&gt;Right Canvas&lt;/h1&gt;
+  &lt;button class=&quot;btn btn-danger&quot; name=&quot;button&quot; data-toggle=&quot;canvas&quot; data-target=&quot;#cfr&quot;&gt;CLOSE&lt;/button&gt;
+&lt;/div&gt;</code>
+            </pre>
+            <pre>
+<code>&lt;div class=&quot;canvas is-fixed is-bottom&quot; id=&quot;cfb&quot;&gt;
+  &lt;h1&gt;Bottom Canvas&lt;/h1&gt;
+  &lt;button class=&quot;btn btn-danger&quot; name=&quot;button&quot; data-toggle=&quot;canvas&quot; data-target=&quot;#cfb&quot;&gt;CLOSE&lt;/button&gt;
+&lt;/div&gt;</code>
+            </pre>
+            <pre>
+<code>&lt;div class=&quot;canvas is-fixed is-left&quot; id=&quot;cfl&quot;&gt;
+  &lt;h1&gt;Left Canvas&lt;/h1&gt;
+  &lt;button class=&quot;btn btn-danger&quot; name=&quot;button&quot; data-toggle=&quot;canvas&quot; data-target=&quot;#cfl&quot;&gt;CLOSE&lt;/button&gt;
+&lt;/div&gt;</code>
+            </pre>
+            <pre>
+<code>&lt;div class=&quot;canvas is-fixed&quot; id=&quot;cff&quot;&gt;
+  &lt;h1&gt;Full Canvas&lt;/h1&gt;
+  &lt;button class=&quot;btn btn-danger&quot; name=&quot;button&quot; data-toggle=&quot;canvas&quot; data-target=&quot;#cff&quot;&gt;CLOSE&lt;/button&gt;
+&lt;/div&gt;</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Card Canvas</h4>
+            <p class="card-text">position: absolute</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Top Canvas</h4>
+              </div>
+              <div class="onoffcanvas-container">
+                <figure class="figure">
+                  <img src="http://placehold.it/350x150" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
+                </figure>
+                <div class="onoffcanvas is-top p-2 bg-info" id="cat">
+                  <button type="button" class="btn btn-danger" data-toggle="onoffcanvas" data-target="#cat">
+                    CLOSE
+                  </button>
+                </div>
+              </div>
+              <div class="card card-block">
+                <button type="button" class="btn btn-primary" data-toggle="onoffcanvas" data-target="#cat">
+                  OPEN
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Right Canvas</h4>
+              </div>
+              <div class="onoffcanvas-container">
+                <figure class="figure">
+                  <img src="http://placehold.it/350x150" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
+                </figure>
+                <div class="onoffcanvas is-right p-2 bg-info" id="car">
+                  <button type="button" class="btn btn-danger" data-toggle="onoffcanvas" data-target="#car">
+                    CLOSE
+                  </button>
+                </div>
+              </div>
+              <div class="card card-block">
+                <button type="button" class="btn btn-primary" data-toggle="onoffcanvas" data-target="#car">
+                  OPEN
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Bottom Canvas</h4>
+              </div>
+              <div class="onoffcanvas-container">
+                <figure class="figure">
+                  <img src="http://placehold.it/350x150" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
+                </figure>
+                <div class="onoffcanvas is-bottom p-2 bg-info" id="cab">
+                  <button type="button" class="btn btn-danger" data-toggle="onoffcanvas" data-target="#cab">
+                    CLOSE
+                  </button>
+                </div>
+              </div>
+              <div class="card card-block">
+                <button type="button" class="btn btn-primary" data-toggle="onoffcanvas" data-target="#cab">
+                  OPEN
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Left Canvas</h4>
+              </div>
+              <div class="onoffcanvas-container">
+                <figure class="figure">
+                  <img src="http://placehold.it/350x150" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
+                </figure>
+                <div class="onoffcanvas is-left p-2 bg-info" id="cal">
+                  <button type="button" class="btn btn-danger" data-toggle="onoffcanvas" data-target="#cal">
+                    CLOSE
+                  </button>
+                </div>
+              </div>
+              <div class="card card-block">
+                <button type="button" class="btn btn-primary" data-toggle="onoffcanvas" data-target="#cal">
+                  OPEN
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title">Center Canvas</h4>
+                </div>
+                <div class="onoffcanvas-container">
+                  <figure class="figure">
+                    <img src="http://placehold.it/350x150" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                    <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
+                  </figure>
+                  <div class="onoffcanvas is-center p-2 bg-info" id="cac">
+                    <button type="button" class="btn btn-danger" data-toggle="onoffcanvas" data-target="#cac">
+                      CLOSE
+                    </button>
+                  </div>
+                </div>
+                <div class="card card-block">
+                  <button type="button" class="btn btn-primary" data-toggle="onoffcanvas" data-target="#cac">
+                    OPEN
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
+              <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Full Canvas</h4>
+                  </div>
+                  <div class="onoffcanvas-container">
+                    <figure class="figure">
+                      <img src="http://placehold.it/350x150" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                      <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
+                    </figure>
+                    <div class="onoffcanvas p-2 bg-info" id="caf">
+                      <button type="button" class="btn btn-danger" data-toggle="onoffcanvas" data-target="#caf">
+                        CLOSE
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card card-block">
+                    <button type="button" class="btn btn-primary" data-toggle="onoffcanvas" data-target="#caf">
+                      OPEN
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-3">
+
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">Hoverable Canvas</h4>
+              <p class="card-text">position: absolute</p>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Hoverable Canvas</h4>
+          </div>
+          <div class="onoffcanvas-container">
+            <figure class="figure">
+              <img src="http://placehold.it/1250x200" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+              <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
+            </figure>
+            <div class="onoffcanvas is-hoverable p-2 bg-transparent">
+              <div class="text-xs-center text-white">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+            </div>
+          </div>
+          <div class="card card-block">
+            lorem ipsum ...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="Wrap">
+
+
+
+    <div class="onoffcanvas is-left bg-inverse" id="fC">
+      <h1>Full Canvas</h1>
+      <button class="btn btn-danger" name="button" data-toggle="onoffcanvas" data-target="#fC">CLOSE</button>
+    </div>
+    <header class="onoffcanvas is-top" id="pT">
+      <a href="#pT" data-toggle="onoffcanvas">Close</a>
+    </header>
+    <aside class="onoffcanvas is-left" id="pL">
+      <a href="#pL" data-toggle="onoffcanvas">Close</a>
+    </aside>
+
+
+    <aside class="onoffcanvas is-right is-fixed" id="pR">
+      <a href="#pR" data-toggle="onoffcanvas">Close</a>
+    </aside>
+    <header class="onoffcanvas is-bottom is-fixed" id="pB">
+      <a href="#pB" data-toggle="onoffcanvas">Close</a>
+    </header>
+  </div>
+
+
+
+  <div class="onoffcanvas is-fixed is-top bg-inverse text-white" id="cft">
+    <h1>Top Canvas</h1>
+    <button class="btn btn-danger" name="button" data-toggle="onoffcanvas" data-target="#cft">CLOSE</button>
+  </div>
+
+  <div class="onoffcanvas is-fixed is-right bg-inverse text-white" id="cfr">
+    <h1>Right Canvas</h1>
+    <button class="btn btn-danger" name="button" data-toggle="onoffcanvas" data-target="#cfr">CLOSE</button>
+  </div>
+
+  <div class="onoffcanvas is-fixed is-bottom bg-inverse text-white" id="cfb">
+    <h1>Bottom Canvas</h1>
+    <button class="btn btn-danger" name="button" data-toggle="onoffcanvas" data-target="#cfb">CLOSE</button>
+  </div>
+
+  <div class="onoffcanvas is-fixed is-left bg-inverse text-white" id="cfl">
+    <h1>Left Canvas</h1>
+    <button class="btn btn-danger" name="button" data-toggle="onoffcanvas" data-target="#cfl">CLOSE</button>
+  </div>
+
+  <div class="onoffcanvas is-fixed bg-inverse text-white" id="cff">
+    <h1>Full Canvas</h1>
+    <button class="btn btn-danger" name="button" data-toggle="onoffcanvas" data-target="#cff">CLOSE</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+  <script src=dist/onoffcanvas.js></script>
+</body>
+
+</html>
