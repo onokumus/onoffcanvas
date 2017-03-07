@@ -1,0 +1,25 @@
+{
+  "name": "onoffcanvas",
+  "description": "A jQuery offcanvas plugin",
+  "main": [
+    "dist/onoffcanvas.js",
+    "dist/onoffcanvas.css"
+  ],
+  "authors": [
+    "onokumus <onokumus@gmail.com> (https://github.com/onokumus)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "offcanvas",
+    "plugin",
+    "jquery"
+  ],
+  "homepage": "https://github.com/onokumus/onoffcanvas",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
