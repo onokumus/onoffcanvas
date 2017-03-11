@@ -1,6 +1,6 @@
 /**
  * onoffcanvas - A jQuery offcanvas plugin
- * @version v1.0.0
+ * @version v1.1.0
  * @link https://github.com/onokumus/onoffcanvas#readme
  * @license MIT
  */
@@ -46,6 +46,10 @@
       } else {
         this.addAriaCollapsedClass(this.$element, this.$trigger);
       }
+
+      if (this.options.toggle) {
+        // this.toggle();
+      }
     };
 
     OnoffCanvas.DEFAULTS = {
@@ -55,6 +59,11 @@
 
     OnoffCanvas.prototype.show = function () {
       var openClass = this.options.openClass;
+
+      if (this.$element.hasClass(openClass)) {
+        return;
+      }
+
       this.$element.addClass(openClass).attr('aria-expanded', true);
 
       this.$trigger.attr('aria-expanded', true);
@@ -62,6 +71,11 @@
 
     OnoffCanvas.prototype.hide = function () {
       var openClass = this.options.openClass;
+
+      if (!this.$element.hasClass(openClass)) {
+        return;
+      }
+
       this.$element.removeClass(openClass).attr('aria-expanded', false);
 
       this.$trigger.attr('aria-expanded', false);
@@ -83,8 +97,8 @@
       var openClass = this.options.openClass;
       var isOpen = $element.hasClass(openClass);
 
-      $trigger.attr('aria-expanded', isOpen);
-      $element.toggleClass(openClass, !isOpen).attr('aria-expanded', isOpen);
+      $trigger.attr('aria-expanded', !isOpen);
+      $element.toggleClass(openClass, !isOpen).attr('aria-expanded', !isOpen);
     };
 
     function getTargetFromTrigger($trigger) {
@@ -134,6 +148,7 @@
 
       var $target = getTargetFromTrigger($this);
       var data = $target.data('onoffcanvas');
+      console.log(data);
       var option = data ? 'toggle' : $this.data();
 
       Plugin.call($target, option);
