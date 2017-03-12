@@ -22,23 +22,28 @@ $ bower install onokumus/onoffcanvas --save
 
 ### Usage
 1. Include onoffcanvas StyleSheet
-  ```html
-  <link rel="stylesheet" href="onoffcanvas.min.css">
-  ```
+
+   ```html
+   <link rel="stylesheet" href="onoffcanvas.min.css">
+   ```
 2. Include jQuery
+
   ```html
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   ```
 3. Include onoffcanvas plugin's code
+
   ```html
   <script src="onoffcanvas.min.js"></script>
   ```
 4. Add class `onoffcanvas` to `div` tag. Be sure to add `aria-expanded` to the control element for accessibility. [for details](https://www.w3.org/WAI/GL/wiki/Using_aria-expanded_to_indicate_the_state_of_a_collapsible_element)
-```html
-<div class="onoffcanvas" aria-expanded="false"></div>
-```
+
+  ```html
+  <div class="onoffcanvas" aria-expanded="false"></div>
+  ```
   > Position Options : `onoffcanvas` is in absolute position by default
   - add class `is-fixed` to fixed position
+  
     ```html
     <div class="onoffcanvas is-fixed" aria-expanded="false"></div>
     ```
@@ -49,12 +54,14 @@ $ bower install onokumus/onoffcanvas --save
   - `is-bottom`,
   - `is-left`
   - `is-center` *only vertical*
+  
     ```html
     <div class="onoffcanvas is-{top|right|bottom|left|center}" aria-expanded="false"></div>
     ```
 
   > Opened/Closed Options : `onoffcanvas` is closed by default
   - add class `is-open` to open and add attribute `aria-expanded="true"`
+  
     ```html
     <div class="onoffcanvas is-open" aria-expanded="true"></div>
     ```
@@ -62,6 +69,7 @@ $ bower install onokumus/onoffcanvas --save
   > Hoverable Options :
   1. add class `onoffcanvas-container` to parent element
   2. add class `is-hoverable` to `onoffcanvas`
+  
     ```html
     <div class="onoffcanvas-container">
         <div class="onoffcanvas is-hoverable" aria-expanded="false"></div>
@@ -70,14 +78,17 @@ $ bower install onokumus/onoffcanvas --save
 5. Add trigger: Be sure to add `data-toggle="onoffcanvas"` and `aria-expanded="false"` attributes
 > Two options for this
   1. link with `href`
+  
     ```html
     <a href="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</a>
     ```
   2. button with `data-target`
+  
     ```html
     <button data-target="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</button>
     ```
-> if you want to use the default style for `onoffcanvas`, add class `onoffcanvas-toggler`
+  > if you want to use the default style for `onoffcanvas`, add class `onoffcanvas-toggler`
+
   ```html
   <a class="onoffcanvas-toggler" href="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false"></a>
   // OR
@@ -91,16 +102,18 @@ $("#onoffcanvas").onoffcanvas();
 
   > Options
   - `toggle`: Boolean. Default : `true`
-    ```js
-      $("#onoffcanvas").onoffcanvas({
-        toggle: false
-      });
-    ```
+  
+  ```js
+    $("#onoffcanvas").onoffcanvas({toggle: false});
+  ```
+    
   - `show` for open
+  
     ```js
     $("#onoffcanvas").onoffcanvas('show');
     ```
   - `hide` for close
+  
     ```js
     $("#onoffcanvas").onoffcanvas('hide');
     ```
