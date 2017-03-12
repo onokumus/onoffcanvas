@@ -59,7 +59,10 @@ gulp.task('css', () => {
     .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest('./dist/'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(postcss([cssnano({zindex: false})]))
+    .pipe(postcss([cssnano({
+      zindex: false,
+      reduceTransforms: false
+    })]))
     .pipe(header(banner, {pkg: pkg}))
     .pipe(gulp.dest('./dist/'));
 });

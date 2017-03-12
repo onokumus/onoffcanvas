@@ -1,6 +1,6 @@
 /**
  * onoffcanvas - A jQuery offcanvas plugin
- * @version v1.1.0
+ * @version v1.1.1
  * @link https://github.com/onokumus/onoffcanvas#readme
  * @license MIT
  */
@@ -53,12 +53,11 @@
     };
 
     OnoffCanvas.DEFAULTS = {
-      toggle: true,
-      openClass: 'is-open'
+      toggle: true
     };
 
     OnoffCanvas.prototype.show = function () {
-      var openClass = this.options.openClass;
+      var openClass = 'is-open';
 
       if (this.$element.hasClass(openClass)) {
         return;
@@ -70,7 +69,7 @@
     };
 
     OnoffCanvas.prototype.hide = function () {
-      var openClass = this.options.openClass;
+      var openClass = 'is-open';
 
       if (!this.$element.hasClass(openClass)) {
         return;
@@ -82,7 +81,7 @@
     };
 
     OnoffCanvas.prototype.toggle = function () {
-      var openClass = this.options.openClass;
+      var openClass = 'is-open';
       this[this.$element.hasClass(openClass) ? 'hide' : 'show']();
     };
 
@@ -94,7 +93,7 @@
     };
 
     OnoffCanvas.prototype.addAriaCollapsedClass = function ($element, $trigger) {
-      var openClass = this.options.openClass;
+      var openClass = 'is-open';
       var isOpen = $element.hasClass(openClass);
 
       $trigger.attr('aria-expanded', !isOpen);

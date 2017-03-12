@@ -39,27 +39,27 @@
         <div class="card">
           <div class="card-block">
             <h3>Code</h3>
-            <pre><code class="language-html">&lt;div class=&quot;onoffcanvas is-fixed is-top bg-inverse text-white&quot; id=&quot;cft&quot; aria-expanded=false&gt;
+            <pre><code class="language-html">&lt;div class=&quot;onoffcanvas is-fixed is-top&quot; id=&quot;cft&quot; aria-expanded=false&gt;
   &lt;h1&gt;Top Canvas&lt;/h1&gt;
   &lt;a href=&quot;#cft&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;onoffcanvas is-fixed is-right bg-inverse text-white&quot; id=&quot;cfr&quot;&gt;
+&lt;div class=&quot;onoffcanvas is-fixed is-right&quot; id=&quot;cfr&quot;&gt;
   &lt;h1&gt;Right Canvas&lt;/h1&gt;
   &lt;a href=&quot;#cfr&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;onoffcanvas is-fixed is-bottom bg-inverse text-white&quot; id=&quot;cfb&quot;&gt;
+&lt;div class=&quot;onoffcanvas is-fixed is-bottom&quot; id=&quot;cfb&quot;&gt;
   &lt;h1&gt;Bottom Canvas&lt;/h1&gt;
   &lt;a href=&quot;#cfb&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;onoffcanvas is-fixed is-left bg-inverse text-white&quot; id=&quot;cfl&quot;&gt;
+&lt;div class=&quot;onoffcanvas is-fixed is-left&quot; id=&quot;cfl&quot;&gt;
   &lt;h1&gt;Left Canvas&lt;/h1&gt;
   &lt;a href=&quot;#cfl&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;onoffcanvas is-fixed bg-inverse text-white&quot; id=&quot;cff&quot;&gt;
+&lt;div class=&quot;onoffcanvas is-fixed&quot; id=&quot;cff&quot;&gt;
   &lt;a href=&quot;#cff&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=&quot;onoffcanvas&quot; aria-expanded=&quot;false&quot; style=&quot;width:200px; height:200px;top: 50%;left: 50%;transform: translate(-50%, -50%);&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 </code></pre>
@@ -257,18 +257,59 @@
   </div>
   <br>
 
+<div class="container">
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">onoffcanvas-toggler</h4>
+      <h5>Alternative 1. Link with <code>href</code></h5>
+<pre><code class="language-html">&lt;a href=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
+</code></pre>
+<div id="div1" aria-expanded="false"></div>
+<a href="#div1" class="onoffcanvas-toggler is-animated" aria-expanded="false"  data-toggle="onoffcanvas"></a>
+
+<hr>
+<h5>Alternative 2. Button with data-target</h5>
+<pre><code class="language-html">&lt;button data-target=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/button&gt;
+</code></pre>
+<div id="div2" aria-expanded="false"></div>
+<button data-target="#div2" class="onoffcanvas-toggler is-animated" aria-expanded="false"  data-toggle="onoffcanvas"></button>
+    </div>
+  </div>
+</div>
+
+  <br>
+
   <div class="container">
     <div class="card">
       <div class="card-block">
 
         <h3 class="card-title">onoffcanvas-toggler animation</h3>
-        <div class="bg-inverse" id="octo" aria-expanded="false">
-          <a href="#octo" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false"></a>
-          <a href="#octo" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:60px; height:60px;"></a>
-          <a href="#octo" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:100px; height:100px;"></a>
-          <a href="#octo" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:150px; height:150px;"></a>
-          <a href="#octo" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:200px; height:200px;"></a>
-        </div>
+        <h4>Alternative 1 : <small>add <code>is-open</code> class to parent</small></h4>
+        <p>
+<pre><code class="language-html">&lt;div id=&quot;onoffcanvas1&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;is-open&quot;&gt;
+  &lt;a href=&quot;#onoffcanvas1&quot; data-toggle=&quot;onoffcanvas&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+        </p>
+        <p>
+          <div id="onoffcanvas1" aria-expanded="false"></div>
+          <div class="is-open">
+            <a href="#onoffcanvas1" data-toggle="onoffcanvas" class="onoffcanvas-toggler" aria-expanded="false"></a>
+          </div>
+        </p>
+
+        <h4>Alternative 2 : <small>add <code>is-animated</code> class to <code>onoffcanvas-toggle</code></small></h4>
+        <p>
+<pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
+&lt;a href=&quot;#onoffcanvas2&quot; class=&quot;onoffcanvas-toggler is-animated&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
+</code></pre>
+        </p>
+        <p>
+          <div id="onoffcanvas2" aria-expanded="false"></div>
+          <a href="#onoffcanvas2" class="onoffcanvas-toggler is-animated" aria-expanded="false"  data-toggle="onoffcanvas"></a>
+        </p>
+
       </div>
     </div>
   </div>

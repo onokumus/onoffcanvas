@@ -18,12 +18,11 @@
   };
 
   OnoffCanvas.DEFAULTS = {
-    toggle: true,
-    openClass: 'is-open'
+    toggle: true
   };
 
   OnoffCanvas.prototype.show = function() {
-    var openClass = this.options.openClass;
+    var openClass = 'is-open';
 
     if (this.$element.hasClass(openClass)) {
       return;
@@ -36,7 +35,7 @@
   };
 
   OnoffCanvas.prototype.hide = function() {
-    var openClass = this.options.openClass;
+    var openClass = 'is-open';
 
     if (!this.$element.hasClass(openClass)) {
       return;
@@ -49,21 +48,23 @@
   };
 
   OnoffCanvas.prototype.toggle = function() {
-    var openClass = this.options.openClass;
+    var openClass = 'is-open';
     this[this.$element.hasClass(openClass)
         ? 'hide'
         : 'show']();
   };
 
   OnoffCanvas.prototype.getParent = function() {
-    return $(this.options.parent).find('[data-toggle="onoffcanvas"][data-parent="' + this.options.parent + '"]').each($.proxy(function(i, element) {
+    return $(this.options.parent)
+    .find('[data-toggle="onoffcanvas"][data-parent="' + this.options.parent + '"]')
+    .each($.proxy(function(i, element) {
       var $element = $(element);
       this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element);
     }, this)).end();
   };
 
   OnoffCanvas.prototype.addAriaCollapsedClass = function($element, $trigger) {
-    var openClass = this.options.openClass;
+    var openClass = 'is-open';
     var isOpen = $element.hasClass(openClass);
 
     $trigger.attr('aria-expanded', !isOpen);
