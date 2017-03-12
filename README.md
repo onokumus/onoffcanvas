@@ -43,7 +43,7 @@ $ bower install onokumus/onoffcanvas --save
   ```
   > Position Options : `onoffcanvas` is in absolute position by default
   - add class `is-fixed` to fixed position
-  
+
     ```html
     <div class="onoffcanvas is-fixed" aria-expanded="false"></div>
     ```
@@ -54,14 +54,14 @@ $ bower install onokumus/onoffcanvas --save
   - `is-bottom`,
   - `is-left`
   - `is-center` *only vertical*
-  
+
     ```html
     <div class="onoffcanvas is-{top|right|bottom|left|center}" aria-expanded="false"></div>
     ```
 
   > Opened/Closed Options : `onoffcanvas` is closed by default
   - add class `is-open` to open and add attribute `aria-expanded="true"`
-  
+
     ```html
     <div class="onoffcanvas is-open" aria-expanded="true"></div>
     ```
@@ -69,7 +69,7 @@ $ bower install onokumus/onoffcanvas --save
   > Hoverable Options :
   1. add class `onoffcanvas-container` to parent element
   2. add class `is-hoverable` to `onoffcanvas`
-  
+
     ```html
     <div class="onoffcanvas-container">
         <div class="onoffcanvas is-hoverable" aria-expanded="false"></div>
@@ -78,12 +78,12 @@ $ bower install onokumus/onoffcanvas --save
 5. Add trigger: Be sure to add `data-toggle="onoffcanvas"` and `aria-expanded="false"` attributes
 > Two options for this
   1. link with `href`
-  
+
     ```html
     <a href="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</a>
     ```
   2. button with `data-target`
-  
+
     ```html
     <button data-target="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</button>
     ```
@@ -102,18 +102,18 @@ $("#onoffcanvas").onoffcanvas();
 
   > Options
   - `toggle`: Boolean. Default : `true`
-  
+
   ```js
     $("#onoffcanvas").onoffcanvas({toggle: false});
   ```
-    
+
   - `show` for open
-  
+
     ```js
     $("#onoffcanvas").onoffcanvas('show');
     ```
   - `hide` for close
-  
+
     ```js
     $("#onoffcanvas").onoffcanvas('hide');
     ```

@@ -9,13 +9,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" />
   <link rel="stylesheet" href="dist/onoffcanvas.css">
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 
 <body>
-  <div class="jumbotron jumbotron-fluid">
+  <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <h1 class="display-3">OnoffCanvas</h1>
       <p class="lead">A jQuery off-canvas Plugin</p>
+      <p>
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas" data-icon="octicon-star" data-style="mega" data-count-href="/onokumus/onoffcanvas/stargazers" data-count-api="/repos/onokumus/onoffcanvas#stargazers_count" data-count-aria-label="# stargazers on GitHub"
+            aria-label="Star onokumus/onoffcanvas on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/onokumus/onoffcanvas/network" data-count-api="/repos/onokumus/onoffcanvas#forks_count" data-count-aria-label="# forks on GitHub"
+            aria-label="Fork onokumus/onoffcanvas on GitHub">Fork</a>
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download onokumus/onoffcanvas on GitHub">Download</a>
+
+      </p>
     </div>
   </div>
   <div class="container">
@@ -257,25 +267,25 @@
   </div>
   <br>
 
-<div class="container">
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">onoffcanvas-toggler</h4>
-      <h5>Alternative 1. Link with <code>href</code></h5>
-<pre><code class="language-html">&lt;a href=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
+  <div class="container">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">onoffcanvas-toggler</h4>
+        <h5>Alternative 1. Link with <code>href</code></h5>
+        <pre><code class="language-html">&lt;a href=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
 </code></pre>
-<div id="div1" aria-expanded="false"></div>
-<a href="#div1" class="onoffcanvas-toggler is-animated" aria-expanded="false"  data-toggle="onoffcanvas"></a>
+        <div id="div1" aria-expanded="false"></div>
+        <a href="#div1" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></a>
 
-<hr>
-<h5>Alternative 2. Button with data-target</h5>
-<pre><code class="language-html">&lt;button data-target=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/button&gt;
+        <hr>
+        <h5>Alternative 2. Button with data-target</h5>
+        <pre><code class="language-html">&lt;button data-target=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/button&gt;
 </code></pre>
-<div id="div2" aria-expanded="false"></div>
-<button data-target="#div2" class="onoffcanvas-toggler is-animated" aria-expanded="false"  data-toggle="onoffcanvas"></button>
+        <div id="div2" aria-expanded="false"></div>
+        <button data-target="#div2" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></button>
+      </div>
     </div>
   </div>
-</div>
 
   <br>
 
@@ -286,7 +296,7 @@
         <h3 class="card-title">onoffcanvas-toggler animation</h3>
         <h4>Alternative 1 : <small>add <code>is-open</code> class to parent</small></h4>
         <p>
-<pre><code class="language-html">&lt;div id=&quot;onoffcanvas1&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
+          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas1&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;is-open&quot;&gt;
   &lt;a href=&quot;#onoffcanvas1&quot; data-toggle=&quot;onoffcanvas&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -301,13 +311,13 @@
 
         <h4>Alternative 2 : <small>add <code>is-animated</code> class to <code>onoffcanvas-toggle</code></small></h4>
         <p>
-<pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
+          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
 &lt;a href=&quot;#onoffcanvas2&quot; class=&quot;onoffcanvas-toggler is-animated&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
 </code></pre>
         </p>
         <p>
           <div id="onoffcanvas2" aria-expanded="false"></div>
-          <a href="#onoffcanvas2" class="onoffcanvas-toggler is-animated" aria-expanded="false"  data-toggle="onoffcanvas"></a>
+          <a href="#onoffcanvas2" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></a>
         </p>
 
       </div>
