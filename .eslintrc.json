@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "compat"
+  ],
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "rules": {
+    "compat/compat": 2,
+    "no-param-reassign": "off",
+    "func-names": "off"
+  }
+}

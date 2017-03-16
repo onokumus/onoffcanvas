@@ -1,12 +1,15 @@
 {
   "name": "onoffcanvas",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A jQuery offcanvas plugin",
   "main": "index.js",
   "scripts": {
     "js": "gulp js",
     "css": "gulp css",
-    "build": "npm run js && npm run css"
+    "build": "npm run js && npm run css",
+    "test": "eslint src",
+    "precommit": "npm test",
+    "prepush": "npm test"
   },
   "repository": {
     "type": "git",
@@ -24,19 +27,31 @@
   },
   "homepage": "https://github.com/onokumus/onoffcanvas#readme",
   "devDependencies": {
-    "autoprefixer": "^6.7.6",
-    "babel-preset-env": "^1.1.8",
+    "autoprefixer": "^6.7.7",
+    "babel-preset-env": "^1.2.2",
     "cssnano": "^3.10.0",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-compat": "^1.0.2",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2 || ^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
-    "gulp-cssnano": "^2.1.2",
     "gulp-header": "^1.8.8",
     "gulp-postcss": "^6.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
+    "husky": "^0.13.2",
     "postcss-flexbugs-fixes": "^2.1.0",
     "rtlcss": "^2.1.2"
+  },
+  "browserslist": [
+    "> 1%"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
   }
 }
