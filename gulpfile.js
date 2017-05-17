@@ -1,6 +1,4 @@
 const gulp = require('gulp');
-const concat = require('gulp-concat');
-const babel = require('gulp-babel');
 const header = require('gulp-header');
 const sass = require('gulp-sass');
 const uglify = require('gulp-uglify');
@@ -36,11 +34,7 @@ const browsers = [
 ];
 
 gulp.task('js', () => {
-    return gulp.src('./src/*.js')
-    .pipe(concat('onoffcanvas.js'))
-    .pipe(babel())
-    .pipe(header(banner, {pkg: pkg}))
-    .pipe(gulp.dest('./dist/'))
+    return gulp.src('./dist/onoffcanvas.js')
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(header(banner, {pkg: pkg}))
@@ -71,10 +65,8 @@ gulp.task('css', () => {
  * Defines the list of resources to watch for changes.
  */
 gulp.task('watch', () =>{
-  gulp.watch(['src/**/*.js'], ['js']);
   gulp.watch(['src/**/*.scss'], ['css']);
+  gulp.watch(['dist/**/*.js'], ['js']);
 });
-
-
 
 gulp.task('default', ['js', 'css']);

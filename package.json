@@ -1,6 +1,6 @@
 {
   "name": "onoffcanvas",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "An offcanvas plugin",
   "main": "index.js",
   "scripts": {
@@ -28,8 +28,6 @@
     "autoprefixer": "^6.7.7",
     "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-concat": "^2.6.1",
     "gulp-header": "^1.8.8",
     "gulp-postcss": "^6.3.0",
     "gulp-rename": "^1.2.2",

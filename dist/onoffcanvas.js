@@ -1,145 +1,68 @@
 /**
- * onoffcanvas - A jQuery offcanvas plugin
- * @version v1.1.2
+ * onoffcanvas - An offcanvas plugin
+ * @version v2.0.0
  * @link https://github.com/onokumus/onoffcanvas#readme
  * @license MIT
  */
-(function (global, factory) {
-  if (typeof define === "function" && define.amd) {
-    define(['jquery'], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(require('jquery'));
-  } else {
-    var mod = {
-      exports: {}
-    };
-    factory(global.jquery);
-    global.onoffcanvas = mod.exports;
-  }
-})(this, function (_jquery) {
-  'use strict';
-
-  var _jquery2 = _interopRequireDefault(_jquery);
-
-  function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-      default: obj
-    };
-  }
-
-  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  };
-
-  (function ($) {
-    var OnoffCanvas = function OnoffCanvas(element, options) {
-      this.$element = $(element);
-      this.options = $.extend({}, OnoffCanvas.DEFAULTS, options);
-      this.$trigger = $('[data-toggle="onoffcanvas"][href="#' + element.id + '"],[data-toggle="onoffcanvas"][data-target="#' + element.id + '"]');
-
-      this.addAriaCollapsedClass(this.$element, this.$trigger);
-    };
-
-    OnoffCanvas.DEFAULTS = {
-      toggle: true
-    };
-
-    OnoffCanvas.prototype.show = function () {
-      var openClass = 'is-open';
-
-      if (this.$element.hasClass(openClass)) {
-        return;
-      }
-
-      this.$element.addClass(openClass).attr('aria-expanded', true);
-
-      this.$trigger.attr('aria-expanded', true);
-    };
-
-    OnoffCanvas.prototype.hide = function () {
-      var openClass = 'is-open';
-
-      if (!this.$element.hasClass(openClass)) {
-        return;
-      }
-
-      this.$element.removeClass(openClass).attr('aria-expanded', false);
-
-      this.$trigger.attr('aria-expanded', false);
-    };
-
+var OnoffCanvas = (function () {
+    function OnoffCanvas(element) {
+        this.element = element;
+        this.triggerElements = document.querySelectorAll("[data-toggle=\"onoffcanvas\"][href=\"#" + element.id + "\"],[data-toggle=\"onoffcanvas\"][data-target=\"#" + element.id + "\"]");
+        this.addAriaExpanded(this.triggerElements);
+        this.toggle();
+    }
     OnoffCanvas.prototype.toggle = function () {
-      var openClass = 'is-open';
-      this[this.$element.hasClass(openClass) ? 'hide' : 'show']();
+        if (this.element.classList.contains('is-open')) {
+            this.hide();
+        }
+        else {
+            this.show();
+        }
     };
-
-    function getTargetFromTrigger($trigger) {
-      var href = void 0;
-      var target = $trigger.attr('data-target') || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '');
-
-      return $(target);
+    OnoffCanvas.prototype.show = function () {
+        if (this.element.classList.contains('is-open')) {
+            return;
+        }
+        this.element.classList.add('is-open');
+        this.addAriaExpanded(this.triggerElements);
+    };
+    OnoffCanvas.prototype.hide = function () {
+        if (!this.element.classList.contains('is-open')) {
+            return;
+        }
+        this.element.classList.remove('is-open');
+        this.addAriaExpanded(this.triggerElements);
+    };
+    OnoffCanvas.prototype.addAriaExpanded = function (triggerElements) {
+        var isOpen = this.element.classList.contains('is-open');
+        Array.prototype.forEach.call(triggerElements, function (el, i) {
+            el.setAttribute('aria-expanded', isOpen);
+        });
+    };
+    return OnoffCanvas;
+}());
+function getSelectorFromElement(element) {
+    var selector = element.getAttribute('data-target');
+    if (!selector || !(/^#/g.test(selector))) {
+        selector = element.getAttribute('href') || '';
     }
-
-    OnoffCanvas.prototype.getParent = function () {
-      return $(this.options.parent).find('[data-toggle="onoffcanvas"][data-parent="' + this.options.parent + '"]').each($.proxy(function (i, element) {
-        var $element = $(element);
-        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element);
-      }, this)).end();
-    };
-
-    OnoffCanvas.prototype.addAriaCollapsedClass = function ($element, $trigger) {
-      var openClass = 'is-open';
-      var isOpen = $element.hasClass(openClass);
-
-      $trigger.attr('aria-expanded', !isOpen);
-      $element.toggleClass(openClass, !isOpen).attr('aria-expanded', !isOpen);
-    };
-
-    function Plugin(option) {
-      return this.each(function () {
-        var $this = $(this);
-        var data = $this.data('onoffcanvas');
-        var options = $.extend({}, OnoffCanvas.DEFAULTS, $this.data(), (typeof option === 'undefined' ? 'undefined' : _typeof(option)) === 'object' && option);
-
-        if (!data && options.toggle && /show|hide/.test(option)) {
-          options.toggle = false;
-        }
-        if (!data) {
-          $this.data('onoffcanvas', data = new OnoffCanvas(this, options));
-        }
-        if (typeof option === 'string') {
-          data[option]();
-        }
-      });
+    try {
+        var $selector = document.querySelectorAll(selector);
+        return $selector.length > 0 ? selector : null;
     }
-
-    var old = $.fn.onoffcanvas;
-
-    $.fn.onoffcanvas = Plugin;
-    $.fn.onoffcanvas.Constructor = OnoffCanvas;
-
-    // CANVAS NO CONFLICT
-    // ====================
-
-    $.fn.onoffcanvas.noConflict = function () {
-      $.fn.onoffcanvas = old;
-      return this;
-    };
-
-    $(document).on('click.onoffcanvas.data-api', '[data-toggle="onoffcanvas"]', function (e) {
-      var $this = $(this);
-
-      if (!$this.attr('data-target')) {
-        e.preventDefault();
-      }
-
-      var $target = getTargetFromTrigger($this);
-      var data = $target.data('onoffcanvas');
-      var option = data ? 'toggle' : $this.data();
-
-      Plugin.call($target, option);
+    catch (error) {
+        throw new Error('Target Not Found!');
+    }
+}
+function getTargetFromTrigger(element) {
+    var selector = getSelectorFromElement(element);
+    return selector ? document.querySelector(selector) : null;
+}
+var onoffcanvas = document.querySelectorAll('[data-toggle="onoffcanvas"]');
+Array.prototype.forEach.call(onoffcanvas, function (oc) {
+    oc.addEventListener('click', function (event) {
+        event.preventDefault();
+        var href = getTargetFromTrigger(oc);
+        new OnoffCanvas(href);
     });
-  })(jQuery);
 });
