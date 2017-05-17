@@ -1,6 +1,6 @@
 {
   "name": "onoffcanvas",
-  "description": "A jQuery offcanvas plugin",
+  "description": "An offcanvas plugin",
   "main": [
     "dist/onoffcanvas.js",
     "dist/onoffcanvas.css"
@@ -10,9 +10,7 @@
   ],
   "license": "MIT",
   "keywords": [
-    "offcanvas",
-    "plugin",
-    "jquery"
+    "offcanvas"
   ],
   "homepage": "https://github.com/onokumus/onoffcanvas",
   "ignore": [
