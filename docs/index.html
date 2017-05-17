@@ -8,7 +8,7 @@
   <title>OnoffCanvas test</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" />
-  <link rel="stylesheet" href="dist/onoffcanvas.css">
+  <link rel="stylesheet" href="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.css">
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
@@ -19,11 +19,11 @@
       <h1 class="display-3">OnoffCanvas</h1>
       <p class="lead">A jQuery off-canvas Plugin</p>
       <p>
-        <a class="github-button" href="https://github.com/onokumus/onoffcanvas" data-icon="octicon-star" data-style="mega" data-count-href="/onokumus/onoffcanvas/stargazers" data-count-api="/repos/onokumus/onoffcanvas#stargazers_count" data-count-aria-label="# stargazers on GitHub"
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas" data-icon="octicon-star" data-size="large" data-count-href="/onokumus/onoffcanvas/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub"
             aria-label="Star onokumus/onoffcanvas on GitHub">Star</a>
-        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/onokumus/onoffcanvas/network" data-count-api="/repos/onokumus/onoffcanvas#forks_count" data-count-aria-label="# forks on GitHub"
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/fork" data-icon="octicon-repo-forked" data-size="large" data-count-href="/onokumus/onoffcanvas/network" data-show-count="true" data-count-aria-label="# forks on GitHub"
             aria-label="Fork onokumus/onoffcanvas on GitHub">Fork</a>
-        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/archive/master.zip" data-icon="octicon-cloud-download" data-style="mega" aria-label="Download onokumus/onoffcanvas on GitHub">Download</a>
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/archive/master.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download onokumus/onoffcanvas on GitHub">Download</a>
 
       </p>
     </div>
@@ -49,7 +49,7 @@
         <div class="card">
           <div class="card-block">
             <h3>Code</h3>
-            <pre><code class="language-html">&lt;div class=&quot;onoffcanvas is-fixed is-top&quot; id=&quot;cft&quot; aria-expanded=false&gt;
+            <pre><code class="language-html">&lt;div class=&quot;onoffcanvas is-fixed is-top&quot; id=&quot;cft&quot;
   &lt;h1&gt;Top Canvas&lt;/h1&gt;
   &lt;a href=&quot;#cft&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -104,7 +104,7 @@
                   <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class="onoffcanvas is-top p-2 bg-inverse" id="cat" aria-expanded="false">
+                <div class="onoffcanvas is-top p-2 bg-inverse" id="cat">
                   <a href="#cat" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -124,7 +124,7 @@
                   <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class="onoffcanvas is-right p-2 bg-inverse" id="car" aria-expanded="false">
+                <div class="onoffcanvas is-right p-2 bg-inverse" id="car">
                   <a href="#car" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -144,7 +144,7 @@
                   <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class=" p-2 bg-inverse onoffcanvas is-bottom" id="cab" aria-expanded="false">
+                <div class=" p-2 bg-inverse onoffcanvas is-bottom" id="cab">
                   <a href="#cab" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -170,7 +170,7 @@
                   <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class="onoffcanvas is-left p-2 bg-inverse" id="cal" aria-expanded="false">
+                <div class="onoffcanvas is-left p-2 bg-inverse" id="cal">
                   <a href="#cal" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -193,7 +193,7 @@
                   <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class="onoffcanvas is-center p-2 bg-inverse" id="cac" aria-expanded="false">
+                <div class="onoffcanvas is-center p-2 bg-inverse" id="cac">
                   <a href="#cac" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -215,7 +215,7 @@
                   <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class="onoffcanvas p-2 bg-inverse" id="caf" aria-expanded="false">
+                <div class="onoffcanvas p-2 bg-inverse" id="caf">
                   <a href="#caf" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -251,7 +251,7 @@
               <img src="1250x200.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
               <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
             </figure>
-            <div class="onoffcanvas is-hoverable p-2 bg-inverse" aria-expanded="false">
+            <div class="onoffcanvas is-hoverable p-2 bg-inverse">
               <div class="text-xs-center text-white">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -274,14 +274,14 @@
         <h5>Alternative 1. Link with <code>href</code></h5>
         <pre><code class="language-html">&lt;a href=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
 </code></pre>
-        <div id="div1" aria-expanded="false"></div>
+        <div id="div1"></div>
         <a href="#div1" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></a>
 
         <hr>
         <h5>Alternative 2. Button with data-target</h5>
         <pre><code class="language-html">&lt;button data-target=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/button&gt;
 </code></pre>
-        <div id="div2" aria-expanded="false"></div>
+        <div id="div2"></div>
         <button data-target="#div2" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></button>
       </div>
     </div>
@@ -296,7 +296,7 @@
         <h3 class="card-title">onoffcanvas-toggler animation</h3>
         <h4>Alternative 1 : <small>add <code>is-open</code> class to parent</small></h4>
         <p>
-          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas1&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
+          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas1&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;is-open&quot;&gt;
   &lt;a href=&quot;#onoffcanvas1&quot; data-toggle=&quot;onoffcanvas&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -311,7 +311,7 @@
 
         <h4>Alternative 2 : <small>add <code>is-animated</code> class to <code>onoffcanvas-toggle</code></small></h4>
         <p>
-          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot; aria-expanded=&quot;false&quot;&gt;&lt;/div&gt;
+          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot;&gt;&lt;/div&gt;
 &lt;a href=&quot;#onoffcanvas2&quot; class=&quot;onoffcanvas-toggler is-animated&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
 </code></pre>
         </p>
@@ -330,7 +330,7 @@
   <br>
 
 
-  <div class="onoffcanvas is-fixed is-top bg-inverse text-white" id="cft" aria-expanded=false>
+  <div class="onoffcanvas is-fixed is-top bg-inverse text-white" id="cft">
     <h1>Top Canvas</h1>
     <a href="#cft" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:100px; height:100px;"></a>
   </div>
@@ -360,7 +360,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 
-  <script src=dist/onoffcanvas.js></script>
+  <script src="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.js"></script>
 </body>
 
 </html>

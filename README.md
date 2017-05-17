@@ -1,7 +1,6 @@
-# onoffcanvas [![NPM version](https://img.shields.io/npm/v/onoffcanvas.svg?style=flat)](https://www.npmjs.com/package/onoffcanvas) [![NPM monthly downloads](https://img.shields.io/npm/dm/onoffcanvas.svg?style=flat)](https://npmjs.org/package/onoffcanvas)  [![NPM total downloads](https://img.shields.io/npm/dt/onoffcanvas.svg?style=flat)](https://npmjs.org/package/onoffcanvas)
-[![Build Status](https://travis-ci.org/onokumus/onoffcanvas.svg?branch=master)](https://travis-ci.org/onokumus/onoffcanvas)
+# onoffcanvas [![NPM version](https://img.shields.io/npm/v/onoffcanvas.svg?style=flat)](https://www.npmjs.com/package/onoffcanvas) [![NPM monthly downloads](https://img.shields.io/npm/dm/onoffcanvas.svg?style=flat)](https://npmjs.org/package/onoffcanvas)  [![NPM total downloads](https://img.shields.io/npm/dt/onoffcanvas.svg?style=flat)](https://npmjs.org/package/onoffcanvas)  
 
-> A jQuery offcanvas plugin
+> An offcanvas plugin
 
 ## Getting started
 
@@ -22,102 +21,92 @@ $ bower install onokumus/onoffcanvas --save
 [download from github](https://github.com/onokumus/onoffcanvas/archive/master.zip)
 
 ### Usage
-1. Include onoffcanvas StyleSheet
-
-   ```html
-   <link rel="stylesheet" href="onoffcanvas.min.css">
-   ```
-2. Include jQuery
+1. Include `onoffcanvas` StyleSheet
 
   ```html
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.css">
   ```
-3. Include onoffcanvas plugin's code
+
+2. Include `onoffcanvas` plugin's code
 
   ```html
-  <script src="onoffcanvas.min.js"></script>
+  <script src="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.js"></script>
   ```
-4. Add class `onoffcanvas` to `div` tag. Be sure to add `aria-expanded` to the control element for accessibility. [for details](https://www.w3.org/WAI/GL/wiki/Using_aria-expanded_to_indicate_the_state_of_a_collapsible_element)
+
+3. Add class `onoffcanvas` and `id` attribute to `div` tag.
 
   ```html
-  <div class="onoffcanvas" aria-expanded="false"></div>
+  <div class="onoffcanvas" id="side-canvas"></div>
   ```
-  > Position Options : `onoffcanvas` is in absolute position by default
+
+4. Add trigger button: Be sure to add `data-toggle="onoffcanvas"`.
+  ```html
+  <button data-toggle="onoffcanvas" data-target="#side-canvas">SIDE MENU</div>
+  ```
+
+### Canvas Options
+
+1. Position Options : `onoffcanvas` is in absolute position by default
   - add class `is-fixed` to fixed position
 
-    ```html
-    <div class="onoffcanvas is-fixed" aria-expanded="false"></div>
-    ```
+  ```html
+  <div class="onoffcanvas is-fixed"></div>
+  ```
 
-  > Direction Options : `onoffcanvas` is in full-screen by default
+2. Direction Options : `onoffcanvas` is in full-screen by default
   - `is-top`
   - `is-right`
   - `is-bottom`,
   - `is-left`
   - `is-center` *only vertical*
 
-    ```html
-    <div class="onoffcanvas is-{top|right|bottom|left|center}" aria-expanded="false"></div>
-    ```
+  ```html
+  <div class="onoffcanvas is-{top|right|bottom|left|center}" id="side-canvas"></div>
+  ```
 
-  > Opened/Closed Options : `onoffcanvas` is closed by default
-  - add class `is-open` to open and add attribute `aria-expanded="true"`
+3. Opened/Closed Options : `onoffcanvas` is closed by default
+  - add class `is-open` to open.
 
-    ```html
-    <div class="onoffcanvas is-open" aria-expanded="true"></div>
-    ```
+  ```html
+  <div class="onoffcanvas is-open" id="side-canvas"></div>
+  ```
 
-  > Hoverable Options :
-  1. add class `onoffcanvas-container` to parent element
-  2. add class `is-hoverable` to `onoffcanvas`
+4. Hoverable Options :
+  - add class `onoffcanvas-container` to parent element
+  - add class `is-hoverable` to `onoffcanvas`
 
-    ```html
-    <div class="onoffcanvas-container">
-        <div class="onoffcanvas is-hoverable" aria-expanded="false"></div>
-    </div>
-    ```
-5. Add trigger: Be sure to add `data-toggle="onoffcanvas"` and `aria-expanded="false"` attributes
-> Two options for this
+```html
+<div class="onoffcanvas-container">
+    <div class="onoffcanvas is-hoverable" id="side-canvas"></div>
+</div>
+  ```
+### Trigger Options
+
+- Type
   1. link with `href`
 
-    ```html
-    <a href="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</a>
-    ```
+  ```html
+  <a href="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</a>
+  ```
+  
   2. button with `data-target`
 
-    ```html
-    <button data-target="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</button>
-    ```
+  ```html
+  <button data-target="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</button>
+  ```
+  
+- Style
   > if you want to use the default style for `onoffcanvas`, add class `onoffcanvas-toggler`
 
   ```html
-  <a class="onoffcanvas-toggler" href="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false"></a>
-  // OR
-  <button class="onoffcanvas-toggler" data-target="#onoffcanvas" data-toggle="onoffcanvas" aria-expanded="false"></button>
+  <a class="onoffcanvas-toggler" href="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false"></a>
   ```
+  
+  OR
 
-### Call via javascript
-```js
-$("#onoffcanvas").onoffcanvas();
-```
-
-  > Options
-  - `toggle`: Boolean. Default : `true`
-
-  ```js
-    $("#onoffcanvas").onoffcanvas({toggle: false});
+  ```html
+  <button class="onoffcanvas-toggler" data-target="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false"></button>
   ```
-
-  - `show` for open
-
-    ```js
-    $("#onoffcanvas").onoffcanvas('show');
-    ```
-  - `hide` for close
-
-    ```js
-    $("#onoffcanvas").onoffcanvas('hide');
-    ```
 
 ### Author
 **onokumus**
@@ -131,4 +120,5 @@ Released under the [MIT License](LICENSE).
 
 ***
 
-_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.4.2, on March 13, 2017._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.5.0, on May 17, 2017._
+
