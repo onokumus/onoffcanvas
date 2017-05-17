@@ -7,7 +7,7 @@
 var OnoffCanvas = (function () {
     function OnoffCanvas(element) {
         this.element = element;
-        this.triggerElements = document.querySelectorAll("[data-toggle=\"onoffcanvas\"][href=\"#" + element.id + "\"],[data-toggle=\"onoffcanvas\"][data-target=\"#" + element.id + "\"]");
+        this.triggerElements = document.querySelectorAll("[data-toggle=\"onoffcanvas\"][href=\"#" + element.id + "\"],\n      [data-toggle=\"onoffcanvas\"][data-target=\"#" + element.id + "\"]");
         this.addAriaExpanded(this.triggerElements);
         this.toggle();
     }
@@ -34,7 +34,7 @@ var OnoffCanvas = (function () {
         this.addAriaExpanded(this.triggerElements);
     };
     OnoffCanvas.prototype.addAriaExpanded = function (triggerElements) {
-        var isOpen = this.element.classList.contains('is-open');
+        var isOpen = this.element.classList.contains("is-open");
         Array.prototype.forEach.call(triggerElements, function (el, i) {
             el.setAttribute('aria-expanded', isOpen);
         });
@@ -63,6 +63,6 @@ Array.prototype.forEach.call(onoffcanvas, function (oc) {
     oc.addEventListener('click', function (event) {
         event.preventDefault();
         var href = getTargetFromTrigger(oc);
-        new OnoffCanvas(href);
+        var ocnvs = new OnoffCanvas(href);
     });
 });

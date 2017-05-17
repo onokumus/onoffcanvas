@@ -2,12 +2,24 @@
   "name": "onoffcanvas",
   "version": "2.0.0",
   "description": "An offcanvas plugin",
-  "main": "index.js",
+  "main": "dist/onoffcanvas.js",
+  "types": "dist/types/onoffcanvas.d.ts",
+  "style": "dist/onoffcanvas.css",
+  "sass": "src/onoffcanvas.scss",
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "scripts": {
+    "tsc": "tsc",
     "js": "gulp js",
     "css": "gulp css",
-    "build": "npm run js && npm run css",
-    "test": "eslint src",
+    "build": "npm run tsc && npm run js && npm run css",
+    "test": "tslint src/*.ts",
     "precommit": "npm test",
     "prepush": "npm test"
   },
@@ -35,7 +47,9 @@
     "gulp-uglify": "^2.0.1",
     "husky": "^0.13.2",
     "postcss-flexbugs-fixes": "^2.1.0",
-    "rtlcss": "^2.1.2"
+    "rtlcss": "^2.1.2",
+    "tslint": "^5.2.0",
+    "typescript": "^2.3.2"
   },
   "browserslist": [
     "> 1%"

@@ -35,6 +35,8 @@ const browsers = [
 
 gulp.task('js', () => {
     return gulp.src('./dist/onoffcanvas.js')
+    .pipe(header(banner, {pkg: pkg}))
+    .pipe(gulp.dest('./dist/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(header(banner, {pkg: pkg}))

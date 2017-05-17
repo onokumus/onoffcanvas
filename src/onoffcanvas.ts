@@ -1,43 +1,40 @@
-/**
- * onoffcanvas - An offcanvas plugin
- * @version v2.0.0
- * @link https://github.com/onokumus/onoffcanvas#readme
- * @license MIT
- */
 class OnoffCanvas {
 
-  triggerElements: NodeList;
+  private triggerElements: NodeList;
 
   constructor(public element) {
-    this.triggerElements = document.querySelectorAll(`[data-toggle="onoffcanvas"][href="#${element.id}"],[data-toggle="onoffcanvas"][data-target="#${element.id}"]`);
+    this.triggerElements = document.querySelectorAll(
+      `[data-toggle="onoffcanvas"][href="#${element.id}"],
+      [data-toggle="onoffcanvas"][data-target="#${element.id}"]`,
+    );
     this.addAriaExpanded(this.triggerElements);
     this.toggle();
   }
-  toggle() {
+  private toggle(): void {
     if (this.element.classList.contains('is-open')) {
       this.hide();
     } else {
       this.show();
     }
   }
-  show() {
+  private show(): void {
     if (this.element.classList.contains('is-open')) {
       return;
     }
     this.element.classList.add('is-open');
     this.addAriaExpanded(this.triggerElements);
   }
-  hide() {
+  private hide(): void {
     if (!this.element.classList.contains('is-open')) {
       return;
     }
     this.element.classList.remove('is-open');
     this.addAriaExpanded(this.triggerElements);
   }
-  addAriaExpanded(triggerElements) {
-    const isOpen = this.element.classList.contains('is-open');
+  private addAriaExpanded(triggerElements): void {
+    const isOpen = this.element.classList.contains("is-open");
 
-    Array.prototype.forEach.call(triggerElements, function (el, i) {
+    Array.prototype.forEach.call(triggerElements, (el, i) => {
       el.setAttribute('aria-expanded', isOpen);
     });
   }
@@ -45,12 +42,12 @@ class OnoffCanvas {
 }
 
 function getSelectorFromElement(element) {
-  var selector = element.getAttribute('data-target');
+  let selector = element.getAttribute('data-target');
   if (!selector || !(/^#/g.test(selector))) {
     selector = element.getAttribute('href') || '';
   }
   try {
-    var $selector = document.querySelectorAll(selector);
+    const $selector = document.querySelectorAll(selector);
     return $selector.length > 0 ? selector : null;
   } catch (error) {
     throw new Error('Target Not Found!');
@@ -62,12 +59,12 @@ function getTargetFromTrigger(element) {
   return selector ? document.querySelector(selector) : null;
 }
 
-var onoffcanvas = document.querySelectorAll('[data-toggle="onoffcanvas"]');
+let onoffcanvas = document.querySelectorAll('[data-toggle="onoffcanvas"]');
 
-Array.prototype.forEach.call(onoffcanvas, function (oc) {
-  oc.addEventListener('click', function (event) {
+Array.prototype.forEach.call(onoffcanvas, (oc) => {
+  oc.addEventListener('click', (event) => {
     event.preventDefault();
-    var href = getTargetFromTrigger(oc);
-    new OnoffCanvas(href);
+    const href = getTargetFromTrigger(oc);
+    const ocnvs = new OnoffCanvas(href);
   });
 });
