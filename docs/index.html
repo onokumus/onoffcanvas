@@ -37,11 +37,11 @@
             <p class="card-text">position: fixed</p>
           </div>
           <nav class="nav flex-column">
-            <a class="nav-link" href="#cft" data-toggle="onoffcanvas" aria-expanded="false">Top</a>
-            <a class="nav-link" href="#cfr" data-toggle="onoffcanvas" aria-expanded="false">Right</a>
-            <a class="nav-link" href="#cfb" data-toggle="onoffcanvas" aria-expanded="false">Bottom</a>
-            <a class="nav-link" href="#cfl" data-toggle="onoffcanvas" aria-expanded="false">Left</a>
-            <a class="nav-link" href="#cff" data-toggle="onoffcanvas" aria-expanded="false">Full</a>
+            <a class="nav-link" href="#cft" data-toggle="onoffcanvas">Top</a>
+            <a class="nav-link" href="#cfr" data-toggle="onoffcanvas">Right</a>
+            <a class="nav-link" href="#cfb" data-toggle="onoffcanvas">Bottom</a>
+            <a class="nav-link" href="#cfl" data-toggle="onoffcanvas">Left</a>
+            <a class="nav-link" href="#cff" data-toggle="onoffcanvas">Full</a>
           </nav>
         </div>
       </div>
@@ -51,26 +51,26 @@
             <h3>Code</h3>
             <pre><code class="language-html">&lt;div class=&quot;onoffcanvas is-fixed is-top&quot; id=&quot;cft&quot;
   &lt;h1&gt;Top Canvas&lt;/h1&gt;
-  &lt;a href=&quot;#cft&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;#cft&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;onoffcanvas is-fixed is-right&quot; id=&quot;cfr&quot;&gt;
   &lt;h1&gt;Right Canvas&lt;/h1&gt;
-  &lt;a href=&quot;#cfr&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;#cfr&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;onoffcanvas is-fixed is-bottom&quot; id=&quot;cfb&quot;&gt;
   &lt;h1&gt;Bottom Canvas&lt;/h1&gt;
-  &lt;a href=&quot;#cfb&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;#cfb&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;onoffcanvas is-fixed is-left&quot; id=&quot;cfl&quot;&gt;
   &lt;h1&gt;Left Canvas&lt;/h1&gt;
-  &lt;a href=&quot;#cfl&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas aria-expanded=&quot;false&quot; style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;#cfl&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;onoffcanvas is-fixed&quot; id=&quot;cff&quot;&gt;
-  &lt;a href=&quot;#cff&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=&quot;onoffcanvas&quot; aria-expanded=&quot;false&quot; style=&quot;width:200px; height:200px;top: 50%;left: 50%;transform: translate(-50%, -50%);&quot;&gt;&lt;/a&gt;
+  &lt;a href=&quot;#cff&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=&quot;onoffcanvas&quot; style=&quot;width:200px; height:200px;top: 50%;left: 50%;transform: translate(-50%, -50%);&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 </code></pre>
 
@@ -272,17 +272,17 @@
       <div class="card-block">
         <h4 class="card-title">onoffcanvas-toggler</h4>
         <h5>Alternative 1. Link with <code>href</code></h5>
-        <pre><code class="language-html">&lt;a href=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
+        <pre><code class="language-html">&lt;a href=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
 </code></pre>
         <div id="div1"></div>
-        <a href="#div1" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></a>
+        <a href="#div1" class="onoffcanvas-toggler is-animated" data-toggle="onoffcanvas"></a>
 
         <hr>
         <h5>Alternative 2. Button with data-target</h5>
-        <pre><code class="language-html">&lt;button data-target=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/button&gt;
+        <pre><code class="language-html">&lt;button data-target=&quot;#id&quot; class=&quot;onoffcanvas-toggler&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/button&gt;
 </code></pre>
         <div id="div2"></div>
-        <button data-target="#div2" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></button>
+        <button data-target="#div2" class="onoffcanvas-toggler is-animated" data-toggle="onoffcanvas"></button>
       </div>
     </div>
   </div>
@@ -305,19 +305,19 @@
         <p>
           <div id="onoffcanvas1" aria-expanded="false"></div>
           <div class="is-open">
-            <a href="#onoffcanvas1" data-toggle="onoffcanvas" class="onoffcanvas-toggler" aria-expanded="false"></a>
+            <a href="#onoffcanvas1" data-toggle="onoffcanvas" class="onoffcanvas-toggler"></a>
           </div>
         </p>
 
         <h4>Alternative 2 : <small>add <code>is-animated</code> class to <code>onoffcanvas-toggle</code></small></h4>
         <p>
           <pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot;&gt;&lt;/div&gt;
-&lt;a href=&quot;#onoffcanvas2&quot; class=&quot;onoffcanvas-toggler is-animated&quot; aria-expanded=&quot;false&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;#onoffcanvas2&quot; class=&quot;onoffcanvas-toggler is-animated&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
 </code></pre>
         </p>
         <p>
           <div id="onoffcanvas2" aria-expanded="false"></div>
-          <a href="#onoffcanvas2" class="onoffcanvas-toggler is-animated" aria-expanded="false" data-toggle="onoffcanvas"></a>
+          <a href="#onoffcanvas2" class="onoffcanvas-toggler is-animated" data-toggle="onoffcanvas"></a>
         </p>
 
       </div>
@@ -332,26 +332,26 @@
 
   <div class="onoffcanvas is-fixed is-top bg-inverse text-white" id="cft">
     <h1>Top Canvas</h1>
-    <a href="#cft" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:100px; height:100px;"></a>
+    <a href="#cft" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
 
   <div class="onoffcanvas is-fixed is-right bg-inverse text-white" id="cfr">
     <h1>Right Canvas</h1>
-    <a href="#cfr" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:100px; height:100px;"></a>
+    <a href="#cfr" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
 
   <div class="onoffcanvas is-fixed is-bottom bg-inverse text-white" id="cfb">
     <h1>Bottom Canvas</h1>
-    <a href="#cfb" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:100px; height:100px;"></a>
+    <a href="#cfb" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
 
   <div class="onoffcanvas is-fixed is-left bg-inverse text-white" id="cfl">
     <h1>Left Canvas</h1>
-    <a href="#cfl" class="onoffcanvas-toggler" data-toggle=onoffcanvas aria-expanded="false" style="width:100px; height:100px;"></a>
+    <a href="#cfl" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
 
   <div class="onoffcanvas is-fixed bg-inverse text-white" id="cff">
-    <a href="#cff" class="onoffcanvas-toggler" data-toggle="onoffcanvas" aria-expanded="false" style="width:200px; height:200px;top: 50%;left: 50%;transform: translate(-50%, -50%);"></a>
+    <a href="#cff" class="onoffcanvas-toggler" data-toggle="onoffcanvas" style="width:200px; height:200px;top: 50%;left: 50%;transform: translate(-50%, -50%);"></a>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
