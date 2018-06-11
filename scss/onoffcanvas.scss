@@ -1,4 +1,12 @@
 @import "variables";
+/*!
+* onoffcanvas - v2.1.0
+* An offcanvas plugin
+* https://github.com/onokumusonoffcanvas#readme
+*
+* Made by Osman Nuri Okumus <onokumus@gmail.com> (https://github.com/onokumus)
+* Under MIT License
+*/
 
 .onoffcanvas-container {
   position: relative;
@@ -13,7 +21,7 @@
   left: 0;
   margin: auto;
   z-index: $onoffcanvasZindex;
-  transform: translate3d(-100%, 0 ,0);
+  transform: translate3d(-100%, 0, 0);
   transition: transform $transitionTime $transitionFunction;
 }
 
@@ -28,7 +36,6 @@
 }
 
 .onoffcanvas.is-center.is-open {
-
   transform: translate3d(0, 100%, 0);
 }
 
@@ -83,7 +90,7 @@ button.onoffcanvas-toggler {
 
 .onoffcanvas-toggler::after,
 .onoffcanvas-toggler::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 80%;
   left: 10%;
@@ -102,6 +109,22 @@ button.onoffcanvas-toggler {
 .onoffcanvas-toggler:before {
   border-width: $toggleBtnBorderWidth 0 0 0;
 }
+
+// .is-open .onoffcanvas-toggler[aria-expanded="true"]::after,
+// .is-open .onoffcanvas-toggler[aria-expanded="true"]::before {
+//   width: 100%;
+//   height: $toggleBtnBorderWidth;
+//   left: 0;
+// }
+//
+// .is-open .onoffcanvas-toggler[aria-expanded="true"]::before {
+//   transform: rotate(45deg);
+// }
+//
+// .is-open .onoffcanvas-toggler[aria-expanded="true"]::after {
+//   transform: rotate(-45deg);
+//   border-width: $toggleBtnBorderWidth 0 0 0;
+// }
 
 .is-open .onoffcanvas-toggler[aria-expanded="true"],
 .onoffcanvas-toggler.is-animated[aria-expanded="true"] {

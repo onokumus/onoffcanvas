@@ -1,34 +1,48 @@
 {
   "name": "onoffcanvas",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "An offcanvas plugin",
-  "main": "dist/onoffcanvas.js",
   "types": "dist/types/onoffcanvas.d.ts",
   "style": "dist/onoffcanvas.css",
-  "sass": "src/onoffcanvas.scss",
+  "sass": "scss/onoffcanvas.scss",
+  "main": "dist/cjs/index.js",
+  "module": "dist/modules/index.js",
+  "browser": "dist/onoffcanvas.js",
+  "unpkg": "dist/onoffcanvas.min.js",
+  "jsdelivr": "dist/onoffcanvas.min.js",
   "engines": {
     "node": ">=4"
   },
   "files": [
     "dist",
     "src",
+    "scss",
     "README.md"
   ],
   "scripts": {
-    "tsc": "tsc",
-    "js": "gulp js",
-    "css": "gulp css",
-    "build": "npm run tsc && npm run js && npm run css",
-    "test": "tslint src/*.ts",
-    "precommit": "npm test",
-    "prepush": "npm test"
+    "css": "npm-run-all --parallel css-compile --sequential css-prefix css-minify",
+    "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/onoffcanvas.scss dist/onoffcanvas.css",
+    "css-prefix": "postcss --config postcss.config.js --replace \"dist/*.css\" \"!dist/*.min.css\"",
+    "css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output dist/onoffcanvas.min.css dist/onoffcanvas.css",
+    "js": "npm-run-all --parallel ts-compile --sequential js-compile js-minify",
+    "test": "tslint -c tslint.json src/**/*.ts",
+    "ts-compile": "tsc",
+    "js-compile": "rollup --config rollup.config.js",
+    "js-minify": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/onoffcanvas.js.map,includeSources,url=onoffcanvas.min.js.map\" --output dist/onoffcanvas.min.js dist/onoffcanvas.js",
+    "build": "npm-run-all --parallel css js",
+    "watch": "npm-run-all --parallel watch-css watch-js",
+    "watch-css": "nodemon --ignore docs/ --ignore js --ignore dist/ -e scss -x \"npm run css\"",
+    "watch-js": "nodemon --ignore docs/ --ignore scss/ --ignore dist/ -e ts -x \"npm run js\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/onokumus/onoffcanvas.git"
   },
   "keywords": [
-    "offcanvas"
+    "offcanvas",
+    "canvas",
+    "events",
+    "EventEmitter"
   ],
   "author": "onokumus <onokumus@gmail.com> (https://github.com/onokumus)",
   "license": "MIT",
@@ -37,19 +51,25 @@
   },
   "homepage": "https://github.com/onokumus/onoffcanvas#readme",
   "devDependencies": {
-    "autoprefixer": "^6.7.7",
-    "cssnano": "^3.10.0",
-    "gulp": "^3.9.1",
-    "gulp-header": "^1.8.8",
-    "gulp-postcss": "^6.3.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^2.0.1",
-    "husky": "^0.13.2",
-    "postcss-flexbugs-fixes": "^2.1.0",
-    "rtlcss": "^2.1.2",
-    "tslint": "^5.2.0",
-    "typescript": "^2.3.2"
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "autoprefixer": "^8.6.2",
+    "clean-css-cli": "^4.1.11",
+    "events": "^3.0.0",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.17.5",
+    "npm-run-all": "^4.1.3",
+    "postcss-cli": "^5.0.0",
+    "prettier": "^1.13.5",
+    "rollup": "^0.60.2",
+    "rollup-plugin-babel": "^4.0.0-beta.5",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-plugin-prettier": "^1.3.0",
+    "typescript": "^2.9.1",
+    "uglify-js": "^3.4.0"
   },
   "browserslist": [
     "> 1%"
