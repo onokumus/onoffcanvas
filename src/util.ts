@@ -12,19 +12,17 @@ export function getSelectorFromElement(element: HTMLElement): string {
 }
 
 export function uniqueArr(arr: any[]): any[] {
-  let unique_array = arr.filter(function(elem, index, self) {
-    return index == self.indexOf(elem);
+  const uniqueArray = arr.filter((elem, index, self) => {
+    return index === self.indexOf(elem);
   });
-  return unique_array;
+  return uniqueArray;
 }
 
-export function selectorArray(arr: any[]): any[] {
-  let divArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    const element = arr[i];
+export function selectorArray(arrs: any[]): any[] {
+  const divArr = [];
+  for (const element of arrs) {
     const selector = getSelectorFromElement(element);
     divArr.push(selector);
   }
   return divArr;
 }
-

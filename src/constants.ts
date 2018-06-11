@@ -4,8 +4,8 @@ export const NAME = "onoffcanvas";
 export const EVENT_KEY = `.${NAME}`;
 
 export const EventName = {
-  SHOW: `show${EVENT_KEY}`,
-  HIDE: `hide${EVENT_KEY}`
+  HIDE: `hide${EVENT_KEY}`,
+  SHOW: `show${EVENT_KEY}`
 };
 
 export const ClassName = {

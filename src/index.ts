@@ -1,36 +1,53 @@
-import { selectorArray, uniqueArr } from "./util";
 import { EventEmitter } from "events";
-import { ClassName, Selector, EventName, OcDefault } from "./constants";
+import { ClassName, EventName, OcDefault, Selector } from "./constants";
 import { IOCDefault } from "./interface";
+import { selectorArray, uniqueArr } from "./util";
 
 /**
- *
  *
  * @export
  * @class OnoffCanvas
  * @extends {EventEmitter}
  */
 export default class OnoffCanvas extends EventEmitter {
-  triggerElements: NodeList;
-  element: HTMLElement;
-  config: IOCDefault;
+  /**
+   * Auto init all OnoffCanvas elements
+   *
+   * @static
+   * @param {boolean} [escKey]
+   * @memberof OnoffCanvas
+   */
+  public static autoinit(escKey?: boolean) {
+    const ocNodeList = document.querySelectorAll(`${Selector.DATA_TOGGLE}`);
+
+    const ocListArr = [].slice.call(ocNodeList);
+
+    const selectorArr = selectorArray(ocListArr);
+
+    const newOcArr = uniqueArr(selectorArr);
+
+    for (const element of newOcArr) {
+      newOnoffCanvas(element, escKey);
+    }
+  }
+
+  public element: HTMLElement;
+  public config: IOCDefault;
+  private triggerElements: NodeList;
 
   /**
    * Creates an instance of OnoffCanvas.
-   * 
+   *
    * @constructor
    * @param {HTMLElement} _element
    * @param {IOCDefault} [options]
    * @memberof OnoffCanvas
    */
-  constructor(_element: HTMLElement, options?: IOCDefault) {
+  constructor(element: HTMLElement, options?: IOCDefault) {
     super();
     this.element =
-      typeof _element === "string"
-        ? document.querySelector(_element)
-        : _element;
-
-    this.config = Object.assign({}, OcDefault, options);
+      typeof element === "string" ? document.querySelector(element) : element;
+    this.config = { ...OcDefault, ...options };
 
     this.triggerElements = document.querySelectorAll(
       `${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
@@ -40,8 +57,8 @@ export default class OnoffCanvas extends EventEmitter {
     this.addAriaExpanded(this.triggerElements);
 
     const triggers = [].slice.call(this.triggerElements);
-    for (let i = 0; i < triggers.length; i++) {
-      const trigger = triggers[i];
+
+    for (const trigger of triggers) {
       trigger.addEventListener("click", event => {
         if (event.currentTarget.tagName === "A") {
           event.preventDefault();
@@ -50,7 +67,6 @@ export default class OnoffCanvas extends EventEmitter {
       });
     }
   }
-
 
   /**
    * Show/Hide OnoffCanvas element
@@ -66,10 +82,9 @@ export default class OnoffCanvas extends EventEmitter {
     }
   }
 
-
   /**
    * Show OnoffCanvas element
-   * 
+   *
    * @returns {void}
    * @memberof OnoffCanvas
    */
@@ -112,30 +127,9 @@ export default class OnoffCanvas extends EventEmitter {
       el.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   }
-
-
-  /**
-   * Auto init all OnoffCanvas elements
-   *
-   * @static
-   * @param {boolean} [escKey] - whether W3C keyboard shortcuts are enabled
-   * @memberof OnoffCanvas
-   */
-  static autoinit(escKey?: boolean) {
-    const ocNodeList = document.querySelectorAll(`${Selector.DATA_TOGGLE}`);
-
-    const ocListArr = [].slice.call(ocNodeList);
-
-    const selectorArr = selectorArray(ocListArr);
-
-    const newOcArr = uniqueArr(selectorArr);
-
-    for (let i = 0; i < newOcArr.length; i++) {
-      const element = newOcArr[i];
-
-      if (!(this instanceof OnoffCanvas)) {
-        new OnoffCanvas(document.querySelector(element), { hideByEsc: escKey });
-      }
-    }
-  }
+}
+function newOnoffCanvas(element: any, escKey: boolean) {
+  const newOnoffcanvas = new OnoffCanvas(document.querySelector(element), {
+    hideByEsc: escKey
+  });
 }

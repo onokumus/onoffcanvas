@@ -1,3 +1,3 @@
 export interface IOCDefault {
-    hideByEsc: boolean
+  hideByEsc: boolean;
 }
