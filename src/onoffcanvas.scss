@@ -13,7 +13,6 @@
   left: 0;
   margin: auto;
   z-index: $onoffcanvasZindex;
-  will-change: transform;
   transform: translate3d(-100%, 0 ,0);
   transition: transform $transitionTime $transitionFunction;
 }
@@ -91,7 +90,6 @@ button.onoffcanvas-toggler {
   top: 50%;
   border-style: solid;
   border-color: $toggleBtnBorderColor;
-  will-change: transform;
   transform: translate3d(0, -50%, 0);
   transition: all $transitionTime $transitionFunction;
 }
@@ -104,22 +102,6 @@ button.onoffcanvas-toggler {
 .onoffcanvas-toggler:before {
   border-width: $toggleBtnBorderWidth 0 0 0;
 }
-
-// .is-open .onoffcanvas-toggler[aria-expanded="true"]::after,
-// .is-open .onoffcanvas-toggler[aria-expanded="true"]::before {
-//   width: 100%;
-//   height: $toggleBtnBorderWidth;
-//   left: 0;
-// }
-//
-// .is-open .onoffcanvas-toggler[aria-expanded="true"]::before {
-//   transform: rotate(45deg);
-// }
-//
-// .is-open .onoffcanvas-toggler[aria-expanded="true"]::after {
-//   transform: rotate(-45deg);
-//   border-width: $toggleBtnBorderWidth 0 0 0;
-// }
 
 .is-open .onoffcanvas-toggler[aria-expanded="true"],
 .onoffcanvas-toggler.is-animated[aria-expanded="true"] {
