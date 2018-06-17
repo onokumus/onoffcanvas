@@ -6,9 +6,9 @@ import pkg from './package.json';
 const banner = `/*!
 * ${pkg.name} - v${pkg.version}
 * ${pkg.description}
-* https://github.com/onokumus${pkg.name}#readme
+* ${pkg.homepage}
 *
-* Made by Osman Nuri Okumus <onokumus@gmail.com> (https://github.com/onokumus)
+* Made by ${pkg.author}
 * Under ${pkg.license} License
 */`;
 
