@@ -5,7 +5,7 @@
 }(this, (function () { 'use strict';
 
   /*!
-  * onoffcanvas - v2.1.0
+  * onoffcanvas - v2.2.0
   * An offcanvas plugin
   * https://github.com/onokumus/onoffcanvas#readme
   *
