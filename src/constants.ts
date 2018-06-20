@@ -17,5 +17,6 @@ export const Selector = {
 };
 
 export const OcDefault: IOCDefault = {
-  hideByEsc: false
+  createDrawer: true,
+  hideByEsc: true
 };

@@ -11,5 +11,6 @@ export const Selector = {
     DATA_TOGGLE: '[data-toggle="onoffcanvas"]'
 };
 export const OcDefault = {
-    hideByEsc: false
+    createDrawer: true,
+    hideByEsc: true
 };
