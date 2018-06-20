@@ -34,18 +34,14 @@ export default [
     output: [
       {
         name: 'OnoffCanvas',
-        banner,
         file: pkg.browser,
         format: 'umd',
-        sourcemap: true,
-        external: ['events']
+        sourcemap: true
       },
     ],
     plugins: [
       babel({ exclude: 'node_modules/**' }),
-      resolve({
-        preferBuiltins: false,
-      }),
+      resolve(),
       commonjs()
     ],
   },

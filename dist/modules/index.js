@@ -1,4 +1,3 @@
-import { EventEmitter } from "events";
 import { ClassName, EventName, OcDefault, Selector } from "./constants";
 import { selectorArray, uniqueArr } from "./util";
 /**
@@ -7,7 +6,7 @@ import { selectorArray, uniqueArr } from "./util";
  * @class OnoffCanvas
  * @extends {EventEmitter}
  */
-export default class OnoffCanvas extends EventEmitter {
+export default class OnoffCanvas {
     /**
      * Auto init all OnoffCanvas elements
      *
@@ -15,13 +14,13 @@ export default class OnoffCanvas extends EventEmitter {
      * @param {boolean} [escKey]
      * @memberof OnoffCanvas
      */
-    static autoinit(escKey) {
+    static autoinit(options = OcDefault) {
         const ocNodeList = document.querySelectorAll(`${Selector.DATA_TOGGLE}`);
         const ocListArr = [].slice.call(ocNodeList);
         const selectorArr = selectorArray(ocListArr);
         const newOcArr = uniqueArr(selectorArr);
         for (const element of newOcArr) {
-            newOnoffCanvas(element, escKey);
+            newOnoffCanvas(element, options);
         }
     }
     /**
@@ -33,7 +32,6 @@ export default class OnoffCanvas extends EventEmitter {
      * @memberof OnoffCanvas
      */
     constructor(element, options) {
-        super();
         this.element =
             typeof element === "string" ? document.querySelector(element) : element;
         this.config = Object.assign({}, OcDefault, options);
@@ -49,6 +47,30 @@ export default class OnoffCanvas extends EventEmitter {
                 this.toggle();
             });
         }
+        this.drawer = document.createElement("div");
+        this.drawer.classList.add("onoffcanvas-drawer");
+    }
+    listen(event, handle) {
+        this.element.addEventListener(event, handle, false);
+        return this;
+    }
+    emit(evtType, target, shouldBubble = false) {
+        let evt;
+        if (typeof CustomEvent === "function") {
+            evt = new CustomEvent(evtType, {
+                bubbles: shouldBubble
+            });
+        }
+        else {
+            evt = document.createEvent("CustomEvent");
+            evt.initCustomEvent(evtType, shouldBubble, false);
+        }
+        this.element.dispatchEvent(evt);
+        return this;
+    }
+    on(event, handle) {
+        this.listen(event, handle);
+        return this;
     }
     /**
      * Show/Hide OnoffCanvas element
@@ -76,7 +98,12 @@ export default class OnoffCanvas extends EventEmitter {
         }
         this.element.classList.add(ClassName.SHOW);
         this.addAriaExpanded(this.triggerElements);
-        this.emit(EventName.SHOW, this);
+        this.emit(EventName.SHOW, this.element);
+        if (this.config.createDrawer) {
+            this.drawer.classList.add("is-open");
+            this.drawer.addEventListener("click", this.hide.bind(this));
+            document.documentElement.appendChild(this.drawer);
+        }
         if (this.config.hideByEsc) {
             window.addEventListener("keydown", event => {
                 if (event.keyCode === 27) {
@@ -95,9 +122,14 @@ export default class OnoffCanvas extends EventEmitter {
         if (!this.element.classList.contains(ClassName.SHOW)) {
             return;
         }
+        if (this.config.createDrawer) {
+            this.drawer.classList.remove("is-open");
+            this.drawer.removeEventListener("click", this.hide.bind(this));
+            this.drawer.parentNode.removeChild(this.drawer);
+        }
         this.element.classList.remove(ClassName.SHOW);
         this.addAriaExpanded(this.triggerElements);
-        this.emit(EventName.HIDE, this);
+        this.emit(EventName.HIDE, this.element);
     }
     addAriaExpanded(triggerElements) {
         const isOpen = this.element.classList.contains(ClassName.SHOW);
@@ -106,8 +138,6 @@ export default class OnoffCanvas extends EventEmitter {
         });
     }
 }
-function newOnoffCanvas(element, escKey) {
-    const newOnoffcanvas = new OnoffCanvas(document.querySelector(element), {
-        hideByEsc: escKey
-    });
+function newOnoffCanvas(element, options) {
+    const newOnoffcanvas = new OnoffCanvas(document.querySelector(element), options);
 }

@@ -1,7 +1,7 @@
 /*!
 * onoffcanvas - v2.1.0
 * An offcanvas plugin
-* https://github.com/onokumusonoffcanvas#readme
+* https://github.com/onokumus/onoffcanvas#readme
 *
 * Made by Osman Nuri Okumus <onokumus@gmail.com> (https://github.com/onokumus)
 * Under MIT License
@@ -126,5 +126,22 @@ button.onoffcanvas-toggler {
 .onoffcanvas-toggler.is-animated[aria-expanded="true"]::after {
   transform: rotate(-45deg);
   border-width: 2px 0 0 0;
+}
+
+.onoffcanvas-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+  z-index: 5;
+}
+
+.onoffcanvas-drawer.is-open {
+  pointer-events: auto;
 }
 /*# sourceMappingURL=onoffcanvas.css.map */

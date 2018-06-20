@@ -1,5 +1,3 @@
-/// <reference types="node" />
-import { EventEmitter } from "events";
 import { IOCDefault } from "./interface";
 /**
  *
@@ -7,7 +5,7 @@ import { IOCDefault } from "./interface";
  * @class OnoffCanvas
  * @extends {EventEmitter}
  */
-export default class OnoffCanvas extends EventEmitter {
+export default class OnoffCanvas {
     /**
      * Auto init all OnoffCanvas elements
      *
@@ -15,10 +13,11 @@ export default class OnoffCanvas extends EventEmitter {
      * @param {boolean} [escKey]
      * @memberof OnoffCanvas
      */
-    static autoinit(escKey?: boolean): void;
+    static autoinit(options?: IOCDefault): void;
     element: HTMLElement;
     config: IOCDefault;
     private triggerElements;
+    private drawer;
     /**
      * Creates an instance of OnoffCanvas.
      *
@@ -28,6 +27,9 @@ export default class OnoffCanvas extends EventEmitter {
      * @memberof OnoffCanvas
      */
     constructor(element: HTMLElement, options?: IOCDefault);
+    listen(event: any, handle: any): this;
+    emit(evtType: any, target: any, shouldBubble?: boolean): this;
+    on(event: any, handle: any): this;
     /**
      * Show/Hide OnoffCanvas element
      *
