@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OnoffCanvas Dialog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.14.0/themes/prism.css">
+  <link rel="stylesheet" href="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.css">
+  <style>
+    .onoffcanvas-dialog.is-top {
+      transform: translate3d(-50%, -100%, 0);
+      left: 50%;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 7px;
+    }
+
+    .onoffcanvas-dialog.is-top.is-open {
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    .onoffcanvas-drawer.is-open {
+      background: rgba(0, 0, 0, .8);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">OnoffCanvas</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Examples
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="drawer.html">Drawer</a>
+              <a class="dropdown-item" href="dialog.html">Dialog</a>
+              <a class="dropdown-item" href="event.html">Event</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h2>Dialog</h2>
+      <button data-target="#onoffcanvas-dialog" class="btn btn-lg btn-primary" data-toggle="onoffcanvas">Open Dialog</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h3>Code</h3>
+            <pre><code class="language-html">&lt;style>
+  .onoffcanvas-dialog.is-top {
+    transform: translate3d(-50%, -100%, 0);
+    left: 50%;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 7px;
+  }
+
+  .onoffcanvas-dialog.is-top.is-open {
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .onoffcanvas-drawer.is-open {
+    background: rgba(0, 0, 0, .8);
+  }
+&lt;/style>
+
+&lt;script>
+  OnoffCanvas.autoinit();
+&lt;/script></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="onoffcanvas is-fixed is-top onoffcanvas-dialog" id="onoffcanvas-dialog">
+    <a href="#onoffcanvas-dialog" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
+    <hr>
+    <h3>OnoffCanvas Dialog</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, in magni provident nisi natus enim praesentium illo? Cupiditate
+      deleniti accusamus sit quis commodi, blanditiis accusantium? Voluptates enim consequatur veniam vel!
+    </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.14.0/prism.min.js"></script>
+
+  <script src="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.js"></script>
+  <script>
+    OnoffCanvas.autoinit();
+  </script>
+</body>
+
+</html>
