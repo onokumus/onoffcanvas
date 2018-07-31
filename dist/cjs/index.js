@@ -1,5 +1,5 @@
 /*!
-* onoffcanvas - v2.2.0
+* onoffcanvas - v2.2.1
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas#readme
 *
@@ -154,6 +154,7 @@ function () {
 
     this.drawer = document.createElement("div");
     this.drawer.classList.add("onoffcanvas-drawer");
+    document.documentElement.appendChild(this.drawer);
   }
 
   var _proto = OnoffCanvas.prototype;
@@ -224,7 +225,6 @@ function () {
     if (this.config.createDrawer) {
       this.drawer.classList.add("is-open");
       this.drawer.addEventListener("click", this.hide.bind(this));
-      document.documentElement.appendChild(this.drawer);
     }
 
     if (this.config.hideByEsc) {
@@ -251,7 +251,6 @@ function () {
     if (this.config.createDrawer) {
       this.drawer.classList.remove("is-open");
       this.drawer.removeEventListener("click", this.hide.bind(this));
-      this.drawer.parentNode.removeChild(this.drawer);
     }
 
     this.element.classList.remove(ClassName.SHOW);

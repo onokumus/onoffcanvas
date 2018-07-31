@@ -49,6 +49,7 @@ export default class OnoffCanvas {
         }
         this.drawer = document.createElement("div");
         this.drawer.classList.add("onoffcanvas-drawer");
+        document.documentElement.appendChild(this.drawer);
     }
     listen(event, handle) {
         this.element.addEventListener(event, handle, false);
@@ -102,7 +103,6 @@ export default class OnoffCanvas {
         if (this.config.createDrawer) {
             this.drawer.classList.add("is-open");
             this.drawer.addEventListener("click", this.hide.bind(this));
-            document.documentElement.appendChild(this.drawer);
         }
         if (this.config.hideByEsc) {
             window.addEventListener("keydown", event => {
@@ -125,7 +125,6 @@ export default class OnoffCanvas {
         if (this.config.createDrawer) {
             this.drawer.classList.remove("is-open");
             this.drawer.removeEventListener("click", this.hide.bind(this));
-            this.drawer.parentNode.removeChild(this.drawer);
         }
         this.element.classList.remove(ClassName.SHOW);
         this.addAriaExpanded(this.triggerElements);

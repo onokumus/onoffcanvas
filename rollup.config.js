@@ -12,6 +12,7 @@ const banner = `/*!
 * Under ${pkg.license} License
 */`;
 
+const production = !process.env.ROLLUP_WATCH;
 
 export default [
   {
@@ -24,7 +25,7 @@ export default [
       },
     ],
     plugins: [
-      babel({ exclude: 'node_modules/**' }),
+      production && babel({ exclude: 'node_modules/**' }),
       resolve(),
       commonjs(),
     ],
@@ -40,7 +41,7 @@ export default [
       },
     ],
     plugins: [
-      babel({ exclude: 'node_modules/**' }),
+      production && babel({ exclude: 'node_modules/**' }),
       resolve(),
       commonjs()
     ],

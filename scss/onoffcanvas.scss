@@ -1,6 +1,6 @@
 @import "variables";
 /*!
-* onoffcanvas - v2.2.0
+* onoffcanvas - v2.2.1
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas#readme
 *
@@ -20,9 +20,14 @@
   bottom: 0;
   left: 0;
   margin: auto;
+  box-sizing: border-box;
+  pointer-events: none;
   z-index: $onoffcanvasZindex;
   transform: translate3d(-100%, 0, 0);
-  transition: transform $transitionTime $transitionFunction;
+  transition: all $transitionTime $transitionFunction;
+  &.is-open {
+    pointer-events: auto;
+  }
 }
 
 .onoffcanvas.is-fixed {
@@ -32,11 +37,14 @@
 
 .onoffcanvas.is-center {
   bottom: auto;
-  transform: translate3d(-100%, 100%, 0);
+  right: auto;
+  left: 50%;
+  transform: translate3d(-50%, -100%, 0);
 }
 
 .onoffcanvas.is-center.is-open {
-  transform: translate3d(0, 100%, 0);
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .onoffcanvas.is-top {

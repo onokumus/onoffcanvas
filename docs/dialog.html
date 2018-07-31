@@ -6,23 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OnoffCanvas Dialog</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.14.0/themes/prism.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
   <link rel="stylesheet" href="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.css">
   <style>
-    .onoffcanvas-dialog.is-top {
-      transform: translate3d(-50%, -100%, 0);
-      left: 50%;
-      background: #fff;
-      padding: 1rem;
-      border-radius: 7px;
-    }
-
-    .onoffcanvas-dialog.is-top.is-open {
-      top: 50%;
-      transform: translate3d(-50%, -50%, 0);
-    }
-
     .onoffcanvas-drawer.is-open {
       background: rgba(0, 0, 0, .8);
     }
@@ -71,19 +58,6 @@
           <div class="card-body">
             <h3>Code</h3>
             <pre><code class="language-html">&lt;style>
-  .onoffcanvas-dialog.is-top {
-    transform: translate3d(-50%, -100%, 0);
-    left: 50%;
-    background: #fff;
-    padding: 1rem;
-    border-radius: 7px;
-  }
-
-  .onoffcanvas-dialog.is-top.is-open {
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-  }
-
   .onoffcanvas-drawer.is-open {
     background: rgba(0, 0, 0, .8);
   }
@@ -98,7 +72,7 @@
     </div>
   </div>
 
-  <div class="onoffcanvas is-fixed is-top onoffcanvas-dialog" id="onoffcanvas-dialog">
+  <div class="onoffcanvas is-fixed is-center p-3 bg-white rounded" id="onoffcanvas-dialog">
     <a href="#onoffcanvas-dialog" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
     <hr>
     <h3>OnoffCanvas Dialog</h3>
