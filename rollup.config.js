@@ -1,6 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import babel from 'rollup-plugin-babel';
+import typescript from 'rollup-plugin-typescript';
 import pkg from './package.json';
 
 const banner = `/*!
@@ -16,7 +16,7 @@ const production = !process.env.ROLLUP_WATCH;
 
 export default [
   {
-    input: 'dist/modules/index.js',
+    input: 'src/index.ts',
     output: [
       {
         file: pkg.main,
@@ -25,23 +25,49 @@ export default [
       },
     ],
     plugins: [
-      production && babel({ exclude: 'node_modules/**' }),
+      typescript({
+        typescript: require('typescript'),
+        target: 'ES5'
+      }),
       resolve(),
       commonjs(),
     ],
   },
   {
-    input: 'dist/cjs/index.js',
+    input: 'src/index.ts',
+    output: [
+      {
+        file: pkg.module,
+        banner,
+        format: 'es',
+      },
+    ],
+    plugins: [
+      typescript({
+        typescript: require('typescript'),
+        target: 'es5',
+        declaration: true
+      }),
+      resolve(),
+      commonjs(),
+    ],
+  },
+  {
+    input: 'src/index.ts',
     output: [
       {
         name: 'OnoffCanvas',
         file: pkg.browser,
+        banner,
         format: 'umd',
         sourcemap: true
       },
     ],
     plugins: [
-      production && babel({ exclude: 'node_modules/**' }),
+      typescript({
+        typescript: require('typescript'),
+        target: 'ES5'
+      }),
       resolve(),
       commonjs()
     ],
