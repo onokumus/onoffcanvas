@@ -22,11 +22,11 @@ export default class OnoffCanvas {
      * Creates an instance of OnoffCanvas.
      *
      * @constructor
-     * @param {HTMLElement} _element
+     * @param {HTMLElement | string} element
      * @param {IOCDefault} [options]
      * @memberof OnoffCanvas
      */
-    constructor(element: HTMLElement, options?: IOCDefault);
+    constructor(element: HTMLElement | string, options?: IOCDefault);
     listen(event: any, handle: any): this;
     emit(evtType: any, target: any, shouldBubble?: boolean): this;
     on(event: any, handle: any): this;
