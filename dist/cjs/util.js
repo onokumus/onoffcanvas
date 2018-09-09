@@ -1,5 +1,5 @@
 /*!
-* onoffcanvas - v2.2.2
+* onoffcanvas - v2.2.3
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas
 *
