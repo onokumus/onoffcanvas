@@ -16,13 +16,23 @@ const production = !process.env.ROLLUP_WATCH;
 
 export default [
   {
-    input: 'src/index.ts',
+    input: [
+      'src/index.ts',
+      'src/constants.ts',
+      'src/interface.ts',
+      'src/util.ts'
+    ],
     output: [
       {
-        file: pkg.main,
+        dir: 'dist/cjs',
         banner,
         format: 'cjs',
       },
+      {
+        dir: 'dist/modules',
+        banner,
+        format: 'es',
+      }
     ],
     plugins: [
       typescript({
@@ -32,25 +42,7 @@ export default [
       resolve(),
       commonjs(),
     ],
-  },
-  {
-    input: 'src/index.ts',
-    output: [
-      {
-        file: pkg.module,
-        banner,
-        format: 'es',
-      },
-    ],
-    plugins: [
-      typescript({
-        typescript: require('typescript'),
-        target: 'es5',
-        declaration: true
-      }),
-      resolve(),
-      commonjs(),
-    ],
+    experimentalCodeSplitting: true
   },
   {
     input: 'src/index.ts',
@@ -66,7 +58,8 @@ export default [
     plugins: [
       typescript({
         typescript: require('typescript'),
-        target: 'ES5'
+        target: 'ES5',
+        importHelpers: true
       }),
       resolve(),
       commonjs()
