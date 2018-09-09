@@ -6,4 +6,7 @@
 * Made by onokumus <onokumus@gmail.com> (https://github.com/onokumus)
 * Under MIT License
 */
-import { a as __assign } from './chunk-6fed8d7d.js';
+'use strict';
+
+var __chunk_1 = require('./chunk-d3b966f9.js');
+

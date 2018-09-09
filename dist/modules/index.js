@@ -6,83 +6,14 @@
 * Made by onokumus <onokumus@gmail.com> (https://github.com/onokumus)
 * Under MIT License
 */
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-var NAME = "onoffcanvas";
-var EVENT_KEY = "." + NAME;
-var EventName = {
-    HIDE: "hide" + EVENT_KEY,
-    SHOW: "show" + EVENT_KEY
-};
-var ClassName = {
-    SHOW: "is-open"
-};
-var Selector = {
-    DATA_TOGGLE: '[data-toggle="onoffcanvas"]'
-};
-var OcDefault = {
-    createDrawer: true,
-    hideByEsc: true
-};
-
-function getSelectorFromElement(element) {
-    var selector = element.getAttribute("data-target");
-    if (!selector || selector === "#") {
-        selector = element.getAttribute("href") || "";
-    }
-    try {
-        var $selector = document.querySelectorAll(selector);
-        return $selector.length > 0 ? selector : null;
-    }
-    catch (error) {
-        throw new Error("Target Not Found!");
-    }
-}
-function uniqueArr(arr) {
-    var uniqueArray = arr.filter(function (elem, index, self) {
-        return index === self.indexOf(elem);
-    });
-    return uniqueArray;
-}
-function selectorArray(arrs) {
-    var divArr = [];
-    for (var _i = 0, arrs_1 = arrs; _i < arrs_1.length; _i++) {
-        var element = arrs_1[_i];
-        var selector = getSelectorFromElement(element);
-        divArr.push(selector);
-    }
-    return divArr;
-}
+import { ClassName, EventName, OcDefault, Selector } from './constants.js';
+import { selectorArray, uniqueArr } from './util.js';
+import { a as __assign } from './chunk-6fed8d7d.js';
 
 /**
  *
  * @export
  * @class OnoffCanvas
- * @extends {EventEmitter}
  */
 var OnoffCanvas = /** @class */ (function () {
     /**
@@ -131,25 +62,6 @@ var OnoffCanvas = /** @class */ (function () {
             var element = newOcArr_1[_i];
             newOnoffCanvas(element, options);
         }
-    };
-    OnoffCanvas.prototype.listen = function (event, handle) {
-        this.element.addEventListener(event, handle, false);
-        return this;
-    };
-    OnoffCanvas.prototype.emit = function (evtType, target, shouldBubble) {
-        if (shouldBubble === void 0) { shouldBubble = false; }
-        var evt;
-        if (typeof CustomEvent === "function") {
-            evt = new CustomEvent(evtType, {
-                bubbles: shouldBubble
-            });
-        }
-        else {
-            evt = document.createEvent("CustomEvent");
-            evt.initCustomEvent(evtType, shouldBubble, false);
-        }
-        this.element.dispatchEvent(evt);
-        return this;
     };
     OnoffCanvas.prototype.on = function (event, handle) {
         this.listen(event, handle);
@@ -212,6 +124,25 @@ var OnoffCanvas = /** @class */ (function () {
         this.element.classList.remove(ClassName.SHOW);
         this.addAriaExpanded(this.triggerElements);
         this.emit(EventName.HIDE, this.element);
+    };
+    OnoffCanvas.prototype.listen = function (event, handle) {
+        this.element.addEventListener(event, handle, false);
+        return this;
+    };
+    OnoffCanvas.prototype.emit = function (evtType, target, shouldBubble) {
+        if (shouldBubble === void 0) { shouldBubble = false; }
+        var evt;
+        if (typeof CustomEvent === "function") {
+            evt = new CustomEvent(evtType, {
+                bubbles: shouldBubble
+            });
+        }
+        else {
+            evt = document.createEvent("CustomEvent");
+            evt.initCustomEvent(evtType, shouldBubble, false);
+        }
+        this.element.dispatchEvent(evt);
+        return this;
     };
     OnoffCanvas.prototype.addAriaExpanded = function (triggerElements) {
         var isOpen = this.element.classList.contains(ClassName.SHOW);

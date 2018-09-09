@@ -6,7 +6,11 @@
 * Made by onokumus <onokumus@gmail.com> (https://github.com/onokumus)
 * Under MIT License
 */
-import { a as __assign } from './chunk-6fed8d7d.js';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var __chunk_1 = require('./chunk-d3b966f9.js');
 
 var NAME = "onoffcanvas";
 var EVENT_KEY = "." + NAME;
@@ -25,4 +29,9 @@ var OcDefault = {
     hideByEsc: true
 };
 
-export { NAME, EVENT_KEY, EventName, ClassName, Selector, OcDefault };
+exports.NAME = NAME;
+exports.EVENT_KEY = EVENT_KEY;
+exports.EventName = EventName;
+exports.ClassName = ClassName;
+exports.Selector = Selector;
+exports.OcDefault = OcDefault;

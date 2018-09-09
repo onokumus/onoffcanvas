@@ -88,7 +88,6 @@
      *
      * @export
      * @class OnoffCanvas
-     * @extends {EventEmitter}
      */
     var OnoffCanvas = /** @class */ (function () {
         /**
@@ -137,25 +136,6 @@
                 var element = newOcArr_1[_i];
                 newOnoffCanvas(element, options);
             }
-        };
-        OnoffCanvas.prototype.listen = function (event, handle) {
-            this.element.addEventListener(event, handle, false);
-            return this;
-        };
-        OnoffCanvas.prototype.emit = function (evtType, target, shouldBubble) {
-            if (shouldBubble === void 0) { shouldBubble = false; }
-            var evt;
-            if (typeof CustomEvent === "function") {
-                evt = new CustomEvent(evtType, {
-                    bubbles: shouldBubble
-                });
-            }
-            else {
-                evt = document.createEvent("CustomEvent");
-                evt.initCustomEvent(evtType, shouldBubble, false);
-            }
-            this.element.dispatchEvent(evt);
-            return this;
         };
         OnoffCanvas.prototype.on = function (event, handle) {
             this.listen(event, handle);
@@ -218,6 +198,25 @@
             this.element.classList.remove(ClassName.SHOW);
             this.addAriaExpanded(this.triggerElements);
             this.emit(EventName.HIDE, this.element);
+        };
+        OnoffCanvas.prototype.listen = function (event, handle) {
+            this.element.addEventListener(event, handle, false);
+            return this;
+        };
+        OnoffCanvas.prototype.emit = function (evtType, target, shouldBubble) {
+            if (shouldBubble === void 0) { shouldBubble = false; }
+            var evt;
+            if (typeof CustomEvent === "function") {
+                evt = new CustomEvent(evtType, {
+                    bubbles: shouldBubble
+                });
+            }
+            else {
+                evt = document.createEvent("CustomEvent");
+                evt.initCustomEvent(evtType, shouldBubble, false);
+            }
+            this.element.dispatchEvent(evt);
+            return this;
         };
         OnoffCanvas.prototype.addAriaExpanded = function (triggerElements) {
             var isOpen = this.element.classList.contains(ClassName.SHOW);

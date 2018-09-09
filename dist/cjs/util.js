@@ -6,7 +6,11 @@
 * Made by onokumus <onokumus@gmail.com> (https://github.com/onokumus)
 * Under MIT License
 */
-import { a as __assign } from './chunk-6fed8d7d.js';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var __chunk_1 = require('./chunk-d3b966f9.js');
 
 function getSelectorFromElement(element) {
     var selector = element.getAttribute("data-target");
@@ -37,4 +41,6 @@ function selectorArray(arrs) {
     return divArr;
 }
 
-export { getSelectorFromElement, uniqueArr, selectorArray };
+exports.getSelectorFromElement = getSelectorFromElement;
+exports.uniqueArr = uniqueArr;
+exports.selectorArray = selectorArray;
