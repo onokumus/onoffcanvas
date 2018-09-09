@@ -1,9 +1,9 @@
+import { OnoffCanvasEvents } from "./constants";
 import { IOCDefault } from "./interface";
 /**
  *
  * @export
  * @class OnoffCanvas
- * @extends {EventEmitter}
  */
 export default class OnoffCanvas {
     /**
@@ -27,9 +27,7 @@ export default class OnoffCanvas {
      * @memberof OnoffCanvas
      */
     constructor(element: HTMLElement | string, options?: IOCDefault);
-    listen(event: any, handle: any): this;
-    emit(evtType: any, target: any, shouldBubble?: boolean): this;
-    on(event: any, handle: any): this;
+    on(event: OnoffCanvasEvents, handle: any): this;
     /**
      * Show/Hide OnoffCanvas element
      *
@@ -51,5 +49,7 @@ export default class OnoffCanvas {
      * @memberof OnoffCanvas
      */
     hide(): void;
+    private listen;
+    private emit;
     private addAriaExpanded;
 }

@@ -1,4 +1,10 @@
-import { ClassName, EventName, OcDefault, Selector } from "./constants";
+import {
+  ClassName,
+  EventName,
+  OcDefault,
+  OnoffCanvasEvents,
+  Selector
+} from "./constants";
 import { IOCDefault } from "./interface";
 import { selectorArray, uniqueArr } from "./util";
 
@@ -6,7 +12,6 @@ import { selectorArray, uniqueArr } from "./util";
  *
  * @export
  * @class OnoffCanvas
- * @extends {EventEmitter}
  */
 export default class OnoffCanvas {
   /**
@@ -69,25 +74,7 @@ export default class OnoffCanvas {
     this.drawer.classList.add("onoffcanvas-drawer");
     document.documentElement.appendChild(this.drawer);
   }
-  public listen(event, handle) {
-    this.element.addEventListener(event, handle, false);
-    return this;
-  }
-  public emit(evtType, target, shouldBubble = false) {
-    let evt;
-    if (typeof CustomEvent === "function") {
-      evt = new CustomEvent(evtType, {
-        bubbles: shouldBubble
-      });
-    } else {
-      evt = document.createEvent("CustomEvent");
-      evt.initCustomEvent(evtType, shouldBubble, false);
-    }
-
-    this.element.dispatchEvent(evt);
-    return this;
-  }
-  public on(event, handle) {
+  public on(event: OnoffCanvasEvents, handle) {
     this.listen(event, handle);
     return this;
   }
@@ -153,6 +140,26 @@ export default class OnoffCanvas {
     this.element.classList.remove(ClassName.SHOW);
     this.addAriaExpanded(this.triggerElements);
     this.emit(EventName.HIDE, this.element);
+  }
+
+  private listen(event, handle) {
+    this.element.addEventListener(event, handle, false);
+    return this;
+  }
+
+  private emit(evtType, target, shouldBubble = false) {
+    let evt;
+    if (typeof CustomEvent === "function") {
+      evt = new CustomEvent(evtType, {
+        bubbles: shouldBubble
+      });
+    } else {
+      evt = document.createEvent("CustomEvent");
+      evt.initCustomEvent(evtType, shouldBubble, false);
+    }
+
+    this.element.dispatchEvent(evt);
+    return this;
   }
 
   private addAriaExpanded(triggerElements): void {
