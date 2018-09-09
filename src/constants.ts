@@ -20,3 +20,5 @@ export const OcDefault: IOCDefault = {
   createDrawer: true,
   hideByEsc: true
 };
+
+export type OnoffCanvasEvents = "show.onoffcanvas" | "hide.onoffcanvas";

@@ -12,3 +12,4 @@ export declare const Selector: {
     DATA_TOGGLE: string;
 };
 export declare const OcDefault: IOCDefault;
+export declare type OnoffCanvasEvents = "show.onoffcanvas" | "hide.onoffcanvas";
