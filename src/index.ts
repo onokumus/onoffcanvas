@@ -3,10 +3,10 @@ import {
   EventName,
   OcDefault,
   OnoffCanvasEvents,
-  Selector
+  Selector,
 } from "./constants";
 import { IOCDefault } from "./interface";
-import { selectorArray, uniqueArr } from "./util";
+import { selectorArray, uniqueArr, isElement } from "./util";
 
 /**
  *
@@ -14,6 +14,12 @@ import { selectorArray, uniqueArr } from "./util";
  * @class OnoffCanvas
  */
 export default class OnoffCanvas {
+  public static attachTo(
+    element: HTMLElement | string,
+    options?: IOCDefault
+  ): OnoffCanvas {
+    return new OnoffCanvas(element, options);
+  }
   /**
    * Auto init all OnoffCanvas elements
    *
@@ -31,50 +37,54 @@ export default class OnoffCanvas {
     const newOcArr = uniqueArr(selectorArr);
 
     for (const element of newOcArr) {
-      newOnoffCanvas(element, options);
+      OnoffCanvas.attachTo(element, options);
     }
   }
 
-  public element: HTMLElement;
+  public element: Element;
   public config: IOCDefault;
-  private triggerElements: NodeList;
+  private triggerElements: Element[];
   private drawer: HTMLDivElement;
 
   /**
    * Creates an instance of OnoffCanvas.
    *
    * @constructor
-   * @param {HTMLElement | string} element
+   * @param {Element | string} element
    * @param {IOCDefault} [options]
    * @memberof OnoffCanvas
    */
-  constructor(element: HTMLElement | string, options?: IOCDefault) {
-    this.element =
-      typeof element === "string" ? document.querySelector(element) : element;
+  constructor(element: Element | string, options?: IOCDefault) {
+    this.element = isElement(element)
+      ? element
+      : document.querySelector<HTMLElement>(element)!;
     this.config = { ...OcDefault, ...options };
 
-    this.triggerElements = document.querySelectorAll(
-      `${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
+    this.triggerElements = [].slice.call(
+      document.querySelectorAll<HTMLElement>(
+        `${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
       ${Selector.DATA_TOGGLE}[data-target="#${this.element.id}"]`
+      )
     );
 
     this.addAriaExpanded(this.triggerElements);
 
-    const triggers = [].slice.call(this.triggerElements);
-
-    for (const trigger of triggers) {
-      trigger.addEventListener("click", event => {
-        if (event.currentTarget.tagName === "A") {
+    this.triggerElements.forEach((el: Element) => {
+      el.addEventListener("click", (event) => {
+        const eventTarget = event.target as Element | null;
+        if (eventTarget && eventTarget.tagName === "A") {
           event.preventDefault();
         }
         this.toggle();
       });
-    }
+    });
+
     this.drawer = document.createElement("div");
     this.drawer.classList.add("onoffcanvas-drawer");
     document.documentElement.appendChild(this.drawer);
   }
-  public on(event: OnoffCanvasEvents, handle) {
+
+  public on(event: OnoffCanvasEvents, handle: EventListener) {
     this.listen(event, handle);
     return this;
   }
@@ -113,7 +123,7 @@ export default class OnoffCanvas {
     }
 
     if (this.config.hideByEsc) {
-      window.addEventListener("keydown", event => {
+      window.addEventListener("keydown", (event) => {
         if (event.keyCode === 27) {
           this.hide();
         }
@@ -142,37 +152,35 @@ export default class OnoffCanvas {
     this.emit(EventName.HIDE, this.element);
   }
 
-  private listen(event, handle) {
+  private listen(event: string, handle: EventListener) {
     this.element.addEventListener(event, handle, false);
     return this;
   }
 
-  private emit(evtType, target, shouldBubble = false) {
+  private emit<T extends object>(
+    evtType: string,
+    target: T,
+    shouldBubble = false
+  ) {
     let evt;
     if (typeof CustomEvent === "function") {
       evt = new CustomEvent(evtType, {
-        bubbles: shouldBubble
+        bubbles: shouldBubble,
       });
     } else {
       evt = document.createEvent("CustomEvent");
-      evt.initCustomEvent(evtType, shouldBubble, false);
+      evt.initCustomEvent(evtType, shouldBubble, false, target);
     }
 
     this.element.dispatchEvent(evt);
     return this;
   }
 
-  private addAriaExpanded(triggerElements): void {
+  private addAriaExpanded(triggerElements: Element[]): void {
     const isOpen = this.element.classList.contains(ClassName.SHOW);
 
     Array.prototype.forEach.call(triggerElements, (el, i) => {
       el.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   }
-}
-function newOnoffCanvas(element: any, options: IOCDefault) {
-  const newOnoffcanvas = new OnoffCanvas(
-    document.querySelector(element),
-    options
-  );
 }
