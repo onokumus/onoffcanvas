@@ -1,4 +1,4 @@
-export function getSelectorFromElement(element: HTMLElement): string {
+export function getSelectorFromElement(element: Element): string | null {
   let selector = element.getAttribute("data-target");
   if (!selector || selector === "#") {
     selector = element.getAttribute("href") || "";
@@ -25,4 +25,8 @@ export function selectorArray(arrs: any[]): any[] {
     divArr.push(selector);
   }
   return divArr;
+}
+
+export function isElement(element: unknown): element is Element {
+  return Boolean((element as Element).classList);
 }
