@@ -1,6 +1,6 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import typescript from 'rollup-plugin-typescript';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
 import pkg from './package.json';
 
 const banner = `/*!
@@ -19,7 +19,7 @@ export default [
     input: [
       'src/index.ts',
       'src/constants.ts',
-      'src/interface.ts',
+      // 'src/interface.ts',
       'src/util.ts'
     ],
     output: [
@@ -37,12 +37,13 @@ export default [
     plugins: [
       typescript({
         typescript: require('typescript'),
-        target: 'ES5'
+        target: 'ES5',
+        include: ['src/**/*.ts'],
+        tsconfig: false
       }),
       resolve(),
       commonjs(),
     ],
-    experimentalCodeSplitting: true
   },
   {
     input: 'src/index.ts',
@@ -59,7 +60,9 @@ export default [
       typescript({
         typescript: require('typescript'),
         target: 'ES5',
-        importHelpers: true
+        importHelpers: true,
+        include: ['src/**/*.ts'],
+        tsconfig: false
       }),
       resolve(),
       commonjs()
