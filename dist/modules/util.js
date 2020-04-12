@@ -1,13 +1,11 @@
 /*!
-* onoffcanvas - v2.2.3
+* onoffcanvas - v2.2.4
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas
 *
 * Made by onokumus <onokumus@gmail.com> (https://github.com/onokumus)
 * Under MIT License
 */
-import { a as __assign } from './chunk-6fed8d7d.js';
-
 function getSelectorFromElement(element) {
     var selector = element.getAttribute("data-target");
     if (!selector || selector === "#") {
@@ -36,5 +34,8 @@ function selectorArray(arrs) {
     }
     return divArr;
 }
+function isElement(element) {
+    return Boolean(element.classList);
+}
 
-export { getSelectorFromElement, uniqueArr, selectorArray };
+export { getSelectorFromElement, isElement, selectorArray, uniqueArr };

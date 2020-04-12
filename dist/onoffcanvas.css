@@ -1,5 +1,5 @@
 /*!
-* onoffcanvas - v2.2.2
+* onoffcanvas - v2.2.4
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas#readme
 *
@@ -21,17 +21,14 @@
   box-sizing: border-box;
   pointer-events: none;
   z-index: 1001;
-  -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
   transition: all 0.3s ease;
 }
-
 .onoffcanvas.is-open {
   pointer-events: auto;
 }
 
 .onoffcanvas.is-fixed {
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: fixed;
 }
@@ -40,53 +37,44 @@
   bottom: auto;
   right: auto;
   left: 50%;
-  -webkit-transform: translate3d(-50%, -100%, 0);
   transform: translate3d(-50%, -100%, 0);
 }
 
 .onoffcanvas.is-center.is-open {
   top: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
 }
 
 .onoffcanvas.is-top {
   bottom: auto;
-  -webkit-transform: translate3d(0, -100%, 0);
   transform: translate3d(0, -100%, 0);
 }
 
 .onoffcanvas.is-bottom {
   top: auto;
-  -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
 }
 
 .onoffcanvas.is-right {
   left: auto;
-  -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 }
 
 .onoffcanvas.is-left {
   right: auto;
-  -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
 }
 
 .onoffcanvas.is-open {
-  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
 .onoffcanvas-container:hover .onoffcanvas.is-hoverable {
-  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
 .onoffcanvas-container:hover .onoffcanvas.is-center.is-hoverable {
   top: 50%;
-  -webkit-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
 }
 
@@ -115,7 +103,6 @@ button.onoffcanvas-toggler {
   top: 50%;
   border-style: solid;
   border-color: #adb5bd;
-  -webkit-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
   transition: all 0.3s ease;
 }
@@ -129,23 +116,19 @@ button.onoffcanvas-toggler {
   border-width: 2px 0 0 0;
 }
 
-.is-open .onoffcanvas-toggler[aria-expanded="true"]::before, .is-open .onoffcanvas-toggler[aria-expanded="true"]::after,
-.onoffcanvas-toggler.is-animated[aria-expanded="true"]::before,
-.onoffcanvas-toggler.is-animated[aria-expanded="true"]::after {
+.is-open .onoffcanvas-toggler[aria-expanded=true]::before, .is-open .onoffcanvas-toggler[aria-expanded=true]::after,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::before,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::after {
   width: 100%;
   height: 2px;
   left: 0;
 }
-
-.is-open .onoffcanvas-toggler[aria-expanded="true"]::before,
-.onoffcanvas-toggler.is-animated[aria-expanded="true"]::before {
-  -webkit-transform: rotate(45deg);
+.is-open .onoffcanvas-toggler[aria-expanded=true]::before,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::before {
   transform: rotate(45deg);
 }
-
-.is-open .onoffcanvas-toggler[aria-expanded="true"]::after,
-.onoffcanvas-toggler.is-animated[aria-expanded="true"]::after {
-  -webkit-transform: rotate(-45deg);
+.is-open .onoffcanvas-toggler[aria-expanded=true]::after,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::after {
   transform: rotate(-45deg);
   border-width: 2px 0 0 0;
 }
@@ -162,8 +145,8 @@ button.onoffcanvas-toggler {
   contain: strict;
   z-index: 5;
 }
-
 .onoffcanvas-drawer.is-open {
   pointer-events: auto;
 }
+
 /*# sourceMappingURL=onoffcanvas.css.map */

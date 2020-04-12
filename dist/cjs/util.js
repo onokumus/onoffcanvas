@@ -1,5 +1,5 @@
 /*!
-* onoffcanvas - v2.2.3
+* onoffcanvas - v2.2.4
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas
 *
@@ -9,8 +9,6 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
-
-var __chunk_1 = require('./chunk-d3b966f9.js');
 
 function getSelectorFromElement(element) {
     var selector = element.getAttribute("data-target");
@@ -40,7 +38,11 @@ function selectorArray(arrs) {
     }
     return divArr;
 }
+function isElement(element) {
+    return Boolean(element.classList);
+}
 
 exports.getSelectorFromElement = getSelectorFromElement;
-exports.uniqueArr = uniqueArr;
+exports.isElement = isElement;
 exports.selectorArray = selectorArray;
+exports.uniqueArr = uniqueArr;

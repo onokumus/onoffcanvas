@@ -1,5 +1,5 @@
 /*!
-* onoffcanvas - v2.2.3
+* onoffcanvas - v2.2.4
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas
 *
@@ -7,8 +7,33 @@
 * Under MIT License
 */
 import { ClassName, EventName, OcDefault, Selector } from './constants.js';
-import { selectorArray, uniqueArr } from './util.js';
-import { a as __assign } from './chunk-6fed8d7d.js';
+import { isElement, selectorArray, uniqueArr } from './util.js';
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 
 /**
  *
@@ -20,31 +45,34 @@ var OnoffCanvas = /** @class */ (function () {
      * Creates an instance of OnoffCanvas.
      *
      * @constructor
-     * @param {HTMLElement | string} element
+     * @param {Element | string} element
      * @param {IOCDefault} [options]
      * @memberof OnoffCanvas
      */
     function OnoffCanvas(element, options) {
         var _this = this;
-        this.element =
-            typeof element === "string" ? document.querySelector(element) : element;
-        this.config = __assign({}, OcDefault, options);
-        this.triggerElements = document.querySelectorAll(Selector.DATA_TOGGLE + "[href=\"#" + this.element.id + "\"],\n      " + Selector.DATA_TOGGLE + "[data-target=\"#" + this.element.id + "\"]");
+        this.element = isElement(element)
+            ? element
+            : document.querySelector(element);
+        this.config = __assign(__assign({}, OcDefault), options);
+        this.triggerElements = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE + "[href=\"#" + this.element.id + "\"],\n      " + Selector.DATA_TOGGLE + "[data-target=\"#" + this.element.id + "\"]"));
         this.addAriaExpanded(this.triggerElements);
-        var triggers = [].slice.call(this.triggerElements);
-        for (var _i = 0, triggers_1 = triggers; _i < triggers_1.length; _i++) {
-            var trigger = triggers_1[_i];
-            trigger.addEventListener("click", function (event) {
-                if (event.currentTarget.tagName === "A") {
+        this.triggerElements.forEach(function (el) {
+            el.addEventListener("click", function (event) {
+                var eventTarget = event.target;
+                if (eventTarget && eventTarget.tagName === "A") {
                     event.preventDefault();
                 }
                 _this.toggle();
             });
-        }
+        });
         this.drawer = document.createElement("div");
         this.drawer.classList.add("onoffcanvas-drawer");
         document.documentElement.appendChild(this.drawer);
     }
+    OnoffCanvas.attachTo = function (element, options) {
+        return new OnoffCanvas(element, options);
+    };
     /**
      * Auto init all OnoffCanvas elements
      *
@@ -60,7 +88,7 @@ var OnoffCanvas = /** @class */ (function () {
         var newOcArr = uniqueArr(selectorArr);
         for (var _i = 0, newOcArr_1 = newOcArr; _i < newOcArr_1.length; _i++) {
             var element = newOcArr_1[_i];
-            newOnoffCanvas(element, options);
+            OnoffCanvas.attachTo(element, options);
         }
     };
     OnoffCanvas.prototype.on = function (event, handle) {
@@ -134,12 +162,12 @@ var OnoffCanvas = /** @class */ (function () {
         var evt;
         if (typeof CustomEvent === "function") {
             evt = new CustomEvent(evtType, {
-                bubbles: shouldBubble
+                bubbles: shouldBubble,
             });
         }
         else {
             evt = document.createEvent("CustomEvent");
-            evt.initCustomEvent(evtType, shouldBubble, false);
+            evt.initCustomEvent(evtType, shouldBubble, false, target);
         }
         this.element.dispatchEvent(evt);
         return this;
@@ -152,8 +180,5 @@ var OnoffCanvas = /** @class */ (function () {
     };
     return OnoffCanvas;
 }());
-function newOnoffCanvas(element, options) {
-    var newOnoffcanvas = new OnoffCanvas(document.querySelector(element), options);
-}
 
 export default OnoffCanvas;

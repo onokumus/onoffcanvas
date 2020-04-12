@@ -1,5 +1,5 @@
 /*!
-* onoffcanvas - v2.2.3
+* onoffcanvas - v2.2.4
 * An offcanvas plugin
 * https://github.com/onokumus/onoffcanvas
 *
@@ -10,28 +10,26 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var __chunk_1 = require('./chunk-d3b966f9.js');
-
 var NAME = "onoffcanvas";
 var EVENT_KEY = "." + NAME;
 var EventName = {
     HIDE: "hide" + EVENT_KEY,
-    SHOW: "show" + EVENT_KEY
+    SHOW: "show" + EVENT_KEY,
 };
 var ClassName = {
-    SHOW: "is-open"
+    SHOW: "is-open",
 };
 var Selector = {
-    DATA_TOGGLE: '[data-toggle="onoffcanvas"]'
+    DATA_TOGGLE: '[data-toggle="onoffcanvas"]',
 };
 var OcDefault = {
     createDrawer: true,
-    hideByEsc: true
+    hideByEsc: true,
 };
 
-exports.NAME = NAME;
+exports.ClassName = ClassName;
 exports.EVENT_KEY = EVENT_KEY;
 exports.EventName = EventName;
-exports.ClassName = ClassName;
-exports.Selector = Selector;
+exports.NAME = NAME;
 exports.OcDefault = OcDefault;
+exports.Selector = Selector;

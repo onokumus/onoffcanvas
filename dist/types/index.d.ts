@@ -6,6 +6,7 @@ import { IOCDefault } from "./interface";
  * @class OnoffCanvas
  */
 export default class OnoffCanvas {
+    static attachTo(element: HTMLElement | string, options?: IOCDefault): OnoffCanvas;
     /**
      * Auto init all OnoffCanvas elements
      *
@@ -14,7 +15,7 @@ export default class OnoffCanvas {
      * @memberof OnoffCanvas
      */
     static autoinit(options?: IOCDefault): void;
-    element: HTMLElement;
+    element: Element;
     config: IOCDefault;
     private triggerElements;
     private drawer;
@@ -22,12 +23,12 @@ export default class OnoffCanvas {
      * Creates an instance of OnoffCanvas.
      *
      * @constructor
-     * @param {HTMLElement | string} element
+     * @param {Element | string} element
      * @param {IOCDefault} [options]
      * @memberof OnoffCanvas
      */
-    constructor(element: HTMLElement | string, options?: IOCDefault);
-    on(event: OnoffCanvasEvents, handle: any): this;
+    constructor(element: Element | string, options?: IOCDefault);
+    on(event: OnoffCanvasEvents, handle: EventListener): this;
     /**
      * Show/Hide OnoffCanvas element
      *
