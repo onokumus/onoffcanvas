@@ -20,10 +20,9 @@
     "README.md"
   ],
   "scripts": {
-    "css": "npm-run-all --parallel css-compile --sequential css-prefix css-minify",
-    "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/onoffcanvas.scss dist/onoffcanvas.css",
-    "css-prefix": "postcss --config postcss.config.js --replace \"dist/*.css\" \"!dist/*.min.css\"",
-    "css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output dist/onoffcanvas.min.css dist/onoffcanvas.css",
+    "css": "run-p css-compile css-minify",
+    "css-compile": "sass scss/onoffcanvas.scss dist/onoffcanvas.css",
+    "css-minify": "sass -s compressed scss/onoffcanvas.scss dist/onoffcanvas.min.css",
     "js": "npm-run-all --parallel ts-compile --sequential js-compile js-minify",
     "lint": "tslint -c tslint.json src/**/*.ts",
     "tsc": "tsc --emitDeclarationOnly",
