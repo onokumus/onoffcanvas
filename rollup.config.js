@@ -4,68 +4,39 @@ import typescript from '@rollup/plugin-typescript';
 import pkg from './package.json';
 
 const banner = `/*!
-* ${pkg.name} - v${pkg.version}
+* ${pkg.name} ${pkg.homepage}
 * ${pkg.description}
-* ${pkg.homepage}
-*
-* Made by ${pkg.author}
-* Under ${pkg.license} License
+* @version: ${pkg.version}
+* @author: ${pkg.author}
+* @license: ${pkg.license}
 */`;
 
 const production = !process.env.ROLLUP_WATCH;
 
 export default [
   {
-    input: [
-      'src/index.ts',
-      'src/constants.ts',
-      // 'src/interface.ts',
-      'src/util.ts'
-    ],
-    output: [
-      {
-        dir: 'dist/cjs',
-        banner,
-        format: 'cjs',
-      },
-      {
-        dir: 'dist/modules',
-        banner,
-        format: 'es',
-      }
-    ],
-    plugins: [
-      typescript({
-        typescript: require('typescript'),
-        target: 'ES5',
-        include: ['src/**/*.ts'],
-        tsconfig: false
-      }),
-      resolve(),
-      commonjs(),
-    ],
-  },
-  {
     input: 'src/index.ts',
     output: [
       {
+        file: 'dist/onoffcanvas.esm.js',
+        banner,
+        format: 'es',
+        sourcemap: true,
+      },
+      {
         name: 'OnoffCanvas',
-        file: pkg.browser,
+        file: production ? 'dist/onoffcanvas.js' : 'docs/assets/js/onoffcanvas.js',
         banner,
         format: 'umd',
-        sourcemap: true
+        sourcemap: true,
       },
     ],
     plugins: [
       typescript({
         typescript: require('typescript'),
-        target: 'ES5',
-        importHelpers: true,
-        include: ['src/**/*.ts'],
-        tsconfig: false
       }),
       resolve(),
-      commonjs()
+      commonjs(),
     ],
   },
 ];

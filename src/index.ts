@@ -6,7 +6,7 @@ import {
   Selector,
 } from "./constants";
 import { IOCDefault } from "./interface";
-import { selectorArray, uniqueArr, isElement } from "./util";
+import { isElement, selectorArray, uniqueArr } from "./util";
 
 /**
  *
@@ -16,10 +16,11 @@ import { selectorArray, uniqueArr, isElement } from "./util";
 export default class OnoffCanvas {
   public static attachTo(
     element: HTMLElement | string,
-    options?: IOCDefault
+    options?: IOCDefault,
   ): OnoffCanvas {
     return new OnoffCanvas(element, options);
   }
+
   /**
    * Auto init all OnoffCanvas elements
    *
@@ -36,14 +37,18 @@ export default class OnoffCanvas {
 
     const newOcArr = uniqueArr(selectorArr);
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const element of newOcArr) {
       OnoffCanvas.attachTo(element, options);
     }
   }
 
   public element: Element;
+
   public config: IOCDefault;
+
   private triggerElements: Element[];
+
   private drawer: HTMLDivElement;
 
   /**
@@ -63,8 +68,8 @@ export default class OnoffCanvas {
     this.triggerElements = [].slice.call(
       document.querySelectorAll<HTMLElement>(
         `${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
-      ${Selector.DATA_TOGGLE}[data-target="#${this.element.id}"]`
-      )
+      ${Selector.DATA_TOGGLE}[data-target="#${this.element.id}"]`,
+      ),
     );
 
     this.addAriaExpanded(this.triggerElements);
@@ -81,7 +86,6 @@ export default class OnoffCanvas {
 
     this.drawer = document.createElement("div");
     this.drawer.classList.add("onoffcanvas-drawer");
-    document.documentElement.appendChild(this.drawer);
   }
 
   public on(event: OnoffCanvasEvents, handle: EventListener) {
@@ -118,6 +122,7 @@ export default class OnoffCanvas {
     this.emit(EventName.SHOW, this.element);
 
     if (this.config.createDrawer) {
+      document.documentElement.appendChild(this.drawer);
       this.drawer.classList.add("is-open");
       this.drawer.addEventListener("click", this.hide.bind(this));
     }
@@ -145,6 +150,7 @@ export default class OnoffCanvas {
     if (this.config.createDrawer) {
       this.drawer.classList.remove("is-open");
       this.drawer.removeEventListener("click", this.hide.bind(this));
+      document.documentElement.removeChild(this.drawer);
     }
 
     this.element.classList.remove(ClassName.SHOW);
@@ -160,7 +166,7 @@ export default class OnoffCanvas {
   private emit<T extends object>(
     evtType: string,
     target: T,
-    shouldBubble = false
+    shouldBubble = false,
   ) {
     let evt;
     if (typeof CustomEvent === "function") {
@@ -179,6 +185,7 @@ export default class OnoffCanvas {
   private addAriaExpanded(triggerElements: Element[]): void {
     const isOpen = this.element.classList.contains(ClassName.SHOW);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     Array.prototype.forEach.call(triggerElements, (el, i) => {
       el.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });

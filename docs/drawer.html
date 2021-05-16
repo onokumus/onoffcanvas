@@ -8,29 +8,24 @@
   <title>OnoffCanvas Drawer</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
-  <link rel="stylesheet" href="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.css">
-  <style>
-    .onoffcanvas-drawer.is-open {
-      background: rgba(0, 0, 0, .5);
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/onoffcanvas.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="index.html">OnoffCanvas</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
               Examples
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,7 +37,7 @@
         </ul>
       </div>
     </div>
-    </nav>
+  </nav>
 
   <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
@@ -82,16 +77,15 @@
     </div>
   </div>
 
-  <div class="onoffcanvas is-fixed is-left bg-dark text-white" id="cfl">
+  <div class="onoffcanvas is-fixed is-end bg-dark text-white" id="cfl">
     <h1>Left Canvas</h1>
     <a href="#cfl" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
 
-  <script src="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.js"></script>
+  <script src="assets/js/onoffcanvas.js"></script>
   <script>
     OnoffCanvas.autoinit();
   </script>

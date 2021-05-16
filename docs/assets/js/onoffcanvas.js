@@ -1,8 +1,8 @@
 /*!
 * onoffcanvas https://github.com/onokumus/onoffcanvas
 * An offcanvas plugin
-* @version: 2.3.0
-* @author: Osman Nuri Okumuş <onokumus@gmail.com> (https://onokumus.com)
+* @version: 2.2.4
+* @author: onokumus <onokumus@gmail.com> (https://github.com/onokumus)
 * @license: MIT
 */
 (function (global, factory) {

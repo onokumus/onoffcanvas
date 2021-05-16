@@ -1,18 +1,15 @@
 {
   "name": "onoffcanvas",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "description": "An offcanvas plugin",
   "types": "dist/types/index.d.ts",
   "style": "dist/onoffcanvas.css",
   "sass": "scss/onoffcanvas.scss",
-  "main": "dist/cjs/index.js",
-  "module": "dist/modules/index.js",
-  "browser": "dist/onoffcanvas.js",
+  "main": "dist/onoffcanvas.js",
+  "module": "dist/onoffcanvas.esm.js",
+  "browser": "dist/onoffcanvas.min.js",
   "unpkg": "dist/onoffcanvas.min.js",
   "jsdelivr": "dist/onoffcanvas.min.js",
-  "engines": {
-    "node": ">=8"
-  },
   "files": [
     "dist",
     "src",
@@ -21,18 +18,20 @@
   ],
   "scripts": {
     "css": "run-p css-compile css-minify",
-    "css-compile": "sass scss/onoffcanvas.scss dist/onoffcanvas.css",
+    "css-compile": "sass scss:dist",
     "css-minify": "sass -s compressed scss/onoffcanvas.scss dist/onoffcanvas.min.css",
     "js": "npm-run-all --parallel ts-compile --sequential js-compile js-minify",
-    "lint": "tslint -c tslint.json src/**/*.ts",
-    "tsc": "tsc --emitDeclarationOnly",
+    "lint": "eslint src/**/*.ts",
+    "tsc": "tsc",
     "ts-compile": "npm-run-all --parallel lint --sequential tsc",
     "js-compile": "rollup -c",
-    "js-minify": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/onoffcanvas.js.map,includeSources,url=onoffcanvas.min.js.map\" --output dist/onoffcanvas.min.js dist/onoffcanvas.js",
+    "js-minify": "terser --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/onoffcanvas.js.map,includeSources,url=onoffcanvas.min.js.map\" --output dist/onoffcanvas.min.js dist/onoffcanvas.js",
     "build": "run-p css js",
     "watch": "run-p watch-css watch-js",
     "watch-css": "nodemon --ignore docs/ --ignore js --ignore dist/ -e scss -x \"npm run css\"",
-    "watch-js": "nodemon --ignore docs/ --ignore scss/ --ignore dist/ -e ts -x \"npm run js\""
+    "watch-js": "nodemon --ignore docs/ --ignore scss/ --ignore dist/ -e ts -x \"npm run js\"",
+    "css:dev": "sass scss:docs/assets/css -w",
+    "js:dev": "rollup -c -w"
   },
   "repository": {
     "type": "git",
@@ -44,26 +43,30 @@
     "events",
     "EventEmitter"
   ],
-  "author": "onokumus <onokumus@gmail.com> (https://github.com/onokumus)",
+  "author": "Osman Nuri Okumuş <onokumus@gmail.com> (https://onokumus.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/onokumus/onoffcanvas/issues"
   },
   "homepage": "https://github.com/onokumus/onoffcanvas",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.1.0",
-    "@rollup/plugin-node-resolve": "^7.1.3",
-    "@rollup/plugin-typescript": "^4.1.1",
-    "nodemon": "^2.0.3",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.2",
+    "nodemon": "^2.0.7",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.4",
-    "rollup": "^1.20.0",
-    "sass": "^1.26.3",
-    "tslib": "^1.11.1",
-    "tslint": "^6.1.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.3.0",
-    "typescript": "^3.8.3",
-    "uglify-js": "^3.8.1"
+    "prettier": "^2.3.0",
+    "rollup": "^2.48.0",
+    "sass": "^1.32.13",
+    "terser": "^5.7.0",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
   }
 }

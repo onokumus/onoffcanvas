@@ -1,11 +1,10 @@
 @import "variables";
 /*!
-* onoffcanvas - v2.2.4
+* onoffcanvas https://github.com/onokumus/onoffcanvas
 * An offcanvas plugin
-* https://github.com/onokumus/onoffcanvas#readme
-*
-* Made by Osman Nuri Okumus <onokumus@gmail.com> (https://github.com/onokumus)
-* Under MIT License
+* @version: 2.3.0
+* @author: Osman Nuri Okumuş <onokumus@gmail.com> (https://onokumus.com)
+* @license: MIT
 */
 
 .onoffcanvas-container {
@@ -57,12 +56,14 @@
   transform: translate3d(0, 100%, 0);
 }
 
-.onoffcanvas.is-right {
+.onoffcanvas.is-right,
+.onoffcanvas.is-end {
   left: auto;
   transform: translate3d(100%, 0, 0);
 }
 
-.onoffcanvas.is-left {
+.onoffcanvas.is-left,
+.onoffcanvas.is-start {
   right: auto;
   transform: translate3d(-100%, 0, 0);
 }
@@ -162,8 +163,11 @@ button.onoffcanvas-toggler {
   overflow: hidden;
   contain: strict;
   z-index: 5;
+  visibility: hidden;
+  background: rgba($color: #000000, $alpha: 0.5);
 
   &.is-open {
+    visibility: visible;
     pointer-events: auto;
   }
 }

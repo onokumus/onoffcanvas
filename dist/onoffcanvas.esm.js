@@ -1,11 +1,63 @@
-import { ClassName, EventName, OcDefault, Selector, } from "./constants";
-import { isElement, selectorArray, uniqueArr } from "./util";
+/*!
+* onoffcanvas https://github.com/onokumus/onoffcanvas
+* An offcanvas plugin
+* @version: 2.3.0
+* @author: Osman Nuri Okumuş <onokumus@gmail.com> (https://onokumus.com)
+* @license: MIT
+*/
+const NAME = "onoffcanvas";
+const EVENT_KEY = `.${NAME}`;
+const EventName = {
+    HIDE: `hide${EVENT_KEY}`,
+    SHOW: `show${EVENT_KEY}`,
+};
+const ClassName = {
+    SHOW: "is-open",
+};
+const Selector = {
+    DATA_TOGGLE: '[data-toggle="onoffcanvas"]',
+};
+const OcDefault = {
+    createDrawer: true,
+    hideByEsc: true,
+};
+
+function getSelectorFromElement(element) {
+    let selector = element.getAttribute("data-target");
+    if (!selector || selector === "#") {
+        selector = element.getAttribute("href") || "";
+    }
+    try {
+        const $selector = document.querySelectorAll(selector);
+        return $selector.length > 0 ? selector : null;
+    }
+    catch (error) {
+        throw new Error("Target Not Found!");
+    }
+}
+function uniqueArr(arr) {
+    const uniqueArray = arr.filter((elem, index, self) => index === self.indexOf(elem));
+    return uniqueArray;
+}
+function selectorArray(arrs) {
+    const divArr = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const element of arrs) {
+        const selector = getSelectorFromElement(element);
+        divArr.push(selector);
+    }
+    return divArr;
+}
+function isElement(element) {
+    return Boolean(element.classList);
+}
+
 /**
  *
  * @export
  * @class OnoffCanvas
  */
-export default class OnoffCanvas {
+class OnoffCanvas {
     /**
      * Creates an instance of OnoffCanvas.
      *
@@ -143,3 +195,6 @@ export default class OnoffCanvas {
         });
     }
 }
+
+export default OnoffCanvas;
+//# sourceMappingURL=onoffcanvas.esm.js.map

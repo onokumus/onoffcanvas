@@ -8,25 +8,26 @@
   <title>OnoffCanvas test</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
-  <link rel="stylesheet" href="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.css">
+  <link rel="stylesheet" href="assets/css/onoffcanvas.css">
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 
-<body><nav class="navbar navbar-expand-sm navbar-light bg-light">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="index.html">OnoffCanvas</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
               Examples
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,19 +39,21 @@
         </ul>
       </div>
     </div>
-    </nav>
+  </nav>
   <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <h1 class="display-3">OnoffCanvas</h1>
       <p class="lead">An off-canvas Plugin</p>
       <p>
-        <a class="github-button" href="https://github.com/onokumus/onoffcanvas" data-icon="octicon-star" data-size="large" data-count-href="/onokumus/onoffcanvas/stargazers"
-          data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star onokumus/onoffcanvas on GitHub">Star</a>
-        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/fork" data-icon="octicon-repo-forked" data-size="large"
-          data-count-href="/onokumus/onoffcanvas/network" data-show-count="true" data-count-aria-label="# forks on GitHub"
-          aria-label="Fork onokumus/onoffcanvas on GitHub">Fork</a>
-        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/archive/master.zip" data-icon="octicon-cloud-download"
-          data-size="large" aria-label="Download onokumus/onoffcanvas on GitHub">Download</a>
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas" data-icon="octicon-star"
+          data-size="large" data-count-href="/onokumus/onoffcanvas/stargazers" data-show-count="true"
+          data-count-aria-label="# stargazers on GitHub" aria-label="Star onokumus/onoffcanvas on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/fork" data-icon="octicon-repo-forked"
+          data-size="large" data-count-href="/onokumus/onoffcanvas/network" data-show-count="true"
+          data-count-aria-label="# forks on GitHub" aria-label="Fork onokumus/onoffcanvas on GitHub">Fork</a>
+        <a class="github-button" href="https://github.com/onokumus/onoffcanvas/archive/master.zip"
+          data-icon="octicon-cloud-download" data-size="large"
+          aria-label="Download onokumus/onoffcanvas on GitHub">Download</a>
 
       </p>
     </div>
@@ -74,6 +77,24 @@
         </div>
       </div>
       <div class="col-sm-9">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </symbol>
+          <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+          </symbol>
+          <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </symbol>
+        </svg>
+
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+            This version does not support any version of IE browser.
+          </div>
+        </div>
         <div class="card">
           <div class="card-body">
             <h3>Code</h3>
@@ -82,7 +103,7 @@
   &lt;a href=&quot;#cft&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;onoffcanvas is-fixed is-right&quot; id=&quot;cfr&quot;&gt;
+&lt;div class=&quot;onoffcanvas is-fixed is-end&quot; id=&quot;cfr&quot;&gt;
   &lt;h1&gt;Right Canvas&lt;/h1&gt;
   &lt;a href=&quot;#cfr&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -92,7 +113,7 @@
   &lt;a href=&quot;#cfb&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;onoffcanvas is-fixed is-left&quot; id=&quot;cfl&quot;&gt;
+&lt;div class=&quot;onoffcanvas is-fixed is-end&quot; id=&quot;cfl&quot;&gt;
   &lt;h1&gt;Left Canvas&lt;/h1&gt;
   &lt;a href=&quot;#cfl&quot; class=&quot;onoffcanvas-toggler&quot; data-toggle=onoffcanvas style=&quot;width:100px; height:100px;&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -129,7 +150,8 @@
                   <h4 class="card-title">Top Canvas</h4>
                 </div>
                 <figure class="figure">
-                  <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <img src="350x150.png" class="figure-img img-fluid"
+                    alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
                 <div class="onoffcanvas is-top p-2 bg-dark" id="cat">
@@ -149,10 +171,11 @@
                   <h4 class="card-title">Right Canvas</h4>
                 </div>
                 <figure class="figure">
-                  <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <img src="350x150.png" class="figure-img img-fluid"
+                    alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class="onoffcanvas is-right p-2 bg-dark" id="car">
+                <div class="onoffcanvas is-end p-2 bg-dark" id="car">
                   <a href="#car" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -169,7 +192,8 @@
                   <h4 class="card-title">Bottom Canvas</h4>
                 </div>
                 <figure class="figure">
-                  <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <img src="350x150.png" class="figure-img img-fluid"
+                    alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
                 <div class=" p-2 bg-dark onoffcanvas is-bottom" id="cab">
@@ -195,10 +219,11 @@
                   <h4 class="card-title">Left Canvas</h4>
                 </div>
                 <figure class="figure">
-                  <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <img src="350x150.png" class="figure-img img-fluid"
+                    alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
-                <div class="onoffcanvas is-left p-2 bg-dark" id="cal">
+                <div class="onoffcanvas is-end p-2 bg-dark" id="cal">
                   <a href="#cal" class="onoffcanvas-toggler" data-toggle=onoffcanvas></a>
                 </div>
               </div>
@@ -218,7 +243,8 @@
                   <h4 class="card-title">Center Canvas</h4>
                 </div>
                 <figure class="figure">
-                  <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <img src="350x150.png" class="figure-img img-fluid"
+                    alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
                 <div class="onoffcanvas is-center p-2 bg-dark" id="cac">
@@ -240,7 +266,8 @@
                   <h4 class="card-title">Full Canvas</h4>
                 </div>
                 <figure class="figure">
-                  <img src="350x150.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+                  <img src="350x150.png" class="figure-img img-fluid"
+                    alt="A generic square placeholder image with rounded corners in a figure.">
                   <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
                 </figure>
                 <div class="onoffcanvas p-2 bg-dark" id="caf">
@@ -276,14 +303,18 @@
           </div>
           <div class="onoffcanvas-container">
             <figure class="figure">
-              <img src="1250x200.png" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure.">
+              <img src="1250x200.png" class="figure-img img-fluid"
+                alt="A generic square placeholder image with rounded corners in a figure.">
               <figcaption class="p-1 figure-caption">A caption for the above image.</figcaption>
             </figure>
             <div class="onoffcanvas is-hoverable p-2 bg-dark">
               <div class="text-xs-center text-white">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur
                 sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </div>
             </div>
@@ -331,17 +362,17 @@
             <code>is-open</code> class to parent</small>
         </h4>
         <p>
-          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas1&quot;&gt;&lt;/div&gt;
+        <pre><code class="language-html">&lt;div id=&quot;onoffcanvas1&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;is-open&quot;&gt;
   &lt;a href=&quot;#onoffcanvas1&quot; data-toggle=&quot;onoffcanvas&quot; class=&quot;onoffcanvas-toggler&quot;&gt;&lt;/a&gt;
 &lt;/div&gt;
 </code></pre>
         </p>
         <p>
-          <div id="onoffcanvas1" aria-expanded="false"></div>
-          <div class="is-open">
-            <a href="#onoffcanvas1" data-toggle="onoffcanvas" class="onoffcanvas-toggler"></a>
-          </div>
+        <div id="onoffcanvas1" aria-expanded="false"></div>
+        <div class="is-open">
+          <a href="#onoffcanvas1" data-toggle="onoffcanvas" class="onoffcanvas-toggler"></a>
+        </div>
         </p>
 
         <h4>Alternative 2 :
@@ -351,13 +382,13 @@
           </small>
         </h4>
         <p>
-          <pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot;&gt;&lt;/div&gt;
+        <pre><code class="language-html">&lt;div id=&quot;onoffcanvas2&quot;&gt;&lt;/div&gt;
 &lt;a href=&quot;#onoffcanvas2&quot; class=&quot;onoffcanvas-toggler is-animated&quot;  data-toggle=&quot;onoffcanvas&quot;&gt;&lt;/a&gt;
 </code></pre>
         </p>
         <p>
-          <div id="onoffcanvas2" aria-expanded="false"></div>
-          <a href="#onoffcanvas2" class="onoffcanvas-toggler is-animated" data-toggle="onoffcanvas"></a>
+        <div id="onoffcanvas2" aria-expanded="false"></div>
+        <a href="#onoffcanvas2" class="onoffcanvas-toggler is-animated" data-toggle="onoffcanvas"></a>
         </p>
 
       </div>
@@ -375,7 +406,7 @@
     <a id="acft" href="#cft" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
 
-  <div class="onoffcanvas is-fixed is-right bg-dark text-white" id="cfr">
+  <div class="onoffcanvas is-fixed is-end bg-dark text-white" id="cfr">
     <h1>Right Canvas</h1>
     <a href="#cfr" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
@@ -385,7 +416,7 @@
     <a href="#cfb" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
 
-  <div class="onoffcanvas is-fixed is-left bg-dark text-white" id="cfl">
+  <div class="onoffcanvas is-fixed is-start bg-dark text-white" id="cfl">
     <h1>Left Canvas</h1>
     <a href="#cfl" class="onoffcanvas-toggler" data-toggle=onoffcanvas style="width:100px; height:100px;"></a>
   </div>
@@ -396,14 +427,14 @@
   </div>
 
   <div class="onoffcanvas is-fixed bg-dark text-white" id="cff">
-    <a id="acff" href="#cff" class="onoffcanvas-toggler" data-toggle="onoffcanvas" style="width:200px; height:200px;top: 50%;left: 50%;transform: translate(-50%, -50%);"></a>
+    <a id="acff" href="#cff" class="onoffcanvas-toggler" data-toggle="onoffcanvas"
+      style="width:200px; height:200px;top: 50%;left: 50%;transform: translate(-50%, -50%);"></a>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
 
-  <script src="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.js"></script>
+  <script src="assets/js/onoffcanvas.js"></script>
   <script>
     OnoffCanvas.autoinit();
   </script>
