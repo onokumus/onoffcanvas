@@ -1,4 +1,4 @@
-import { IOCDefault } from "./interface";
+import { IOCDefault } from "./interface.js";
 
 export const NAME = "onoffcanvas";
 export const EVENT_KEY = `.${NAME}`;

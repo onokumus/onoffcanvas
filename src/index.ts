@@ -4,9 +4,9 @@ import {
   OcDefault,
   OnoffCanvasEvents,
   Selector,
-} from "./constants";
-import { IOCDefault } from "./interface";
-import { isElement, selectorArray, uniqueArr } from "./util";
+} from "./constants.js";
+import { IOCDefault } from "./interface.js";
+import { isElement, selectorArray, uniqueArr } from "./util.js";
 
 /**
  *
