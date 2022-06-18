@@ -1,25 +1,18 @@
 {
   "compilerOptions": {
-    /* Basic Options */
-    "target": "ES2016", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+    "target": "EsNext",
     "module": "ESNext",
     "lib": [
-      "dom",
-      "esnext"
+      "DOM",
+      "DOM.Iterable",
+      "EsNext"
     ],
-    /* Specify library files to be included in the compilation:  */
-    "declaration": true, /* Generates corresponding '.d.ts' file. */
+    "declaration": true,
     "declarationDir": "dist/types",
-    "outDir": "dist/modules", /* Redirect output structure to the directory. */
-    "importHelpers": true, /* Import emit helpers from 'tslib'. */
-    /* Strict Type-Checking Options */
-    "strict": true, /* Enable all strict type-checking options. */
-    /* Module Resolution Options */
-    "moduleResolution": "node", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    /* Experimental Options */
-    // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
-    // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
+    "outDir": "dist/modules",
+    "strict": true,
+    "moduleResolution": "node", 
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*.ts"
