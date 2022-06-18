@@ -6,10 +6,9 @@ import {
   Selector,
 } from "./constants.js";
 import { IOCDefault } from "./interface.js";
-import { isElement, selectorArray, uniqueArr } from "./util.js";
+import { isElement, selectorArray } from "./util.js";
 
 /**
- *
  * @export
  * @class OnoffCanvas
  */
@@ -31,16 +30,15 @@ export default class OnoffCanvas {
   public static autoinit(options = OcDefault) {
     const ocNodeList = document.querySelectorAll(`${Selector.DATA_TOGGLE}`);
 
-    const ocListArr = [].slice.call(ocNodeList);
+    const ocListArr = [...ocNodeList];
 
     const selectorArr = selectorArray(ocListArr);
 
-    const newOcArr = uniqueArr(selectorArr);
+    const newOcArr = [... new Set(selectorArr)];
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const element of newOcArr) {
-      OnoffCanvas.attachTo(element, options);
-    }
+    newOcArr.forEach((el) => {
+      OnoffCanvas.attachTo(el, options);
+    });
   }
 
   public element: Element;
@@ -65,7 +63,7 @@ export default class OnoffCanvas {
       : document.querySelector<HTMLElement>(element)!;
     this.config = { ...OcDefault, ...options };
 
-    this.triggerElements = [].slice.call(
+    this.triggerElements = Array.from(
       document.querySelectorAll<HTMLElement>(
         `${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
       ${Selector.DATA_TOGGLE}[data-target="#${this.element.id}"]`,
@@ -129,7 +127,7 @@ export default class OnoffCanvas {
 
     if (this.config.hideByEsc) {
       window.addEventListener("keydown", (event) => {
-        if (event.keyCode === 27) {
+        if (event.key === "Escape") {
           this.hide();
         }
       });
@@ -185,9 +183,8 @@ export default class OnoffCanvas {
   private addAriaExpanded(triggerElements: Element[]): void {
     const isOpen = this.element.classList.contains(ClassName.SHOW);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    Array.prototype.forEach.call(triggerElements, (el, i) => {
-      el.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    triggerElements.forEach((el: Element) => {
+      el.setAttribute("aria-expanded", isOpen.toString());
     });
   }
 }

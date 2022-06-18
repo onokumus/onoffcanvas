@@ -11,18 +11,15 @@ export function getSelectorFromElement(element: Element): string | null {
   }
 }
 
-export function uniqueArr(arr: any[]): any[] {
-  const uniqueArray = arr.filter((elem, index, self) => index === self.indexOf(elem));
-  return uniqueArray;
-}
-
 export function selectorArray(arrs: any[]): any[] {
-  const divArr = [];
-  // eslint-disable-next-line no-restricted-syntax
-  for (const element of arrs) {
-    const selector = getSelectorFromElement(element);
-    divArr.push(selector);
-  }
+  const divArr: any[] = [];
+
+  arrs.forEach((el) => {
+    const selector = getSelectorFromElement(el);
+    if (selector) {
+      divArr.push(selector);
+    }
+  });
   return divArr;
 }
 
