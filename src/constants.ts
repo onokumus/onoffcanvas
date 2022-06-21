@@ -1,4 +1,7 @@
-import { IOCDefault } from "./interface";
+export interface OcOptions {
+  createDrawer?: boolean;
+  hideByEsc?: boolean;
+}
 
 export const NAME = "onoffcanvas";
 export const EVENT_KEY = `.${NAME}`;
@@ -16,7 +19,7 @@ export const Selector = {
   DATA_TOGGLE: '[data-toggle="onoffcanvas"]',
 };
 
-export const OcDefault: IOCDefault = {
+export const OcDefault: OcOptions = {
   createDrawer: true,
   hideByEsc: true,
 };
