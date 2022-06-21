@@ -5,6 +5,7 @@
     "module": "ESNext",
     "lib": [
       "dom",
+      "DOM.Iterable",
       "esnext"
     ],
     /* Specify library files to be included in the compilation:  */
