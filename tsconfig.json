@@ -12,7 +12,7 @@
     "declaration": true, /* Generates corresponding '.d.ts' file. */
     "declarationDir": "dist/types",
     "outDir": "dist/modules", /* Redirect output structure to the directory. */
-    "importHelpers": true, /* Import emit helpers from 'tslib'. */
+    "importHelpers": false, /* Import emit helpers from 'tslib'. */
     /* Strict Type-Checking Options */
     "strict": true, /* Enable all strict type-checking options. */
     /* Module Resolution Options */
