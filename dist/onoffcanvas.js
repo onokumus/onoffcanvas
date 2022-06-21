@@ -1,7 +1,7 @@
 /*!
 * onoffcanvas https://github.com/onokumus/onoffcanvas
 * An offcanvas plugin
-* @version: 2.3.0
+* @version: 2.3.1
 * @author: Osman Nuri Okumuş <onokumus@gmail.com> (https://onokumus.com)
 * @license: MIT
 */
@@ -9,7 +9,7 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.OnoffCanvas = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
     const NAME = "onoffcanvas";
     const EVENT_KEY = `.${NAME}`;
@@ -41,17 +41,12 @@
             throw new Error("Target Not Found!");
         }
     }
-    function uniqueArr(arr) {
-        const uniqueArray = arr.filter((elem, index, self) => index === self.indexOf(elem));
-        return uniqueArray;
-    }
     function selectorArray(arrs) {
         const divArr = [];
-        // eslint-disable-next-line no-restricted-syntax
-        for (const element of arrs) {
-            const selector = getSelectorFromElement(element);
+        arrs.forEach((arr) => {
+            const selector = getSelectorFromElement(arr);
             divArr.push(selector);
-        }
+        });
         return divArr;
     }
     function isElement(element) {
@@ -59,7 +54,6 @@
     }
 
     /**
-     *
      * @export
      * @class OnoffCanvas
      */
@@ -69,7 +63,7 @@
          *
          * @constructor
          * @param {Element | string} element
-         * @param {IOCDefault} [options]
+         * @param {OcOptions} [options]
          * @memberof OnoffCanvas
          */
         constructor(element, options) {
@@ -77,7 +71,7 @@
                 ? element
                 : document.querySelector(element);
             this.config = Object.assign(Object.assign({}, OcDefault), options);
-            this.triggerElements = [].slice.call(document.querySelectorAll(`${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
+            this.triggerElements = Array.from(document.querySelectorAll(`${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
       ${Selector.DATA_TOGGLE}[data-target="#${this.element.id}"]`));
             this.addAriaExpanded(this.triggerElements);
             this.triggerElements.forEach((el) => {
@@ -104,13 +98,12 @@
          */
         static autoinit(options = OcDefault) {
             const ocNodeList = document.querySelectorAll(`${Selector.DATA_TOGGLE}`);
-            const ocListArr = [].slice.call(ocNodeList);
+            const ocListArr = [...ocNodeList];
             const selectorArr = selectorArray(ocListArr);
-            const newOcArr = uniqueArr(selectorArr);
-            // eslint-disable-next-line no-restricted-syntax
-            for (const element of newOcArr) {
-                OnoffCanvas.attachTo(element, options);
-            }
+            const newOcArr = [...new Set(selectorArr)];
+            newOcArr.forEach((noa) => {
+                OnoffCanvas.attachTo(noa, options);
+            });
         }
         on(event, handle) {
             this.listen(event, handle);
@@ -150,7 +143,7 @@
             }
             if (this.config.hideByEsc) {
                 window.addEventListener("keydown", (event) => {
-                    if (event.keyCode === 27) {
+                    if (event.key === "Escape") {
                         this.hide();
                     }
                 });
@@ -180,29 +173,22 @@
             return this;
         }
         emit(evtType, target, shouldBubble = false) {
-            let evt;
-            if (typeof CustomEvent === "function") {
-                evt = new CustomEvent(evtType, {
-                    bubbles: shouldBubble,
-                });
-            }
-            else {
-                evt = document.createEvent("CustomEvent");
-                evt.initCustomEvent(evtType, shouldBubble, false, target);
-            }
+            const evt = new CustomEvent(evtType, {
+                detail: target,
+                bubbles: shouldBubble,
+            });
             this.element.dispatchEvent(evt);
             return this;
         }
         addAriaExpanded(triggerElements) {
             const isOpen = this.element.classList.contains(ClassName.SHOW);
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            Array.prototype.forEach.call(triggerElements, (el, i) => {
-                el.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            triggerElements.forEach((tel) => {
+                tel.setAttribute("aria-expanded", isOpen.toString());
             });
         }
     }
 
     return OnoffCanvas;
 
-})));
+}));
 //# sourceMappingURL=onoffcanvas.js.map
