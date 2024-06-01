@@ -2,21 +2,20 @@ import {
   ClassName,
   EventName,
   OcDefault,
+  OcOptions,
   OnoffCanvasEvents,
   Selector,
 } from "./constants";
-import { IOCDefault } from "./interface";
-import { isElement, selectorArray, uniqueArr } from "./util";
+import { isElement, selectorArray } from "./util";
 
 /**
- *
  * @export
  * @class OnoffCanvas
  */
 export default class OnoffCanvas {
   public static attachTo(
     element: HTMLElement | string,
-    options?: IOCDefault,
+    options?: OcOptions,
   ): OnoffCanvas {
     return new OnoffCanvas(element, options);
   }
@@ -31,21 +30,19 @@ export default class OnoffCanvas {
   public static autoinit(options = OcDefault) {
     const ocNodeList = document.querySelectorAll(`${Selector.DATA_TOGGLE}`);
 
-    const ocListArr = [].slice.call(ocNodeList);
+    const ocListArr = [...ocNodeList];
 
     const selectorArr = selectorArray(ocListArr);
 
-    const newOcArr = uniqueArr(selectorArr);
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const element of newOcArr) {
-      OnoffCanvas.attachTo(element, options);
-    }
+    const newOcArr = [...new Set(selectorArr)];
+    newOcArr.forEach((noa) => {
+      OnoffCanvas.attachTo(noa, options);
+    });
   }
 
   public element: Element;
 
-  public config: IOCDefault;
+  public config: OcOptions;
 
   private triggerElements: Element[];
 
@@ -56,16 +53,16 @@ export default class OnoffCanvas {
    *
    * @constructor
    * @param {Element | string} element
-   * @param {IOCDefault} [options]
+   * @param {OcOptions} [options]
    * @memberof OnoffCanvas
    */
-  constructor(element: Element | string, options?: IOCDefault) {
+  constructor(element: Element | string, options?: OcOptions) {
     this.element = isElement(element)
       ? element
       : document.querySelector<HTMLElement>(element)!;
     this.config = { ...OcDefault, ...options };
 
-    this.triggerElements = [].slice.call(
+    this.triggerElements = Array.from(
       document.querySelectorAll<HTMLElement>(
         `${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
       ${Selector.DATA_TOGGLE}[data-target="#${this.element.id}"]`,
@@ -129,7 +126,7 @@ export default class OnoffCanvas {
 
     if (this.config.hideByEsc) {
       window.addEventListener("keydown", (event) => {
-        if (event.keyCode === 27) {
+        if (event.key === "Escape") {
           this.hide();
         }
       });
@@ -168,15 +165,10 @@ export default class OnoffCanvas {
     target: T,
     shouldBubble = false,
   ) {
-    let evt;
-    if (typeof CustomEvent === "function") {
-      evt = new CustomEvent(evtType, {
-        bubbles: shouldBubble,
-      });
-    } else {
-      evt = document.createEvent("CustomEvent");
-      evt.initCustomEvent(evtType, shouldBubble, false, target);
-    }
+    const evt = new CustomEvent(evtType, {
+      detail: target,
+      bubbles: shouldBubble,
+    });
 
     this.element.dispatchEvent(evt);
     return this;
@@ -184,10 +176,8 @@ export default class OnoffCanvas {
 
   private addAriaExpanded(triggerElements: Element[]): void {
     const isOpen = this.element.classList.contains(ClassName.SHOW);
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    Array.prototype.forEach.call(triggerElements, (el, i) => {
-      el.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    triggerElements.forEach((tel) => {
+      tel.setAttribute("aria-expanded", isOpen.toString());
     });
   }
 }

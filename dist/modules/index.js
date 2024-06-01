@@ -1,7 +1,6 @@
 import { ClassName, EventName, OcDefault, Selector, } from "./constants";
-import { isElement, selectorArray, uniqueArr } from "./util";
+import { isElement, selectorArray } from "./util";
 /**
- *
  * @export
  * @class OnoffCanvas
  */
@@ -11,7 +10,7 @@ export default class OnoffCanvas {
      *
      * @constructor
      * @param {Element | string} element
-     * @param {IOCDefault} [options]
+     * @param {OcOptions} [options]
      * @memberof OnoffCanvas
      */
     constructor(element, options) {
@@ -19,7 +18,7 @@ export default class OnoffCanvas {
             ? element
             : document.querySelector(element);
         this.config = Object.assign(Object.assign({}, OcDefault), options);
-        this.triggerElements = [].slice.call(document.querySelectorAll(`${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
+        this.triggerElements = Array.from(document.querySelectorAll(`${Selector.DATA_TOGGLE}[href="#${this.element.id}"],
       ${Selector.DATA_TOGGLE}[data-target="#${this.element.id}"]`));
         this.addAriaExpanded(this.triggerElements);
         this.triggerElements.forEach((el) => {
@@ -46,13 +45,12 @@ export default class OnoffCanvas {
      */
     static autoinit(options = OcDefault) {
         const ocNodeList = document.querySelectorAll(`${Selector.DATA_TOGGLE}`);
-        const ocListArr = [].slice.call(ocNodeList);
+        const ocListArr = [...ocNodeList];
         const selectorArr = selectorArray(ocListArr);
-        const newOcArr = uniqueArr(selectorArr);
-        // eslint-disable-next-line no-restricted-syntax
-        for (const element of newOcArr) {
-            OnoffCanvas.attachTo(element, options);
-        }
+        const newOcArr = [...new Set(selectorArr)];
+        newOcArr.forEach((noa) => {
+            OnoffCanvas.attachTo(noa, options);
+        });
     }
     on(event, handle) {
         this.listen(event, handle);
@@ -92,7 +90,7 @@ export default class OnoffCanvas {
         }
         if (this.config.hideByEsc) {
             window.addEventListener("keydown", (event) => {
-                if (event.keyCode === 27) {
+                if (event.key === "Escape") {
                     this.hide();
                 }
             });
@@ -122,24 +120,17 @@ export default class OnoffCanvas {
         return this;
     }
     emit(evtType, target, shouldBubble = false) {
-        let evt;
-        if (typeof CustomEvent === "function") {
-            evt = new CustomEvent(evtType, {
-                bubbles: shouldBubble,
-            });
-        }
-        else {
-            evt = document.createEvent("CustomEvent");
-            evt.initCustomEvent(evtType, shouldBubble, false, target);
-        }
+        const evt = new CustomEvent(evtType, {
+            detail: target,
+            bubbles: shouldBubble,
+        });
         this.element.dispatchEvent(evt);
         return this;
     }
     addAriaExpanded(triggerElements) {
         const isOpen = this.element.classList.contains(ClassName.SHOW);
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        Array.prototype.forEach.call(triggerElements, (el, i) => {
-            el.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        triggerElements.forEach((tel) => {
+            tel.setAttribute("aria-expanded", isOpen.toString());
         });
     }
 }

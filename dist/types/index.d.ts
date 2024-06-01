@@ -1,12 +1,10 @@
-import { OnoffCanvasEvents } from "./constants";
-import { IOCDefault } from "./interface";
+import { OcOptions, OnoffCanvasEvents } from "./constants";
 /**
- *
  * @export
  * @class OnoffCanvas
  */
 export default class OnoffCanvas {
-    static attachTo(element: HTMLElement | string, options?: IOCDefault): OnoffCanvas;
+    static attachTo(element: HTMLElement | string, options?: OcOptions): OnoffCanvas;
     /**
      * Auto init all OnoffCanvas elements
      *
@@ -14,9 +12,9 @@ export default class OnoffCanvas {
      * @param {boolean} [escKey]
      * @memberof OnoffCanvas
      */
-    static autoinit(options?: IOCDefault): void;
+    static autoinit(options?: OcOptions): void;
     element: Element;
-    config: IOCDefault;
+    config: OcOptions;
     private triggerElements;
     private drawer;
     /**
@@ -24,10 +22,10 @@ export default class OnoffCanvas {
      *
      * @constructor
      * @param {Element | string} element
-     * @param {IOCDefault} [options]
+     * @param {OcOptions} [options]
      * @memberof OnoffCanvas
      */
-    constructor(element: Element | string, options?: IOCDefault);
+    constructor(element: Element | string, options?: OcOptions);
     on(event: OnoffCanvasEvents, handle: EventListener): this;
     /**
      * Show/Hide OnoffCanvas element
