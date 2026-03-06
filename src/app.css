@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@source "../node_modules/elektron/src";
+@import "elektron/source";
+
+
+@theme {
+    /* override elektron's theme variables if needed */
+    --font-sans: Arial, sans-serif;
+    --color-bg-main: #0f0f0f;
+}

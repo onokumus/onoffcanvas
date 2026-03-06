@@ -1,0 +1,22 @@
+{
+    "name": "@onokumus/onoffcanvas",
+    "version": "3.0.0",
+    "exports": "./mod.ts",
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "dom.asynciterable",
+            "deno.ns"
+        ]
+    },
+    "publish": {
+        "include": [
+            "src/**/*.ts",
+            "src/**/*.css",
+            "mod.ts",
+            "README.md",
+            "LICENSE"
+        ]
+    }
+}

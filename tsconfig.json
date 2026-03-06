@@ -1,28 +1,28 @@
 {
   "compilerOptions": {
-    /* Basic Options */
-    "target": "ES2016", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
+    "target": "ES2022",
+    "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": [
-      "dom",
-      "DOM.Iterable",
-      "esnext"
-    ],
-    /* Specify library files to be included in the compilation:  */
-    "declaration": true, /* Generates corresponding '.d.ts' file. */
-    "declarationDir": "dist/types",
-    "outDir": "dist/modules", /* Redirect output structure to the directory. */
-    "importHelpers": false, /* Import emit helpers from 'tslib'. */
-    /* Strict Type-Checking Options */
-    "strict": true, /* Enable all strict type-checking options. */
-    /* Module Resolution Options */
-    "moduleResolution": "node", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    /* Experimental Options */
-    // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
-    // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src"]
 }

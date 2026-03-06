@@ -1,0 +1,203 @@
+:root {
+  /* Technical Prestige Palette */
+  --oc-bg: #050505;
+  --oc-color: #f5f5f7;
+  --oc-border-color: rgba(255, 255, 255, 0.1);
+
+  /* Glassmorphism & Materiality */
+  --oc-drawer-bg: rgba(5, 5, 5, 0.4);
+  --oc-backdrop-blur: 12px;
+
+  /* Weighted & Fluid Animations */
+  --oc-transition-duration: 0.5s;
+  --oc-transition-timing: cubic-bezier(0.5, 0, 0, 1);
+
+  /* Structural Defaults */
+  --oc-width: 16rem;
+  /* 256px */
+  --oc-zindex: 1001;
+  --oc-border-radius: 12px;
+  --oc-toggler-color: #86868b;
+}
+
+.onoffcanvas-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.onoffcanvas {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: var(--oc-zindex);
+  background: var(--oc-bg);
+  color: var(--oc-color);
+  border: 1px solid var(--oc-border-color);
+  border-radius: var(--oc-border-radius);
+  visibility: hidden;
+  /* Ensure hidden by default */
+  clip-path: inset(50%);
+  /* Default hidden state from center */
+  transition: clip-path var(--oc-transition-duration) var(--oc-transition-timing),
+    visibility var(--oc-transition-duration);
+  will-change: clip-path;
+}
+
+.onoffcanvas.is-fixed {
+  backface-visibility: hidden;
+  position: fixed;
+  border-radius: 0;
+}
+
+.onoffcanvas.is-rounded {
+  border-radius: var(--oc-border-radius);
+}
+
+.onoffcanvas.is-center {
+  bottom: auto;
+  inset-inline-end: auto;
+  inset-inline-start: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* Center stays centered but clips */
+  clip-path: inset(50% 50% 50% 50%);
+}
+
+.onoffcanvas.is-top {
+  bottom: auto;
+  clip-path: inset(0 0 100% 0);
+}
+
+.onoffcanvas.is-bottom {
+  top: auto;
+  clip-path: inset(100% 0 0 0);
+}
+
+.onoffcanvas.is-right,
+.onoffcanvas.is-end {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  width: var(--oc-width);
+  max-width: 80vw;
+  clip-path: inset(0 0 0 100%);
+}
+
+.onoffcanvas.is-left,
+.onoffcanvas.is-start {
+  inset-inline-end: auto;
+  inset-inline-start: 0;
+  width: var(--oc-width);
+  max-width: 80vw;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* Open State - Defined after positional classes to ensure correct overrides */
+.onoffcanvas.is-open {
+  pointer-events: auto;
+  visibility: visible;
+  clip-path: inset(0 0 0 0);
+}
+
+.onoffcanvas-container:hover .onoffcanvas.is-hoverable {
+  visibility: visible;
+  clip-path: inset(0 0 0 0);
+}
+
+.onoffcanvas-toggler {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  /* 32px - Precision focus */
+  min-height: 2rem;
+  cursor: pointer;
+  padding: 0;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+button.onoffcanvas-toggler {
+  border-width: 0;
+  background: transparent;
+}
+
+.onoffcanvas-toggler::after,
+.onoffcanvas-toggler::before {
+  content: "";
+  position: absolute;
+  width: 1.125rem;
+  /* 18px fixed width for consistency */
+  border-style: solid;
+  border-color: var(--oc-toggler-color);
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  transition: all var(--oc-transition-duration) var(--oc-transition-timing);
+}
+
+.onoffcanvas-toggler:after {
+  border-width: 2px 0;
+  /* Balanced precision lines */
+  height: 0.75rem;
+  /* ~12px total height, creating comfortable gaps */
+}
+
+.onoffcanvas-toggler:before {
+  border-width: 2px 0 0 0;
+}
+
+.onoffcanvas-toggler[aria-expanded=true]::before,
+.onoffcanvas-toggler[aria-expanded=true]::after,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::before,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::after {
+  width: 100%;
+  height: 2px;
+  inset-inline-start: 0;
+}
+
+.onoffcanvas-toggler[aria-expanded=true]::before,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::before {
+  transform: rotate(45deg);
+}
+
+.onoffcanvas-toggler[aria-expanded=true]::after,
+.onoffcanvas-toggler.is-animated[aria-expanded=true]::after {
+  transform: rotate(-45deg);
+  border-width: 2px 0 0 0;
+}
+
+.onoffcanvas-drawer {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+  z-index: calc(var(--oc-zindex) - 1);
+  visibility: hidden;
+  background: var(--oc-drawer-bg);
+  backdrop-filter: blur(var(--oc-backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--oc-backdrop-blur));
+  transition: visibility var(--oc-transition-duration),
+    background var(--oc-transition-duration) var(--oc-transition-timing);
+}
+
+.onoffcanvas-drawer.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .onoffcanvas,
+  .onoffcanvas-toggler::after,
+  .onoffcanvas-toggler::before,
+  .onoffcanvas-drawer {
+    transition: none !important;
+  }
+}

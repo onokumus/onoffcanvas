@@ -1,71 +1,53 @@
 {
   "name": "onoffcanvas",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "description": "An offcanvas plugin",
-  "types": "dist/types/index.d.ts",
-  "style": "dist/onoffcanvas.css",
-  "sass": "scss/onoffcanvas.scss",
-  "main": "dist/onoffcanvas.js",
-  "module": "dist/onoffcanvas.esm.js",
-  "browser": "dist/onoffcanvas.min.js",
-  "unpkg": "dist/onoffcanvas.min.js",
-  "jsdelivr": "dist/onoffcanvas.min.js",
-  "files": [
-    "dist",
-    "src",
-    "scss",
-    "README.md"
-  ],
-  "scripts": {
-    "css": "run-p css-compile css-minify",
-    "css-compile": "sass scss:dist",
-    "css-minify": "sass -s compressed scss/onoffcanvas.scss dist/onoffcanvas.min.css",
-    "js": "npm-run-all --parallel ts-compile --sequential js-compile js-minify",
-    "lint": "eslint src/**/*.ts",
-    "tsc": "tsc",
-    "ts-compile": "npm-run-all --parallel lint --sequential tsc",
-    "js-compile": "rollup -c",
-    "js-minify": "terser --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/onoffcanvas.js.map,includeSources,url=onoffcanvas.min.js.map\" --output dist/onoffcanvas.min.js dist/onoffcanvas.js",
-    "build": "run-p css js",
-    "watch": "run-p watch-css watch-js",
-    "watch-css": "nodemon --ignore docs/ --ignore js --ignore dist/ -e scss -x \"npm run css\"",
-    "watch-js": "nodemon --ignore docs/ --ignore scss/ --ignore dist/ -e ts -x \"npm run js\"",
-    "css:dev": "sass scss:docs/assets/css -w",
-    "js:dev": "rollup -c -w"
-  },
+  "author": "onokumus",
+  "license": "MIT",
+  "homepage": "https://github.com/onokumus/onoffcanvas",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/onokumus/onoffcanvas.git"
+    "url": "https://github.com/onokumus/onoffcanvas"
   },
   "keywords": [
     "offcanvas",
-    "canvas",
-    "events",
-    "EventEmitter"
+    "sidebar",
+    "drawer",
+    "mobile",
+    "responsive",
+    "javascript",
+    "plugin"
   ],
-  "author": "Osman Nuri Okumuş <onokumus@gmail.com> (https://onokumus.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/onokumus/onoffcanvas/issues"
+  "type": "module",
+  "unpkg": "lib/onoffcanvas.umd.cjs",
+  "jsdelivr": "lib/onoffcanvas.js",
+  "main": "lib/onoffcanvas.umd.cjs",
+  "module": "lib/onoffcanvas.js",
+  "types": "lib/onoffcanvas.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/onoffcanvas.d.ts",
+      "import": "./lib/onoffcanvas.js",
+      "require": "./lib/onoffcanvas.umd.cjs"
+    },
+    "./style": "./lib/onoffcanvas.css",
+    "./style.css": "./lib/onoffcanvas.css"
   },
-  "homepage": "https://github.com/onokumus/onoffcanvas",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build --mode app",
+    "build:lib": "vite build --mode lib && tsc -p tsconfig.lib.json",
+    "preview": "vite preview"
+  },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.3",
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
-    "eslint": "^8.18.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "nodemon": "^2.0.16",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.7.1",
-    "rollup": "^2.75.7",
-    "sass": "^1.52.3",
-    "terser": "^5.14.1",
-    "typescript": "^4.7.4"
+    "@tailwindcss/vite": "^4.2.1",
+    "elektron": "^0.8.3",
+    "tailwindcss": "^4.2.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
   }
 }

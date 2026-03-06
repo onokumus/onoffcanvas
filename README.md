@@ -1,235 +1,224 @@
-# onoffcanvas [![NPM version](https://img.shields.io/npm/v/onoffcanvas.svg?style=flat)](https://www.npmjs.com/package/onoffcanvas) [![NPM monthly downloads](https://img.shields.io/npm/dm/onoffcanvas.svg?style=flat)](https://npmjs.org/package/onoffcanvas) [![NPM total downloads](https://img.shields.io/npm/dt/onoffcanvas.svg?style=flat)](https://npmjs.org/package/onoffcanvas)  
+# OnoffCanvas
 
-> An offcanvas plugin
+[![Technical Prestige](https://img.shields.io/badge/Design-Technical%20Prestige-050505?style=flat-square)](#design-philosophy)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/onoffcanvas.svg?style=flat-square)](https://www.npmjs.com/package/onoffcanvas)
+[![NPM Downloads](https://img.shields.io/npm/dt/onoffcanvas.svg?style=flat-square)](https://www.npmjs.com/package/onoffcanvas)
 
-> This plugin does not support any version of IE browser.
+**OnoffCanvas** is a lightweight, accessible, and high-performance JavaScript offcanvas plugin designed with a "Technical Prestige" aesthetic. It utilizes modern CSS `clip-path` animations and glassmorphism to provide a premium user experience.
 
-Please consider following this project's author, [onokumus](https://github.com/onokumus), and consider starring the project to show your :heart: and support.
+> [!WARNING]
+> This plugin utilizes modern CSS features and does **not** support Internet Explorer.
 
-## Getting started
+---
 
-### Install
-Install with [npm](https://www.npmjs.com/):
+## ✨ Features
 
-```sh
-npm install --save onoffcanvas
-```
+- **🚀 Performance:** Powered by CSS `clip-path` for smooth, hardware-accelerated transitions.
+- **🛡️ Accessibility:** Built-in ARIA support, keyboard navigation (`Esc` to close), and focus management.
+- **💎 Premium Design:** Glassmorphic drawers with backdrop blur and a titanium-inspired palette.
+- **📍 Multiple Positions:** Easily place panels at the `top`, `bottom`, `start` (left), `end` (right), or even `center`.
+- **🖱️ Hover Support:** Optional hover-to-reveal functionality for effortless interaction.
+- **📦 Zero Dependencies:** Lightweight footprint with no external library requirements.
 
-Install with [yarn](https://yarnpkg.com):
+---
 
-```sh
+## 📦 Installation
+
+Install via your preferred package manager:
+
+```bash
+npm install onoffcanvas
+# or
 yarn add onoffcanvas
 ```
 
-### Download
-[download from github](https://github.com/onokumus/onoffcanvas/archive/master.zip)
+### Deno
 
-### Usage
+OnoffCanvas is fully compatible with Deno. You can import it directly from JSR or via an ESM CDN:
 
-> commonjs
-```js
-const OnoffCanvas = require('onoffcanvas');
-const oc = new OnoffCanvas(element, options);
+```typescript
+// From JSR
+import OnoffCanvas from "jsr:@onokumus/onoffcanvas";
+
+// Or from esm.sh
+import OnoffCanvas from "https://esm.sh/onoffcanvas";
 ```
 
-> es2015 module or typescript
-```js
+> [!NOTE]
+> When using in Deno for frontend development, you will still need to include the CSS file in your HTML or via your bundler.
+
+---
+
+### Browser (CDN)
+
+1. Include the StyleSheet:
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/onoffcanvas/lib/onoffcanvas.css">
+```
+
+2. Include the plugin:
+```html
+<script src="https://cdn.jsdelivr.net/npm/onoffcanvas/lib/onoffcanvas.js"></script>
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. HTML Markup
+
+Define your offcanvas panel and a trigger element.
+
+```html
+<div id="myCanvas" class="onoffcanvas is-start">
+  <div class="p-8">
+    <h1 class="tracking-widest font-light uppercase">Menu</h1>
+    <p>Premium content goes here.</p>
+  </div>
+</div>
+```
+
+### 2. Trigger Options
+
+You can trigger the offcanvas using a link or a button. Ensure you add `data-toggle="onoffcanvas"`.
+
+- **Using a Link:**
+```html
+<a href="#myCanvas" data-toggle="onoffcanvas">Toggle Menu</a>
+```
+
+- **Using a Button:**
+```html
+<button data-target="#myCanvas" data-toggle="onoffcanvas">Toggle Menu</button>
+```
+
+### 3. Initialization
+
+```javascript
 import OnoffCanvas from 'onoffcanvas';
-const oc = new OnoffCanvas(element, options);
+import 'onoffcanvas/style';
+
+// Initialize all elements with data-toggle="onoffcanvas"
+OnoffCanvas.autoinit();
+
+// Or manual instance
+const oc = new OnoffCanvas('#myCanvas', options);
 ```
 
-> browser
+---
 
-1. Include `onoffcanvas` StyleSheet
+## 🛠️ API Reference
 
-  ```html
-  <link rel="stylesheet" href="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.css">
-  ```
+### Methods
 
-2. Include `onoffcanvas` plugin's code
-  ```html
-  <script src="https://unpkg.com/onoffcanvas/dist/onoffcanvas.min.js"></script>
-  ```
+- `OnoffCanvas.autoinit(options?)`: Auto-initializes all `data-toggle="onoffcanvas"` elements.
+- `OnoffCanvas.attachTo(element, options?)`: Returns a new instance.
+- `show()`: Displays the panel.
+- `hide()`: Hides the panel.
+- `toggle()`: Toggles the state.
+- `destroy()`: Cleans up listeners and removes instance.
+- `on(event, handler)`: Event listener helper.
 
-3. Add class `onoffcanvas` and `id` attribute to `div` tag.
-  ```html
-  <div class="onoffcanvas" id="side-canvas"></div>
-  ```
+### Events
 
-4. Add trigger button: Be sure to add `data-toggle="onoffcanvas"`.
-  ```html
-  <button data-toggle="onoffcanvas" data-target="#side-canvas">SIDE MENU</div>
-  ```
-5.
-    a. Create new instance from Onoffcanvas
+| Event Type | Description |
+| :--- | :--- |
+| `show.onoffcanvas` | Fires immediately when `show` is called. |
+| `hide.onoffcanvas` | Fires immediately when `hide` is called. |
 
-    ```js
-    // element is selector or Node
-    new OnoffCanvas('#side-canvas', options);
-    // OR
-    new OnoffCanvas(document.querySelector('#side-canvas'), options);
-    ```
+```javascript
+const oc = new OnoffCanvas('#myCanvas');
 
-    b. Auto init all OnoffCanvas elements
+oc.on('show.onoffcanvas', (event) => {
+  console.log('Panel is showing', event.detail.instance);
+});
 
-    ```js
-    OnoffCanvas.autoinit(options);
-    ```
+oc.on('hide.onoffcanvas', (event) => {
+  console.log('Panel is hiding', event.detail.element);
+});
+```
 
 ### Options
 
-#### hideByEsc
-Type: `Boolean`
-Default: `true`
+| Option | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `createDrawer` | `boolean` | `true` | Whether to create a glassmorphic backdrop. |
+| `hideByEsc` | `boolean` | `true` | Close the panel when the `Escape` key is pressed. |
 
-> Hide OnoffCanvas element with ESC key
+---
 
-```js
- new OnoffCanvas('#side-canvas', {
-   hideByEsc: false
- });
-```
+## 🎨 Customization
 
-or
-```js
- OnoffCanvas.autoinit({
-   hideByEsc: false
- });
-```
+OnoffCanvas is built with CSS Variables for effortless theming:
 
-#### createDrawer
-
-Type: `Boolean`
-Default: `true`
-
-> Creates an empty `div` element. Clicking on the `div` element, hides the OnoffCanvas.
-
-```js
- new OnoffCanvas('#side-canvas', {
-   createDrawer: false
- });
-```
-
-or
-```js
- OnoffCanvas.autoinit({
-   createDrawer: false
- });
-```
-
-## Events
-
-|**Event Type**      |**Description**|
-|--------------|--------------|
-|show.onoffcanvas    |This event fires immediately when the `show` instance method is called.|
-|hide.onoffcanvas    |This event is fired immediately when the `hide` method has been called. |
-
-```js
- new OnoffCanvas('#side-canvas')
- .on('show.onoffcanvas', (event)=>{
-   console.log(event.type); // show.onoffcanvas
- }).on('hide.onoffcanvas',(event)=>{
-   console.log(event.target); // <div class="onoffcanvas ...
- });
- ```
-
-### API
-#### toggle
-Show/Hide OnoffCanvas element
-```js
-new OnoffCanvas('#side-canvas').toggle();
-```
-#### show
-Show OnoffCanvas element
-```js
-new OnoffCanvas('#side-canvas').show();
-```
-#### hide
-Hide OnoffCanvas element
-```js
-new OnoffCanvas('#side-canvas').hide();
+```css
+:root {
+  --oc-bg: #050505;
+  --oc-color: #f5f5f7;
+  --oc-width: 16rem;
+  --oc-transition-duration: 0.5s;
+  --oc-backdrop-blur: 12px;
+  --oc-border-radius: 12px;
+}
 ```
 
 ### Canvas Options
 
-1. Position Options : `onoffcanvas` is in absolute position by default
-  - add class `is-fixed` to fixed position
+#### 1. Position Options
+By default, the offcanvas is `absolute`ly positioned. Add `is-fixed` for fixed positioning.
 
-  ```html
-  <div class="onoffcanvas is-fixed"></div>
-  ```
+```html
+<div class="onoffcanvas is-fixed"></div>
+```
 
-2. Direction Options : `onoffcanvas` is in full-screen by default
-  - `is-top`
-  - `is-end` (right in LTR, left in RTL)
-  - `is-bottom`,
-  - `is-start` (left in LTR, right in RTL)
-  - `is-center`
+#### 2. Direction Options
+Control the reveal direction using these classes:
+- `is-top`: Reveal from top.
+- `is-bottom`: Reveal from bottom.
+- `is-start`: Reveal from left (LTR).
+- `is-end`: Reveal from right (LTR).
+- `is-center`: Center expansion.
 
-  ```html
-  <div class="onoffcanvas is-{top|end|bottom|start|center}" id="side-canvas"></div>
-  ```
+```html
+<div class="onoffcanvas is-start" id="side-canvas"></div>
+```
 
-3. Opened/Closed Options : `onoffcanvas` is closed by default
-  - add class `is-open` to open.
+#### 3. Opened/Closed State
+Add `is-open` to have the panel visible by default.
 
-  ```html
-  <div class="onoffcanvas is-open" id="side-canvas"></div>
-  ```
+```html
+<div class="onoffcanvas is-open" id="side-canvas"></div>
+```
 
-4. Hoverable Options :
-  - add class `onoffcanvas-container` to parent element
-  - add class `is-hoverable` to `onoffcanvas`
+#### 4. Hoverable Support
+To reveal the offcanvas on hover:
+1. Wrap it in a `.onoffcanvas-container`.
+2. Add `.is-hoverable` to the offcanvas element.
 
 ```html
 <div class="onoffcanvas-container">
-    <div class="onoffcanvas is-hoverable" id="side-canvas"></div>
+  <div class="onoffcanvas is-hoverable" id="side-canvas"></div>
 </div>
-  ```
-
-### Drawer Options
-
-The background of the drawer is transparent. The following code should be added for the shadow.
-
-```css
-.onoffcanvas-drawer.is-open {
-  background-color: rgba(0,0,0,.5);
-}
 ```
-### Trigger Options
 
-- Type
-  1. link with `href`
+---
 
-  ```html
-  <a href="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</a>
-  ```
+## 👤 Author
 
-  2. button with `data-target`
-
-  ```html
-  <button data-target="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false">toggle onoffcanvas</button>
-  ```
-
-- Style
-  > if you want to use the default style for `onoffcanvas`, add class `onoffcanvas-toggler`
-
-  ```html
-  <a class="onoffcanvas-toggler" href="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false"></a>
-  ```
-
-  OR
-
-  ```html
-  <button class="onoffcanvas-toggler" data-target="#side-canvas" data-toggle="onoffcanvas" aria-expanded="false"></button>
-  ```
-
-### Author
 **onokumus**
-+ [GitHub Profile](https://github.com/onokumus)
-+ [Twitter Profile](https://twitter.com/onokumus)
-+ [LinkedIn Profile](https://linkedin.com/in/onokumus)
+- [GitHub](https://github.com/onokumus)
+- [Twitter](https://twitter.com/onokumus)
+- [LinkedIn](https://linkedin.com/in/onokumus)
 
-### License
-Copyright © 2021, [onokumus](https://github.com/onokumus).
-Released under the [MIT License](LICENSE).
+---
+
+## 📜 License
+
+Distributed under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Built with ❤️ by <a href="https://github.com/onokumus">onokumus</a> for the Technical Prestige.
+</p>
