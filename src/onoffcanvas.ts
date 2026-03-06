@@ -5,9 +5,9 @@ export interface OcOptions {
 }
 
 export const NAME = "onoffcanvas";
-export const EVENT_KEY = `.${NAME}`;
+export const EVENT_KEY: string = `.${NAME}`;
 
-export const EventName = {
+export const EventName: { HIDE: string; SHOW: string } = {
   HIDE: `hide${EVENT_KEY}`,
   SHOW: `show${EVENT_KEY}`,
 };
@@ -125,7 +125,7 @@ class OnoffCanvas {
     this.drawer.setAttribute('aria-hidden', 'true');
   }
 
-  public on(event: OnoffCanvasEvents, handle: EventListener) {
+  public on(event: OnoffCanvasEvents, handle: EventListener): OnoffCanvas {
     this.listen(event, handle);
     return this;
   }

@@ -2,6 +2,7 @@
 
 [![Technical Prestige](https://img.shields.io/badge/Design-Technical%20Prestige-050505?style=flat-square)](#design-philosophy)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![JSR](https://jsr.io/badges/@onokumus/onoffcanvas?style=flat-square)](https://jsr.io/@onokumus/onoffcanvas)
 [![NPM Version](https://img.shields.io/npm/v/onoffcanvas.svg?style=flat-square)](https://www.npmjs.com/package/onoffcanvas)
 [![NPM Downloads](https://img.shields.io/npm/dt/onoffcanvas.svg?style=flat-square)](https://www.npmjs.com/package/onoffcanvas)
 

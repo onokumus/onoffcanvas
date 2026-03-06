@@ -1,6 +1,8 @@
 {
     "name": "@onokumus/onoffcanvas",
     "version": "3.0.0",
+    "description": "A lightweight, accessible, and high-performance JavaScript offcanvas plugin",
+    "license": "MIT",
     "exports": "./mod.ts",
     "compilerOptions": {
         "lib": [
@@ -17,6 +19,10 @@
             "mod.ts",
             "README.md",
             "LICENSE"
+        ],
+        "exclude": [
+            "**/*.test.ts",
+            "**/*.spec.ts"
         ]
     }
 }
