@@ -35,7 +35,6 @@
   background: var(--oc-bg);
   color: var(--oc-color);
   border: 1px solid var(--oc-border-color);
-  border-radius: var(--oc-border-radius);
   visibility: hidden;
   /* Ensure hidden by default */
   clip-path: inset(50%);
@@ -48,7 +47,6 @@
 .onoffcanvas.is-fixed {
   backface-visibility: hidden;
   position: fixed;
-  border-radius: 0;
 }
 
 .onoffcanvas.is-rounded {
@@ -59,19 +57,19 @@
   bottom: auto;
   inset-inline-end: auto;
   inset-inline-start: 50%;
-  top: 50%;
+  inset-block-start: 50%;
   transform: translate(-50%, -50%);
   /* Center stays centered but clips */
   clip-path: inset(50% 50% 50% 50%);
 }
 
 .onoffcanvas.is-top {
-  bottom: auto;
+  inset-block-end: auto;
   clip-path: inset(0 0 100% 0);
 }
 
 .onoffcanvas.is-bottom {
-  top: auto;
+  inset-block-start: auto;
   clip-path: inset(100% 0 0 0);
 }
 
@@ -79,8 +77,8 @@
 .onoffcanvas.is-end {
   inset-inline-start: auto;
   inset-inline-end: 0;
-  width: var(--oc-width);
-  max-width: 80vw;
+  inline-size: var(--oc-width);
+  max-inline-size: 80vw;
   clip-path: inset(0 0 0 100%);
 }
 
@@ -88,8 +86,8 @@
 .onoffcanvas.is-start {
   inset-inline-end: auto;
   inset-inline-start: 0;
-  width: var(--oc-width);
-  max-width: 80vw;
+  inline-size: var(--oc-width);
+  max-inline-size: 80vw;
   clip-path: inset(0 100% 0 0);
 }
 
@@ -173,8 +171,8 @@ button.onoffcanvas-toggler {
   position: fixed;
   inset: 0;
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   pointer-events: none;
   overflow: hidden;
   contain: strict;

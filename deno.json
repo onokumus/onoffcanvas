@@ -1,6 +1,6 @@
 {
     "name": "@onokumus/onoffcanvas",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "A lightweight, accessible, and high-performance JavaScript offcanvas plugin",
     "license": "MIT",
     "exports": "./mod.ts",
