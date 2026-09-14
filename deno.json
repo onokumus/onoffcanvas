@@ -1,28 +1,20 @@
 {
-    "name": "@onokumus/onoffcanvas",
-    "version": "3.0.2",
-    "description": "A lightweight, accessible, and high-performance JavaScript offcanvas plugin",
-    "license": "MIT",
-    "exports": "./mod.ts",
-    "compilerOptions": {
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "dom.asynciterable",
-            "deno.ns"
-        ]
-    },
-    "publish": {
-        "include": [
-            "src/**/*.ts",
-            "src/**/*.css",
-            "mod.ts",
-            "README.md",
-            "LICENSE"
-        ],
-        "exclude": [
-            "**/*.test.ts",
-            "**/*.spec.ts"
-        ]
-    }
+	"name": "@onokumus/onoffcanvas",
+	"version": "3.0.2",
+	"description": "A lightweight, accessible, and high-performance JavaScript offcanvas plugin",
+	"license": "MIT",
+	"exports": "./mod.ts",
+	"compilerOptions": {
+		"lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"]
+	},
+	"publish": {
+		"include": [
+			"src/**/*.ts",
+			"src/**/*.css",
+			"mod.ts",
+			"README.md",
+			"LICENSE"
+		],
+		"exclude": ["**/*.test.ts", "**/*.spec.ts"]
+	}
 }

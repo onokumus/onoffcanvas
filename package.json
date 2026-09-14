@@ -1,59 +1,59 @@
 {
-    "name": "onoffcanvas",
-    "version": "3.0.2",
-    "description": "An offcanvas plugin",
-    "author": "onokumus",
-    "license": "MIT",
-    "homepage": "https://github.com/onokumus/onoffcanvas",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/onokumus/onoffcanvas"
-    },
-    "keywords": [
-        "offcanvas",
-        "sidebar",
-        "drawer",
-        "mobile",
-        "responsive",
-        "javascript",
-        "plugin"
-    ],
-    "type": "module",
-    "browser": "./dist/onoffcanvas.js",
-    "unpkg": "./dist/onoffcanvas.js",
-    "jsdelivr": "./dist/onoffcanvas.js",
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.mts",
-            "import": "./dist/index.mjs"
-        },
-        "./style": "./dist/onoffcanvas.css",
-        "./style.css": "./dist/onoffcanvas.css",
-        "./package.json": "./package.json"
-    },
-    "files": [
-        "dist",
-        "src"
-    ],
-    "scripts": {
-        "dev": "vite",
-        "check": "biome check --write",
-        "lint": "biome lint",
-        "format": "biome format",
-        "typecheck": "tsc -p tsconfig.json --noEmit",
-        "build:lib": "tsdown",
-        "build:web": "vite build",
-        "build": "npm run check && npm run typecheck && npm run build:lib",
-        "preview": "vite preview",
-        "prepublishOnly": "npm run build"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "^2.5.13",
-        "@tailwindcss/vite": "^4.3.3",
-        "elektron": "^0.8.3",
-        "tailwindcss": "^4.3.3",
-        "tsdown": "^0.23.0",
-        "typescript": "^7.0.2",
-        "vite": "^8.3.0"
-    }
+	"name": "onoffcanvas",
+	"version": "3.0.2",
+	"description": "An offcanvas plugin",
+	"author": "onokumus",
+	"license": "MIT",
+	"homepage": "https://github.com/onokumus/onoffcanvas",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/onokumus/onoffcanvas"
+	},
+	"keywords": [
+		"offcanvas",
+		"sidebar",
+		"drawer",
+		"mobile",
+		"responsive",
+		"javascript",
+		"plugin"
+	],
+	"type": "module",
+	"browser": "./dist/onoffcanvas.js",
+	"unpkg": "./dist/onoffcanvas.js",
+	"jsdelivr": "./dist/onoffcanvas.js",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.mts",
+			"import": "./dist/index.mjs"
+		},
+		"./style": "./dist/onoffcanvas.css",
+		"./style.css": "./dist/onoffcanvas.css",
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"dev": "vite",
+		"check": "biome check --write",
+		"lint": "biome lint",
+		"format": "biome format",
+		"typecheck": "tsc -p tsconfig.json --noEmit",
+		"build:lib": "tsdown",
+		"build:web": "vite build",
+		"build": "npm run check && npm run typecheck && npm run build:lib",
+		"preview": "vite preview",
+		"prepublishOnly": "npm run build"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.13",
+		"@tailwindcss/vite": "^4.3.3",
+		"elektron": "^0.8.3",
+		"tailwindcss": "^4.3.3",
+		"tsdown": "^0.23.0",
+		"typescript": "^7.0.2",
+		"vite": "^8.3.0"
+	}
 }
