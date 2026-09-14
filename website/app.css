@@ -2,6 +2,8 @@
 @source "../node_modules/elektron/src";
 @import "elektron/source";
 
+@import "../src/onoffcanvas.css";
+
 
 @theme {
     /* override elektron's theme variables if needed */

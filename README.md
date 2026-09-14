@@ -40,9 +40,17 @@ OnoffCanvas is fully compatible with Deno. You can import it directly from JSR o
 
 ```typescript
 // From JSR
+// Recommended approach (Named Import)
+import { OnoffCanvas } from "jsr:@onokumus/onoffcanvas";
+
+// Deprecated in v3.0.2, will be removed in v4.0.0
 import OnoffCanvas from "jsr:@onokumus/onoffcanvas";
 
 // Or from esm.sh
+// Recommended approach (Named Import)
+import { OnoffCanvas } from "https://esm.sh/onoffcanvas";
+
+// Deprecated in v3.0.2, will be removed in v4.0.0
 import OnoffCanvas from "https://esm.sh/onoffcanvas";
 ```
 
@@ -97,7 +105,12 @@ You can trigger the offcanvas using a link or a button. Ensure you add `data-tog
 ### 3. Initialization
 
 ```javascript
+// Recommended approach (Named Import)
+import { OnoffCanvas } from 'onoffcanvas';
+
+// Deprecated in v3.0.2, will be removed in v4.0.0
 import OnoffCanvas from 'onoffcanvas';
+
 import 'onoffcanvas/style';
 
 // Initialize all elements with data-toggle="onoffcanvas"

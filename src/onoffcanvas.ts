@@ -52,7 +52,7 @@ export function isElement(element: unknown): element is Element {
  * @export
  * @class OnoffCanvas
  */
-class OnoffCanvas {
+export class OnoffCanvas {
   public static attachTo(
     element: HTMLElement | string,
     options?: OcOptions,
@@ -252,8 +252,3 @@ class OnoffCanvas {
     });
   }
 }
-
-// Export both as default and named export
-export default OnoffCanvas;
-export { OnoffCanvas as Onoffcanvas };
-
