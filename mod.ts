@@ -1,4 +1,4 @@
-import { OnoffCanvas } from "./src/onoffcanvas.ts";
+import OnoffCanvas from "./src/onoffcanvas.ts";
 
 export * from "./src/onoffcanvas.ts";
 

@@ -1,32 +1,32 @@
-export interface OcOptions {
+interface OcOptions {
 	createDrawer?: boolean;
 	hideByEsc?: boolean;
 }
 
-export const NAME = "onoffcanvas";
-export const EVENT_KEY: string = `.${NAME}`;
+const NAME = "onoffcanvas";
+const EVENT_KEY: string = `.${NAME}`;
 
-export const EventName: { HIDE: string; SHOW: string } = {
+const EventName: { HIDE: string; SHOW: string } = {
 	HIDE: `hide${EVENT_KEY}`,
 	SHOW: `show${EVENT_KEY}`,
 };
 
-export const ClassName = {
+const ClassName = {
 	SHOW: "is-open",
 };
 
-export const Selector = {
+const Selector = {
 	DATA_TOGGLE: '[data-toggle="onoffcanvas"]',
 };
 
-export const OcDefault: OcOptions = {
+const OcDefault: OcOptions = {
 	createDrawer: true,
 	hideByEsc: true,
 };
 
-export type OnoffCanvasEvents = "show.onoffcanvas" | "hide.onoffcanvas";
+type OnoffCanvasEvents = "show.onoffcanvas" | "hide.onoffcanvas";
 
-export function getSelectorFromElement(element: Element): string | null {
+function getSelectorFromElement(element: Element): string | null {
 	let selector = element.getAttribute("data-target");
 	if (!selector || selector === "#") {
 		selector = element.getAttribute("href") || "";
@@ -39,11 +39,11 @@ export function getSelectorFromElement(element: Element): string | null {
 	}
 }
 
-export function selectorArray(arrs: Element[]): (string | null)[] {
+function selectorArray(arrs: Element[]): (string | null)[] {
 	return arrs.map((arr) => getSelectorFromElement(arr));
 }
 
-export function isElement(element: unknown): element is Element {
+function isElement(element: unknown): element is Element {
 	return Boolean((element as Element).classList);
 }
 
@@ -51,7 +51,7 @@ export function isElement(element: unknown): element is Element {
  * @export
  * @class OnoffCanvas
  */
-export class OnoffCanvas {
+class OnoffCanvas {
 	public static attachTo(
 		element: HTMLElement | string,
 		options?: OcOptions,
@@ -256,3 +256,5 @@ export class OnoffCanvas {
 		});
 	}
 }
+
+export default OnoffCanvas;

@@ -1,4 +1,4 @@
-import { OnoffCanvas } from "./onoffcanvas";
+import OnoffCanvas from "./onoffcanvas";
 
 export { OnoffCanvas };
 
