@@ -1,6 +1,6 @@
 {
 	"name": "onoffcanvas",
-	"version": "3.0.3",
+	"version": "4.0.0",
 	"description": "An offcanvas plugin",
 	"author": "onokumus",
 	"license": "MIT",
@@ -19,9 +19,6 @@
 		"plugin"
 	],
 	"type": "module",
-	"browser": "./dist/onoffcanvas.js",
-	"unpkg": "./dist/onoffcanvas.js",
-	"jsdelivr": "./dist/onoffcanvas.js",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.mts",

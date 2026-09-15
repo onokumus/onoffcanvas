@@ -8,9 +8,6 @@
 
 **OnoffCanvas** is a lightweight, accessible, and high-performance JavaScript offcanvas plugin designed with a "Technical Prestige" aesthetic. It utilizes modern CSS `clip-path` animations and glassmorphism to provide a premium user experience.
 
-> [!WARNING]
-> This plugin utilizes modern CSS features and does **not** support Internet Explorer.
-
 ---
 
 ## ✨ Features
@@ -40,18 +37,10 @@ OnoffCanvas is fully compatible with Deno. You can import it directly from JSR o
 
 ```typescript
 // From JSR
-// Recommended approach (Named Import)
 import { OnoffCanvas } from "jsr:@onokumus/onoffcanvas";
 
-// Deprecated in v3.0.2, will be removed in v4.0.0
-import OnoffCanvas from "jsr:@onokumus/onoffcanvas";
-
 // Or from esm.sh
-// Recommended approach (Named Import)
 import { OnoffCanvas } from "https://esm.sh/onoffcanvas";
-
-// Deprecated in v3.0.2, will be removed in v4.0.0
-import OnoffCanvas from "https://esm.sh/onoffcanvas";
 ```
 
 > [!NOTE]
@@ -63,12 +52,20 @@ import OnoffCanvas from "https://esm.sh/onoffcanvas";
 
 1. Include the StyleSheet:
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/onoffcanvas/lib/onoffcanvas.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/onoffcanvas/dist/onoffcanvas.css">
 ```
 
 2. Include the plugin:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/onoffcanvas/lib/onoffcanvas.js"></script>
+<script type="module">
+    import { OnoffCanvas } from 'https://cdn.jsdelivr.net/npm/onoffcanvas/dist/index.mjs';
+
+    // Initialize all elements with data-toggle="onoffcanvas"
+    OnoffCanvas.autoinit();
+
+    // Or manual instance
+    const oc = new OnoffCanvas('#myCanvas', options);
+</script>
 ```
 
 ---
@@ -105,11 +102,8 @@ You can trigger the offcanvas using a link or a button. Ensure you add `data-tog
 ### 3. Initialization
 
 ```javascript
-// Recommended approach (Named Import)
 import { OnoffCanvas } from 'onoffcanvas';
 
-// Deprecated in v3.0.2, will be removed in v4.0.0
-import OnoffCanvas from 'onoffcanvas';
 
 import 'onoffcanvas/style';
 
